@@ -9,10 +9,11 @@ import useStore from '/lib/store'
 export type LayoutProps = {
 	children: React.ReactNode
 	menu: MenuItem[]
+	contact: ContactRecord
 	title: string
 }
 
-export default function Layout({ children, menu: menuFromProps }: LayoutProps) {
+export default function Layout({ children, menu: menuFromProps, contact }: LayoutProps) {
 
 	const router = useRouter()
 	const [menu, setMenu] = useState<MenuItem[]>(menuFromProps)
@@ -23,7 +24,7 @@ export default function Layout({ children, menu: menuFromProps }: LayoutProps) {
 
 	return (
 		<>
-			<Menu items={menu} />
+			<Menu items={menu} contact={contact} />
 			<Content>
 				{children}
 			</Content>

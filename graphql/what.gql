@@ -8,18 +8,21 @@ query AllWhats {
 
 query AllWhatExamples {
 	whatExamples: allWhatExamples {
+		...WhatExampleFragment
+	}
+}
+
+query WhatExamples($typeId: ItemId!) {
+	whatExamples: allWhatExamples(filter: { whatType: { eq: $typeId } }) {
+		...WhatExampleFragment
+	}
+}
+
+query AllWhatTypes {
+	whats: allWhats {
 		id
 		title
-		client
-		collaborators
-		text(markdown: false)
-		image {
-			...ImageFragment
-		}
-		whatType {
-			id
-			title
-			intro(markdown: false)
-		}
+		intro(markdown: false)
+		slug
 	}
 }
