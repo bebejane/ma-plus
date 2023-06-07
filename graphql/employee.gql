@@ -1,5 +1,5 @@
 query AllEmployees {
-	allEmployees {
+	employees: allEmployees {
 		id
 		name
 		text(markdown: false)

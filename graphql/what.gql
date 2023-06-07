@@ -7,7 +7,7 @@ query AllWhats {
 }
 
 query AllWhatExamples {
-	allWhatExamples {
+	whatExamples: allWhatExamples {
 		id
 		title
 		client

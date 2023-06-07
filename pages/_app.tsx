@@ -6,7 +6,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
   const { asPath } = router
   const { site, seo } = pageProps as any;
-
+  console.log(pageProps)
   return (
     <>
       <DefaultDatoSEO site={site} siteTitle={'MA Plus'} path={asPath} />
