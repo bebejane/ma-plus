@@ -23,6 +23,23 @@ export const buildMenu = async (): Promise<Menu> => {
   })
 }
 
+export const pathToSectionId = (path: string): SectionId => {
+  const slug = path.split('/')[1]
+
+  switch (slug) {
+    case 'om-oss':
+      return 'about-us'
+    case 'vilka-vi-ar':
+      return 'who-we-are'
+    case 'vad-vi-gor':
+      return 'what-we-do'
+    case 'kontakt':
+      return 'contact'
+    default:
+      return null
+  }
+}
+
 export type Menu = MenuItem[]
 export type SectionId = 'about-us' | 'what-we-do' | 'who-we-are' | 'contact'
 export type MenuItem = {

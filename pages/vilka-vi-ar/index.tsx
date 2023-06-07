@@ -4,14 +4,14 @@ import type { GetStaticProps } from 'next'
 import { AllEmployeesDocument } from '/graphql';
 
 export type Props = {
-	employees: EmployeeRecord
+	employees: EmployeeRecord[]
 }
 
 export default function WhoWeAre({ employees }: Props) {
 
 	return (
 		<ul className={s.container}>
-			{employees.map(({ name, title, image, slug }, idx) =>
+			{employees.map(({ name, text, image }, idx) =>
 				<li key={idx}>{name}</li>
 			)}
 		</ul>

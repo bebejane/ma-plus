@@ -33,10 +33,13 @@
 
       &.selected {
         color: var(--section-color);
+
+        a {
+          color: var(--section-color);
+        }
       }
 
-      a {
-      }
+      a {}
     }
   }
 
