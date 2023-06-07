@@ -1,0 +1,11 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.invert {
+  filter: invert(1);
+  color: var(--white) !important;
+}
