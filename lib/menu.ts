@@ -2,13 +2,13 @@ import { apiQuery } from 'dato-nextjs-utils/api';
 import { MenuDocument } from "/graphql";
 
 const base: Menu = [
-  { id: 'about-us', label: 'Om oss', slug: '/om', sub: null },
-  { id: 'what-we-do', label: 'Vad vi gör', slug: null, sub: [] },
+  { id: 'about-us', label: 'Om oss', slug: '/om-oss', sub: null },
+  { id: 'what-we-do', label: 'Vad vi gör', slug: '/vad-vi-gor', sub: [] },
   { id: 'who-we-are', label: 'Vilka vi är', slug: '/vilka-vi-ar', sub: null },
   { id: 'contact', label: 'Kontakt', slug: '/kontakt', sub: null },
 ]
 
-export const buildMenu = async () => {
+export const buildMenu = async (): Promise<Menu> => {
   const { whats }: { whats: WhatRecord[] } = await apiQuery(MenuDocument)
 
   return base.map(item => {
