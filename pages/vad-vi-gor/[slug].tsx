@@ -1,4 +1,4 @@
-import s from './[...project].module.scss'
+import s from './[slug].module.scss'
 import cn from 'classnames'
 import withGlobalProps from "/lib/withGlobalProps";
 import { apiQuery } from "dato-nextjs-utils/api";
@@ -7,23 +7,53 @@ import { } from '/components';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useScrollInfo } from 'dato-nextjs-utils/hooks';
+import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
+import { Image } from 'react-datocms';
 
 export type Props = {
   whatExamples: WhatExampleRecord[]
+  whatType: WhatRecord
 }
 
-export default function WhatWeDo({ whatExamples }: Props) {
+export default function WhatWeDo({ whatExamples, whatType }: Props) {
 
   const { asPath } = useRouter()
   const { scrolledPosition, documentHeight, viewportHeight } = useScrollInfo()
   const [showWebPage, setShowWebPage] = useState(true)
 
   return (
-    <ul>
-      {whatExamples.map(({ title }, idx) =>
-        <li>{title}</li>
-      )}
-    </ul>
+    <div className={s.container}>
+      <section className={s.header}>
+        <header>
+          <h3>{whatType.title}</h3>
+          <h3>Exempel på uppdrag</h3>
+        </header>
+        <Markdown className={s.intro}>{whatType.intro}</Markdown>
+      </section>
+      <ul>
+        {whatExamples.map(({ title, image, text, client, collaborators }, idx) =>
+          <li>
+            <figure>
+              {image && <Image data={image.responsiveImage} pictureClassName={s.picture} />}
+            </figure>
+            <div className={s.content}>
+              <h3>{title}</h3>
+              <ul className={s.meta}>
+                <li>
+                  <span>Uppdragsgivare:</span>
+                  <span>{client}</span>
+                </li>
+                <li>
+                  <span>Medverkande:</span>
+                  <span>{collaborators}</span>
+                </li>
+              </ul>
+              <Markdown className={s.text}>{text}</Markdown>
+            </div>
+          </li>
+        )}
+      </ul>
+    </div>
   );
 }
 
@@ -43,13 +73,14 @@ export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, r
   const { slug } = context.params
 
   const { whats } = await apiQuery(AllWhatTypesDocument)
-  const typeId = whats.find((item) => item.slug === slug)?.id
-  const { whatExamples } = await apiQuery(WhatExamplesDocument, { variables: { typeId } })
+  const whatType = whats.find((item) => item.slug === slug)
+  const { whatExamples } = await apiQuery(WhatExamplesDocument, { variables: { typeId: whatType.id } })
 
   return {
     props: {
       ...props,
-      whatExamples
+      whatExamples,
+      whatType
     },
     revalidate
   };

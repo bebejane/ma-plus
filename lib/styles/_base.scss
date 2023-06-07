@@ -8,7 +8,7 @@
 	--outer-margin: var(--grid-unit);
 	--about-us-color: #ed571b;
 	--what-we-do-color: #001aff;
-	--who-ware-color: #1dcf65;
+	--who-we-are-color: #1dcf65;
 	--contact-color: #db00ff;
 	--line: max(2px, 0.2vw);
 	--line-height: 1.2;
@@ -64,11 +64,9 @@ a {
 	text-decoration: none;
 	color: var(--foreground);
 
-	&:hover {
-	}
+	&:hover {}
 
-	&:visited {
-	}
+	&:visited {}
 }
 
 article p a {
@@ -90,31 +88,25 @@ button {
 	color: var(--foreground);
 	border: 0;
 
-	@include mq($from: tablet) {
-	}
+	@include mq($from: tablet) {}
 
 	&.back {
-		@include mq($from: tablet) {
-		}
+		@include mq($from: tablet) {}
 	}
 
-	&:hover {
-	}
+	&:hover {}
 }
 
 figcaption {
-	@include mq($until: tablet) {
-	}
+	@include mq($until: tablet) {}
 }
 
-hr {
-}
+hr {}
 
 input,
 textarea,
 select {
-	&:focus {
-	}
+	&:focus {}
 }
 
 select {

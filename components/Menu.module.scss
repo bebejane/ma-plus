@@ -6,7 +6,7 @@
   height: var(--navbar-height);
   display: flex;
   flex-direction: row;
-  border-bottom: var(--line) solid var(--black);
+  border-bottom: var(--line) solid var(--section-color);
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
   padding-left: var(--grid-unit);
@@ -31,15 +31,18 @@
       padding-right: 1em;
       cursor: pointer;
 
-      &.selected {
+      &.selected,
+      &.selected>a {
         color: var(--section-color);
-
-        a {
-          color: var(--section-color);
-        }
       }
 
+<<<<<<< HEAD
       a {
+=======
+      &.selectedSub {
+        color: gray;
+
+>>>>>>> b9fe41ec26cc6cfda2dc8effe0aa5c8fecf6e1c7
       }
     }
   }
@@ -51,7 +54,7 @@
     align-items: center;
     justify-content: flex-end;
     padding-right: var(--grid-unit);
-    bottom: calc(-1 * var(--navbar-height));
+    bottom: calc(-1 * (var(--navbar-height) + var(--line)));
     right: 0;
     height: var(--navbar-height);
     width: 100%;
