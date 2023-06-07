@@ -1,3 +1,17 @@
 // FONT EMBEDDING & TYPO VARIABLES
-$body-font: Times, "Times New Roman", Sans-Serif;
-$headline-font: Arial, Helvetica, Sans-Serif;
+$body-font: "Jost", Arial, Helvetica, Sans-Serif;
+$headline-font: "Jost", Arial, Helvetica, Sans-Serif;
+
+@font-face {
+  font-family: "Jost";
+  src: url("../../public/fonts/Jost-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Jost";
+  src: url("../../public/fonts/Jost-Book.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+}
