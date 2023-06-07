@@ -13,6 +13,8 @@
 	--line: max(2px, 0.2vw);
 	--line-height: 1.2;
 	--navbar-height: 2.8rem;
+
+	--z-menu: 1000;
 }
 
 body {
@@ -63,11 +65,9 @@ a {
 	text-decoration: none;
 	color: var(--foreground);
 
-	&:hover {
-	}
+	&:hover {}
 
-	&:visited {
-	}
+	&:visited {}
 }
 
 article p a {
@@ -89,31 +89,25 @@ button {
 	color: var(--foreground);
 	border: 0;
 
-	@include mq($from: tablet) {
-	}
+	@include mq($from: tablet) {}
 
 	&.back {
-		@include mq($from: tablet) {
-		}
+		@include mq($from: tablet) {}
 	}
 
-	&:hover {
-	}
+	&:hover {}
 }
 
 figcaption {
-	@include mq($until: tablet) {
-	}
+	@include mq($until: tablet) {}
 }
 
-hr {
-}
+hr {}
 
 input,
 textarea,
 select {
-	&:focus {
-	}
+	&:focus {}
 }
 
 select {

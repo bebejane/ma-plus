@@ -30,9 +30,12 @@ export default function Menu({ items }: MenuProps) {
         <ul ref={menuRef}>
           {items.map((item, idx) =>
             <li key={idx}>
-              {item.label}
+              {item.slug ? <Link href={item.slug}>{item.label}</Link> : item.label}
             </li>
           )}
+        </ul>
+        <ul className={s.sub}>
+          <li>sub</li>
         </ul>
       </nav>
     </>

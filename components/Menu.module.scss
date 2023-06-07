@@ -3,6 +3,7 @@
   top: 0;
   left: 0;
   width: 100%;
+  height: var(--navbar-height);
   display: flex;
   flex-direction: row;
   border-bottom: var(--line) solid var(--black);
@@ -10,6 +11,7 @@
   padding-bottom: 0.5rem;
   padding-left: var(--grid-unit);
   padding-right: var(--grid-unit);
+  z-index: var(--z-menu);
   height: var(--navbar-height);
 
   .logo {
@@ -27,8 +29,19 @@
 
     li {
       padding-right: 1em;
-      a {
+      cursor: pointer;
+
+      &.selected {
+        color: var(--section-color);
       }
+
+      a {}
     }
+  }
+
+  .sub {
+    position: absolute;
+    bottom: calc(-1 * var(--navbar-height));
+    right: 0;
   }
 }
