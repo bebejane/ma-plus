@@ -32,17 +32,12 @@
       cursor: pointer;
 
       &.selected,
-      &.selected>a {
+      &.selected > a {
         color: var(--section-color);
       }
 
-<<<<<<< HEAD
-      a {
-=======
       &.selectedSub {
         color: gray;
-
->>>>>>> b9fe41ec26cc6cfda2dc8effe0aa5c8fecf6e1c7
       }
     }
   }
