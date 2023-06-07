@@ -1,4 +1,6 @@
 import { withWebPreviewsEdge } from 'dato-nextjs-utils/hoc';
+import { apiQuery } from 'dato-nextjs-utils/api';
+import { WhatTypeDocument } from '/graphql';
 
 export const config = {
   runtime: 'edge'
@@ -8,7 +10,7 @@ export default withWebPreviewsEdge(async ({ item, itemType }) => {
 
   let path = null;
 
-  const { slug } = item.attributes
+  const { what_type } = item.attributes
 
   switch (itemType.attributes.api_key) {
     case 'start':
@@ -18,6 +20,7 @@ export default withWebPreviewsEdge(async ({ item, itemType }) => {
       path = `/om-oss`
       break;
     case 'what_example':
+      const { what: { slug } } = await apiQuery(WhatTypeDocument, { variables: { id: what_type } })
       path = `/vad-vi-gor/${slug}`
       break;
     case 'we':

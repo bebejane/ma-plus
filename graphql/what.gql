@@ -26,3 +26,12 @@ query AllWhatTypes {
 		slug
 	}
 }
+
+query WhatType($id: ItemId!) {
+	what(filter: { id: { eq: $id } }) {
+		id
+		title
+		intro(markdown: false)
+		slug
+	}
+}

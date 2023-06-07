@@ -132,6 +132,7 @@ declare module '*/what.gql' {
 export const AllWhatExamples: DocumentNode;
 export const WhatExamples: DocumentNode;
 export const AllWhatTypes: DocumentNode;
+export const WhatType: DocumentNode;
 
   export default defaultDocument;
 }
