@@ -2,8 +2,9 @@ import s from './Layout.module.scss'
 import React, { useEffect, useState } from 'react'
 import type { MenuItem } from '/lib/menu'
 import { buildMenu } from '/lib/menu'
+import { pathToSectionId } from '/lib/menu'
 import { useRouter } from 'next/router'
-import { Grid, Menu, Content } from '/components'
+import { Grid, Menu, Content, Line } from '/components'
 import useStore from '/lib/store'
 
 export type LayoutProps = {
@@ -28,6 +29,7 @@ export default function Layout({ children, menu: menuFromProps, contact }: Layou
 			<Content>
 				{children}
 			</Content>
+			<Line />
 			<Grid />
 		</>
 	)

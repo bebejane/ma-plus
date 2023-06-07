@@ -9,7 +9,7 @@
     header {
       display: flex;
       flex-direction: column;
-      flex: 0 0 calc(8 * var(--grid-unit));
+      flex: 0 0 var(--side-m);
 
       h3:first-child {
         flex: 1 1 100%;
@@ -31,7 +31,7 @@
       height: 100%;
 
       figure {
-        flex: 0 0 calc(8 * var(--grid-unit));
+        flex: 0 0 var(--side-m);
         height: 100%;
 
         .picture {

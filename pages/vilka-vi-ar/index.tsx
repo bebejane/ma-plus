@@ -24,7 +24,7 @@ export default function WhoWeAre({ employees }: Props) {
 			</section>
 			<ul>
 				{employees.map(({ name, image, text, }, idx) =>
-					<li>
+					<li key={idx}>
 						<figure>
 							{image && <Image data={image.responsiveImage} pictureClassName={s.picture} />}
 						</figure>

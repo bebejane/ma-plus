@@ -14,8 +14,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
     const r = document.querySelector<HTMLElement>(':root')
     const sectionId = pathToSectionId(asPath)
-    console.log(sectionId)
-    r.style.setProperty('--section-color', `var(--${sectionId}-color)`);
+    r.style.setProperty('--section-color', `var(--${sectionId ?? 'home'}-color)`);
 
   }, [asPath])
 

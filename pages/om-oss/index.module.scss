@@ -8,7 +8,7 @@
   }
 
   aside {
-    flex: 0 0 calc(4 * var(--grid-unit));
+    flex: 0 0 var(--side-s);
 
     .quotes {
       color: var(--section-color);

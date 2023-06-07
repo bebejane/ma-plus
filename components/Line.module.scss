@@ -1,0 +1,24 @@
+.line {
+  appearance: none;
+  position: fixed;
+  top: 0;
+  margin: 0;
+  border: 0;
+  left: var(--side-default);
+  height: 100vh;
+  width: var(--line);
+  background-color: var(--section-color);
+  transition: all 0.3s ease-out;
+
+  &.what-we-do {
+    left: var(--side-l);
+  }
+
+  &.who-we-are {
+    left: var(--side-m);
+  }
+
+  &.about-us {
+    left: var(--side-s);
+  }
+}
