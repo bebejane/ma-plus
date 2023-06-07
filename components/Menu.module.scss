@@ -42,7 +42,14 @@
 
   .sub {
     position: absolute;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: var(--grid-unit);
     bottom: calc(-1 * var(--navbar-height));
     right: 0;
+    height: var(--navbar-height);
+    width: 100%;
   }
 }

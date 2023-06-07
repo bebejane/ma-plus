@@ -8,10 +8,15 @@ function MyApp({ Component, pageProps, router }: AppProps) {
   const { asPath } = router
   const { site, menu } = pageProps as any;
 
+  const errorCode = parseInt(router.pathname.replace('/', ''))
+  const isError = (!isNaN(errorCode) && (errorCode > 400 && errorCode < 600)) || router.pathname.replace('/', '') === '_error'
+
+  if (isError) return <Component {...pageProps} />
+
   return (
     <>
       <DefaultDatoSEO site={site} siteTitle={'MA Plus'} path={asPath} />
-      <Layout menu={menu} title={'MA Plus'}>
+      <Layout menu={menu} contact={pageProps.contact} title={'MA Plus'}>
         <Component {...pageProps} />
       </Layout>
     </>

@@ -9,7 +9,7 @@ export default function Home({ }: Props) {
 
 	return (
 		<div className={s.container}>
-			MA Plus
+			home
 		</div>
 	)
 }

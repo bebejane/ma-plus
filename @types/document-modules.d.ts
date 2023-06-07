@@ -71,6 +71,15 @@ declare module '*/VideoFragment.gql' {
 }
     
 
+declare module '*/WhatExampleFragment.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const WhatExampleFragment: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/global.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -121,6 +130,8 @@ declare module '*/what.gql' {
   const defaultDocument: DocumentNode;
   export const AllWhats: DocumentNode;
 export const AllWhatExamples: DocumentNode;
+export const WhatExamples: DocumentNode;
+export const AllWhatTypes: DocumentNode;
 
   export default defaultDocument;
 }

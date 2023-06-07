@@ -1,0 +1,16 @@
+fragment WhatExampleFragment on WhatExampleRecord {
+	id
+	title
+	client
+	collaborators
+	text(markdown: false)
+	image {
+		...ImageFragment
+	}
+	whatType {
+		id
+		title
+		intro(markdown: false)
+		slug
+	}
+}
