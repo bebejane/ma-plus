@@ -4,7 +4,7 @@ import type { MenuItem } from '/lib/menu'
 import { buildMenu } from '/lib/menu'
 import { pathToSectionId } from '/lib/menu'
 import { useRouter } from 'next/router'
-import { Grid, Menu, Content, Line } from '/components'
+import { Grid, Menu, Content, Line, Intro } from '/components'
 import useStore from '/lib/store'
 
 export type LayoutProps = {
@@ -30,6 +30,7 @@ export default function Layout({ children, menu: menuFromProps, contact }: Layou
 				{children}
 			</Content>
 			<Line />
+			{router.asPath === '/' && <Intro />}
 			<Grid />
 		</>
 	)

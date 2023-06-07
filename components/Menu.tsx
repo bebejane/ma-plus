@@ -71,6 +71,7 @@ export default function Menu({ items, contact }: MenuProps) {
                 )}
               </ul>
             }
+
           </div>
         }
       </nav>

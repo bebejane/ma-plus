@@ -54,6 +54,11 @@
     height: var(--navbar-height);
     width: 100%;
     border-bottom: var(--line) solid var(--section-color);
+    z-index: var(--z-menu-sub);
     backdrop-filter: blur(6px); // This be the blur
+    background-color: rgba(255, 255, 255, 0.6);
+
+
+
   }
 }
