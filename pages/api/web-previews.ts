@@ -15,16 +15,13 @@ export default withWebPreviewsEdge(async ({ item, itemType }) => {
       path = `/`
       break;
     case 'about':
-      path = `/om`
-      break;
-    case 'what':
-      path = `/`
+      path = `/om-oss`
       break;
     case 'what_example':
-      path = `/`
+      path = `/vad-vi-gor/${slug}`
       break;
     case 'we':
-      path = `/`
+      path = `/vilka-vi-ar`
       break;
     case 'employee':
       path = `/vilka-vi-ar`

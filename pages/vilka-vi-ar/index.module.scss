@@ -1,1 +1,48 @@
-.container {}
+.container {
+
+  section.header {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    border-bottom: var(--line) solid var(--section-color);
+
+    header {
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 calc(8 * var(--grid-unit));
+
+      h3:first-child {
+        flex: 1 1 100%;
+      }
+    }
+
+    .intro {}
+  }
+
+  >ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    >li {
+      display: flex;
+      flex-direction: row;
+      border-bottom: var(--line) solid var(--section-color);
+      height: 100%;
+
+      figure {
+        flex: 0 0 calc(8 * var(--grid-unit));
+        height: 100%;
+
+        .picture {
+          object-fit: cover;
+          height: 100%;
+        }
+      }
+
+      .content {
+        flex: 1 1 auto;
+      }
+    }
+  }
+}

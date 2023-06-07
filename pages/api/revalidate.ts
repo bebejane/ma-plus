@@ -7,11 +7,23 @@ export default withRevalidate(async (record, revalidate) => {
   const paths = []
 
   switch (apiKey) {
-    case 'post':
-      paths.push(`/posts/${slug}`)
+    case 'start':
+      paths.push(`/`)
       break;
-    case 'user':
-      paths.push(`/users/${slug}`)
+    case 'about':
+      paths.push(`/om-oss`)
+      break;
+    case 'what_example':
+      paths.push(`/vad-vi-gor/${slug}`)
+      break;
+    case 'we':
+      paths.push(`/vilka-vi-ar`)
+      break;
+    case 'employee':
+      paths.push(`/vilka-vi-ar`)
+      break;
+    case 'contact':
+      paths.push(`/kontakt`)
       break;
     default:
       break;
