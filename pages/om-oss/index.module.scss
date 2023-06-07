@@ -17,5 +17,6 @@
 
   article {
     flex: 1 1 auto;
+    padding-right: calc(5 * var(--grid-unit));
   }
 }

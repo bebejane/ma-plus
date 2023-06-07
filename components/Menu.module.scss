@@ -39,7 +39,8 @@
         }
       }
 
-      a {}
+      a {
+      }
     }
   }
 
@@ -54,5 +55,8 @@
     right: 0;
     height: var(--navbar-height);
     width: 100%;
+    border-top: var(--line) solid var(--section-color);
+    border-bottom: var(--line) solid var(--section-color);
+    backdrop-filter: blur(6px); // This be the blur
   }
 }

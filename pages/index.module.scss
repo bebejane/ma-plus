@@ -4,7 +4,6 @@
 
   .whats,
   .about {
-
     flex: 0 0 50%;
     height: calc(100vh - var(--navbar-height));
     max-height: calc(100vh - var(--navbar-height));
@@ -25,11 +24,10 @@
       ul {
         list-style: none;
 
-
-
         li {
           cursor: pointer;
           font-weight: normal;
+          padding-bottom: 0.8em;
 
           &.selected {
             font-weight: bold;
@@ -38,8 +36,7 @@
       }
     }
 
-
-    >div {
+    > div {
       height: 100%;
     }
 
@@ -52,7 +49,6 @@
       height: 100%;
       z-index: var(--z-fullscreen-gallery-slide);
 
-
       figure,
       .picture,
       .image {
@@ -62,7 +58,6 @@
 
       figure {
         position: relative;
-
 
         figcaption {
           position: absolute;
@@ -75,7 +70,6 @@
           color: var(--white);
         }
       }
-
 
       .picture {
         position: relative;

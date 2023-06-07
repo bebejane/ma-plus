@@ -66,7 +66,7 @@ export default function Home({ start, whats }: Props) {
 					<h3>Vad vi gör</h3>
 					<ul className={s.whatTypes}>
 						{whats.map((what, i) =>
-							<li key={i} className={cn(index === i && s.selected)} onClick={() => swiperRef.current.slideTo(i + 1)}>
+							<li key={i} className={cn("intro", index === i && s.selected)} onClick={() => swiperRef.current.slideTo(i + 1)}>
 								{what.title}
 							</li>
 						)}
@@ -75,8 +75,10 @@ export default function Home({ start, whats }: Props) {
 			</div>
 			<div className={s.about}>
 				<h3>Om oss</h3>
-				<DatoMarkdown>{start.text}</DatoMarkdown>
-				<Link href="/om-oss">Läs mer om oss</Link>
+				<div className="intro">
+					<DatoMarkdown>{start.text}</DatoMarkdown>
+				</div>
+				<Link className="mid" href="/om-oss">Läs mer om oss</Link>
 			</div>
 		</div>
 	)
