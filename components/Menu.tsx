@@ -21,17 +21,15 @@ export default function Menu({ items, contact }: MenuProps) {
   const { scrolledPosition, documentHeight, viewportHeight } = useScrollInfo()
 
   useEffect(() => {
-    const handleRouteChangeStart = (path: string) => {
-      setSelectedSub(undefined)
-    }
-    router.events.on('routeChangeStart', handleRouteChangeStart)
-    return () => router.events.off('routeChangeStart', handleRouteChangeStart)
+    const handleRouteChangeComplete = (path: string) => setSelectedSub(undefined)
+    router.events.on('routeChangeComplete', handleRouteChangeComplete)
+    return () => router.events.off('routeChangeComplete', handleRouteChangeComplete)
   }, [])
 
   useEffect(() => {
     setSelected(items.find(item => item.id === pathToSectionId(asPath)))
   }, [asPath])
-
+  console.log(items)
   return (
     <>
       <nav className={cn(s.menu, !showMenu && s.hide)}>
@@ -46,32 +44,37 @@ export default function Menu({ items, contact }: MenuProps) {
           {items.map((item, idx) =>
             <li
               key={idx}
-              onClick={() => setSelectedSub(selectedSub?.id === item.id ? undefined : item)}
+              onClick={(ev) => (ev.target as HTMLElement).tagName !== 'A' && setSelectedSub(selectedSub?.id === item.id ? undefined : item)}
               className={cn(selected?.id === item.id && s.selected, selectedSub?.id === item.id && s.selectedSub)}
             >
-              {item.slug ? <Link href={item.slug}>{item.label}</Link> : item.label}
+              {item.slug ?
+                <Link href={item.slug}>{item.label}</Link>
+                :
+                <span>{item.label}</span>
+              }
             </li>
           )}
         </ul>
         {selectedSub &&
           <div className={s.sub}>
             {selectedSub.id === 'contact' &&
-              <>
-                {contact.address}&nbsp;
-                <a href={`mailto:${contact.email}`}>{contact.email}</a>&nbsp;
-                <a href={`tel:${contact.phone}`}>{contact.phone}</a>
-              </>
+              <ul>
+                <li>{contact.address}</li>
+                <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+                <li><a href={`tel:${contact.phone}`}>{contact.phone}</a></li>
+              </ul>
             }
             {selectedSub.id === 'what-we-do' &&
               <ul>
                 {items.find(item => item.id === 'what-we-do')?.sub.map((item, idx) =>
-                  <li>
-                    <Link href={item.slug}>{item.label}</Link>
+                  <li className={cn(asPath === item.slug && s.selected)}>
+                    <Link href={item.slug}>
+                      {item.label}
+                    </Link>
                   </li>
                 )}
               </ul>
             }
-
           </div>
         }
       </nav>

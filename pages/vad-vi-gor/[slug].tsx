@@ -34,22 +34,34 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
         {whatExamples.map(({ title, image, text, client, collaborators }, idx) =>
           <li>
             <figure>
-              {image && <Image data={image.responsiveImage} pictureClassName={s.picture} />}
+              {image &&
+                <Image
+                  data={image.responsiveImage}
+                  className={s.image}
+                  pictureClassName={s.picture}
+                />
+              }
             </figure>
+
             <div className={s.content}>
-              <h3>{title}</h3>
+              <h1>{title}</h1>
               <ul className={s.meta}>
-                <li>
-                  <span>Uppdragsgivare:</span>
-                  <span>{client}</span>
-                </li>
-                <li>
-                  <span>Medverkande:</span>
-                  <span>{collaborators}</span>
-                </li>
+                {client &&
+                  <li>
+                    <span>Uppdragsgivare:</span>
+                    <span>{client}</span>
+                  </li>
+                }
+                {collaborators &&
+                  <li>
+                    <span>Medverkande:</span>
+                    <span>{collaborators}</span>
+                  </li>
+                }
               </ul>
               <Markdown className={s.text}>{text}</Markdown>
             </div>
+
           </li>
         )}
       </ul>

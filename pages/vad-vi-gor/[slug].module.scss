@@ -5,6 +5,7 @@
     flex-direction: row;
     width: 100%;
     border-bottom: var(--line) solid var(--section-color);
+    padding: var(--outer-margin);
 
     header {
       display: flex;
@@ -32,16 +33,19 @@
 
       figure {
         flex: 0 0 var(--side-l);
-        height: 100%;
+        width: 100%;
 
+        .image,
         .picture {
           object-fit: cover;
           height: 100%;
+          width: 100%;
         }
       }
 
       .content {
         flex: 1 1 auto;
+        padding: var(--outer-margin);
 
         .meta {
           list-style: none;

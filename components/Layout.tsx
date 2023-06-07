@@ -30,7 +30,7 @@ export default function Layout({ children, menu: menuFromProps, contact }: Layou
 				{children}
 			</Content>
 			<Line />
-			{router.asPath === '/' && <Intro />}
+			<Intro />
 			<Grid />
 		</>
 	)
