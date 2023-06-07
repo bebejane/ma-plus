@@ -10,8 +10,6 @@ export default withWebPreviewsEdge(async ({ item, itemType }) => {
 
   let path = null;
 
-  const { what_type } = item.attributes
-
   switch (itemType.attributes.api_key) {
     case 'start':
       path = `/`
@@ -19,8 +17,11 @@ export default withWebPreviewsEdge(async ({ item, itemType }) => {
     case 'about':
       path = `/om-oss`
       break;
+    case 'what':
+      path = `/vad-vi-gor/${item.attributes.slug}`
+      break;
     case 'what_example':
-      const { what: { slug } } = await apiQuery(WhatTypeDocument, { variables: { id: what_type } })
+      const { what: { slug } } = await apiQuery(WhatTypeDocument, { variables: { id: item.attributes.what_type } })
       path = `/vad-vi-gor/${slug}`
       break;
     case 'we':

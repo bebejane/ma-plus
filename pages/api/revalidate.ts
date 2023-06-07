@@ -1,9 +1,12 @@
 import { withRevalidate } from 'dato-nextjs-utils/hoc'
+import { apiQuery } from 'dato-nextjs-utils/api';
+import { WhatTypeDocument } from '/graphql';
+
 
 export default withRevalidate(async (record, revalidate) => {
 
   const { api_key: apiKey } = record.model;
-  const { slug } = record
+
   const paths = []
 
   switch (apiKey) {
@@ -13,7 +16,11 @@ export default withRevalidate(async (record, revalidate) => {
     case 'about':
       paths.push(`/om-oss`)
       break;
+    case 'what':
+      paths.push(`/vad-vi-gor/${record.slug}`)
+      break;
     case 'what_example':
+      const { what: { slug } } = await apiQuery(WhatTypeDocument, { variables: { id: record.what_type } })
       paths.push(`/vad-vi-gor/${slug}`)
       break;
     case 'we':
