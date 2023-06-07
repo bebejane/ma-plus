@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 import type { MenuItem } from '/lib/menu'
 import { buildMenu } from '/lib/menu'
 import { useRouter } from 'next/router'
-import { Grid, Menu } from '/components'
+import { Grid, Menu, Content } from '/components'
 import useStore from '/lib/store'
 
 export type LayoutProps = {
@@ -24,6 +24,9 @@ export default function Layout({ children, menu: menuFromProps }: LayoutProps) {
 	return (
 		<>
 			<Menu items={menu} />
+			<Content>
+				{children}
+			</Content>
 			<Grid />
 		</>
 	)

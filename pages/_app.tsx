@@ -6,7 +6,7 @@ import { Layout } from '/components';
 function MyApp({ Component, pageProps, router }: AppProps) {
 
   const { asPath } = router
-  const { site, seo, menu } = pageProps as any;
+  const { site, menu } = pageProps as any;
 
   return (
     <>
