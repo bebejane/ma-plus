@@ -1,0 +1,10 @@
+query AllEmployees {
+	allEmployees {
+		id
+		name
+		text(markdown: false)
+		image {
+			...ImageFragment
+		}
+	}
+}

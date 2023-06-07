@@ -16,6 +16,9 @@ dependencies:
   '@next/bundle-analyzer':
     specifier: ^12.3.4
     version: 12.3.4
+  '@next/env':
+    specifier: ^13.4.4
+    version: 13.4.4
   '@svgr/webpack':
     specifier: ^6.5.1
     version: 6.5.1

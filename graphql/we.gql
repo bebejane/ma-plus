@@ -1,0 +1,7 @@
+query We {
+	we {
+		id
+		title
+		intro(markdown: false)
+	}
+}

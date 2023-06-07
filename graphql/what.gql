@@ -1,0 +1,25 @@
+query AllWhats {
+	allWhats {
+		id
+		title
+		intro(markdown: false)
+	}
+}
+
+query AllWhatExamples {
+	allWhatExamples {
+		id
+		title
+		client
+		collaborators
+		text(markdown: false)
+		image {
+			...ImageFragment
+		}
+		whatType {
+			id
+			title
+			intro(markdown: false)
+		}
+	}
+}

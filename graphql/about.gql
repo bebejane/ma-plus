@@ -1,0 +1,8 @@
+query About {
+	about {
+		title
+		intro(markdown: false)
+		text(markdown: false)
+		quotes(markdown: false)
+	}
+}

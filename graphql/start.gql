@@ -1,0 +1,18 @@
+query Start {
+	start {
+		id
+		text(markdown: false)
+		imageCityPlanning {
+			...ImageFragment
+		}
+		imageCulturePolitics {
+			...ImageFragment
+		}
+		imageOrganizationDevelopment {
+			...ImageFragment
+		}
+		imageTexts {
+			...ImageFragment
+		}
+	}
+}
