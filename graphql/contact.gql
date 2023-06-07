@@ -1,0 +1,8 @@
+query Contact {
+	contact {
+		id
+		email
+		address
+		phone
+	}
+}

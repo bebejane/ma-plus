@@ -1,5 +1,5 @@
 import styles from './index.module.scss'
-import { withGlobalProps } from 'dato-nextjs-utils/hoc';
+import withGlobalProps from '/lib/withGlobalProps'
 import type { GetStaticProps } from 'next'
 import Link from 'next/link';
 

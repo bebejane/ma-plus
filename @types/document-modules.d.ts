@@ -1,4 +1,31 @@
 
+declare module '*/about.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const About: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/contact.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const Contact: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/employee.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AllEmployees: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/ImageFragment.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
@@ -53,10 +80,47 @@ declare module '*/global.gql' {
 }
     
 
+declare module '*/menu.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const Menu: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
 declare module '*/seo.gql' {
   import { DocumentNode } from 'graphql';
   const defaultDocument: DocumentNode;
   export const Site: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/start.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const Start: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/we.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const We: DocumentNode;
+
+  export default defaultDocument;
+}
+    
+
+declare module '*/what.gql' {
+  import { DocumentNode } from 'graphql';
+  const defaultDocument: DocumentNode;
+  export const AllWhats: DocumentNode;
+export const AllWhatExamples: DocumentNode;
 
   export default defaultDocument;
 }

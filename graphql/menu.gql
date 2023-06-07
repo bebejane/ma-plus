@@ -1,0 +1,7 @@
+query Menu {
+	whats: allWhats {
+		id
+		title
+		slug
+	}
+}
