@@ -1,23 +1,24 @@
 import s from './index.module.scss'
 import withGlobalProps from '/lib/withGlobalProps'
 import type { GetStaticProps } from 'next'
-import { AboutDocument } from '/graphql';
-import Link from 'next/link';
+import { AllEmployeesDocument } from '/graphql';
 
 export type Props = {
-	about: AboutRecord
+	employees: EmployeeRecord
 }
 
-export default function WhoWeAre({ about }: Props) {
+export default function WhoWeAre({ employees }: Props) {
 
 	return (
-		<div className={s.container}>
-			Vilka vi är
-		</div>
+		<ul className={s.container}>
+			{employees.map(({ name, title, image, slug }, idx) =>
+				<li key={idx}>{name}</li>
+			)}
+		</ul>
 	)
 }
 
-export const getStaticProps: GetStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate }: any) => {
+export const getStaticProps: GetStaticProps = withGlobalProps({ queries: [AllEmployeesDocument] }, async ({ props, revalidate }: any) => {
 
 	return {
 		props,
