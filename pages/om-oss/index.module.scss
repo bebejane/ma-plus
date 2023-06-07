@@ -1,1 +1,21 @@
-.container {}
+.container {
+  display: flex;
+  flex-direction: row;
+
+  aside,
+  article {
+    padding: var(--outer-margin);
+  }
+
+  aside {
+    flex: 0 0 calc(4 * var(--grid-unit));
+
+    .quotes {
+      color: var(--section-color);
+    }
+  }
+
+  article {
+    flex: 1 1 auto;
+  }
+}

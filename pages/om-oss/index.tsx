@@ -2,7 +2,7 @@ import s from './index.module.scss'
 import withGlobalProps from '/lib/withGlobalProps'
 import type { GetStaticProps } from 'next'
 import { AboutDocument } from '/graphql';
-import Link from 'next/link';
+import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
 
 export type Props = {
 	about: AboutRecord
@@ -12,7 +12,16 @@ export default function About({ about }: Props) {
 
 	return (
 		<div className={s.container}>
-			About us
+			<aside>
+				<h3>Om oss</h3>
+				<p className={s.quotes}>
+					<Markdown>{about.quotes}</Markdown>
+				</p>
+			</aside>
+			<article>
+				<Markdown className={s.intro}>{about.intro}</Markdown>
+				<Markdown className={s.text}>{about.text}</Markdown>
+			</article>
 		</div>
 	)
 }
