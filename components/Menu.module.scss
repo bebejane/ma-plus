@@ -5,21 +5,29 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  border-bottom: 2px solid #000;
+  border-bottom: var(--line) solid var(--black);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: var(--grid-unit);
+  padding-right: var(--grid-unit);
 
   .logo {
     align-items: flex-start;
     text-align: left;
     flex: 1 1 auto;
+    line-height: 1;
   }
 
   ul {
     display: flex;
     flex-direction: row;
+    align-items: center;
     list-style: none;
 
     li {
-      a {}
+      padding-right: 1em;
+      a {
+      }
     }
   }
 }

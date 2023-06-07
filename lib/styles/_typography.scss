@@ -4,7 +4,7 @@ body {
   font-weight: normal;
 
   @include mq($from: tablet) {
-    font-size: 1.2vw;
+    font-size: 1.8vw;
   }
 }
 
@@ -14,6 +14,11 @@ h1 {
   padding-bottom: var(--space);
   line-height: 1.25;
   font-family: $headline-font;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 500;
 }
 
 h2 {
@@ -61,8 +66,8 @@ nav,
 button,
 .mid input,
 .mid select {
-  font-family: $headline-font;
   font-size: 0.75rem;
+  font-weight: 600;
 }
 
 strong,

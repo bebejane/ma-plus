@@ -23,7 +23,9 @@ export default function Menu({ items }: MenuProps) {
     <>
       <nav className={cn(s.menu, !showMenu && s.hide)}>
         <div className={s.logo}>
-          MA+
+          <span className="logo">
+            MA+
+          </span>
         </div>
         <ul ref={menuRef}>
           {items.map((item, idx) =>

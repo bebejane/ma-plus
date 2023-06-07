@@ -15,3 +15,10 @@ $headline-font: "Jost", Arial, Helvetica, Sans-Serif;
   font-weight: 400;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "Jost";
+  src: url("../../public/fonts/Jost-Semi.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+}
