@@ -19,19 +19,19 @@ export default function Menu({ items, contact }: MenuProps) {
   const [selected, setSelected] = useState<MenuItem | undefined>()
   const [selectedSub, setSelectedSub] = useState<MenuItem | undefined>()
   const { scrolledPosition, documentHeight, viewportHeight, isScrolledUp } = useScrollInfo()
-  const hideInactiveMenuItems = scrolledPosition > 0 && !isScrolledUp
-  const isContactActive = selectedSub && selected?.id === 'contact'
+  const hideInactiveMenuItems = scrolledPosition > 0 //&& !isScrolledUp
 
   const handleClick = (ev) => {
 
-    const r = document.querySelector<HTMLElement>(':root')
-    const sectionId = pathToSectionId(asPath)
     const item = items.find(item => item.id === ev.currentTarget.id)
 
     if ((ev.target as HTMLElement).tagName !== 'A') {
       const sSub = selectedSub?.id === item.id ? undefined : item
       setSelectedSub(sSub)
-      r.style.setProperty('--section-color', `var(--${(sSub && item.id === 'contact') ? 'contact' : sectionId ?? 'home'}-color)`);
+
+      const r = document.querySelector<HTMLElement>(':root')
+      const sectionId = pathToSectionId(asPath)
+      r.style.setProperty('--section-color', `var(--${sSub ? item.id : sectionId ?? 'home'}-color)`);
     }
   }
 
@@ -53,7 +53,8 @@ export default function Menu({ items, contact }: MenuProps) {
 
   return (
     <>
-      <nav className={cn(s.menu, !showMenu && s.hide)}>
+      <nav className={cn(s.menu, !showMenu && s.hide, hideInactiveMenuItems && s.background)}>
+
         <div className={s.logo}>
           <Link href={'/'}>
             <span className="logo">
@@ -61,22 +62,35 @@ export default function Menu({ items, contact }: MenuProps) {
             </span>
           </Link>
         </div>
+
         <ul ref={menuRef}>
-          {items.map((item, idx) =>
-            <li
-              id={item.id}
-              key={idx}
-              onClick={handleClick}
-              className={cn(selected?.id === item.id && s.selected, selectedSub?.id === item.id && s.selectedSub, hideInactiveMenuItems && (selected && selected?.id !== item.id) && s.inactive)}
-            >
-              {item.slug ?
-                <Link href={item.slug}>{item.label}</Link>
-                :
-                <span>{item.label}</span>
-              }
-            </li>
-          )}
+          {items.map((item, idx) => {
+
+            const isSelected = selected?.id === item.id
+            const isSubSelected = selectedSub?.id === item.id
+
+            return (
+              <li
+                id={item.id}
+                key={idx}
+                onClick={handleClick}
+                className={cn(
+                  isSelected && !selectedSub && s.selected,
+                  selectedSub && isSelected && s.inactive,
+                  isSubSelected && s[item.id],
+                  (hideInactiveMenuItems && !isSelected) && s.hidden
+                )}
+              >
+                {item.slug ?
+                  <Link href={item.slug}>{item.label}</Link>
+                  :
+                  <span>{item.label}</span>
+                }
+              </li>
+            )
+          })}
         </ul>
+
         {selectedSub &&
           <div className={s.sub}>
             {selectedSub.id === 'contact' &&
@@ -99,6 +113,7 @@ export default function Menu({ items, contact }: MenuProps) {
             }
           </div>
         }
+
       </nav>
     </>
   )

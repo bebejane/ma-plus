@@ -15,6 +15,11 @@
   z-index: var(--z-menu);
   height: var(--navbar-height);
 
+  &.background {
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+  }
+
   .logo {
     align-items: flex-start;
     text-align: left;
@@ -39,14 +44,31 @@
         color: var(--section-color);
       }
 
-      &.selectedSub {
-        color: gray;
+      &.inactive,
+      &.inactive>a {
+        color: gray !important;
       }
 
       opacity: 1;
 
-      &.inactive {
+      &.hidden {
         opacity: 0;
+      }
+
+      &.what-we-do {
+        color: var(--what-we-do-color);
+      }
+
+      &.who-we-are {
+        color: var(--who-we-are-color);
+      }
+
+      &.about-us {
+        color: var(--about-us-color);
+      }
+
+      &.contact {
+        color: var(--contact-color);
       }
     }
   }
@@ -65,7 +87,7 @@
     border-bottom: var(--line) solid var(--section-color);
     transition: border-bottom var(--color-transition);
     z-index: var(--z-menu-sub);
-    backdrop-filter: blur(6px); // This be the blur
+    backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.6);
 
   }

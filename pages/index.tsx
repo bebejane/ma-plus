@@ -6,7 +6,7 @@ import withGlobalProps from '/lib/withGlobalProps'
 import type { GetStaticProps } from 'next'
 import { StartDocument, AllWhatTypesDocument } from '/graphql';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import SwiperCore, { EffectFade } from 'swiper'
+import SwiperCore, { EffectFade, Autoplay } from 'swiper'
 import type { Swiper as SwiperType } from 'swiper'
 import { Image } from 'react-datocms';
 import { useRef, useState, useEffect } from "react";
@@ -14,7 +14,7 @@ import { Loader } from "/components";
 import { DatoMarkdown } from "dato-nextjs-utils/components";
 import Link from "next/link";
 
-SwiperCore.use([EffectFade]);
+SwiperCore.use([EffectFade, Autoplay]);
 
 export type Props = { site: Site, start: StartRecord, whats: WhatRecord[] }
 
@@ -36,6 +36,7 @@ export default function Home({ start, whats }: Props) {
 					centeredSlides={true}
 					slidesPerView={1}
 					initialSlide={0}
+					autoplay={{ delay: 2000, disableOnInteraction: true }}
 					effect="fade"
 					onSlideChange={({ realIndex }) => setIndex(realIndex)}
 					onSwiper={(swiper) => swiperRef.current = swiper}
