@@ -58,6 +58,10 @@
       border-bottom: var(--line) solid var(--section-color);
       height: 100%;
 
+      &:last-of-type {
+        border-bottom: none;
+      }
+
       figure {
         @include mq($until: tablet) {
           display: flex;

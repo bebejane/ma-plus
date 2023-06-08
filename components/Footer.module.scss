@@ -1,15 +1,15 @@
 .footer {
-  --height: calc(var(--navbar-height) + var(--outer-margin));
+  --height: calc(var(--navbar-height));
   position: absolute;
   bottom: calc(var(--height) * -1);
   left: 0;
   width: 100%;
-  height: calc(var(--height) *1);
-  background-color: var(--white);
+  height: calc(var(--height) * 1);
+  //background-color: var(--white);
   border-top: var(--line) solid var(--section-color);
   z-index: var(--z-footer);
-  padding-top: var(--outer-margin);
-
+  display: flex;
+  align-items: center;
   &.what-we-do {
     padding-left: calc(var(--side-l) + var(--outer-margin));
   }
@@ -23,6 +23,8 @@
   }
 
   h3 {
+    padding-bottom: 0;
+
     span {
       margin-right: 1em;
     }
