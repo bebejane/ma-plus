@@ -17,12 +17,14 @@ export default function Menu({ items, contact }: MenuProps) {
   const { asPath } = router
   const menuRef = useRef<HTMLUListElement | null>(null);
   const [showMenu, setShowMenu] = useStore((state) => [state.showMenu, state.setShowMenu])
+  const [hovering, setHovering] = useState(false)
   const [selected, setSelected] = useState<MenuItem | undefined>()
   const [selectedSub, setSelectedSub] = useState<MenuItem | undefined>()
   const { scrolledPosition, isScrolledUp } = useScrollInfo()
   const { isMobile, isTablet, isDesktop } = useDevice()
 
-  const hideInactiveMenuItems = scrolledPosition > 0 && isDesktop //&& !isScrolledUp
+  const blurBackground = scrolledPosition > 0 && isDesktop
+  const hideInactiveMenuItems = scrolledPosition > 0 && isDesktop && !hovering
 
   const handleClick = (ev) => {
 
@@ -58,8 +60,11 @@ export default function Menu({ items, contact }: MenuProps) {
 
   return (
     <>
-      <nav className={cn(s.menu, !showMenu && s.hide, hideInactiveMenuItems && s.background)}>
-
+      <nav
+        className={cn(s.menu, !showMenu && s.hide, blurBackground && s.background)}
+        onMouseEnter={() => setHovering(true)}
+        onMouseLeave={() => setHovering(false)}
+      >
         <div className={s.logo}>
           <Link href={'/'}>
             <span className="logo">
