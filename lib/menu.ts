@@ -24,7 +24,7 @@ export const buildMenu = async (): Promise<Menu> => {
 }
 
 export const pathToSectionId = (path: string): SectionId => {
-  const slug = path.split('/')[1]
+  const slug = path?.split('/')[1]
 
   switch (slug) {
     case 'om-oss':
@@ -36,12 +36,12 @@ export const pathToSectionId = (path: string): SectionId => {
     case 'kontakt':
       return 'contact'
     default:
-      return null
+      return 'home'
   }
 }
 
 export type Menu = MenuItem[]
-export type SectionId = 'about-us' | 'what-we-do' | 'who-we-are' | 'contact'
+export type SectionId = 'home' | 'about-us' | 'what-we-do' | 'who-we-are' | 'contact'
 export type MenuItem = {
   id: SectionId
   label: string

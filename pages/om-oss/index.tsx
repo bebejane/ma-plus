@@ -15,13 +15,17 @@ export default function About({ about }: Props) {
 		<div className={s.container}>
 			<aside>
 				<h3>Om oss</h3>
-				<p className={s.quotes}>
-					<Markdown className="small">{about.quotes}</Markdown>
-				</p>
+				<Markdown className={cn(s.quotes, 'small')}>
+					{about.quotes}
+				</Markdown>
 			</aside>
 			<article>
-				<Markdown className={cn("intro", s.intro)}>{about.intro}</Markdown>
-				<Markdown className={s.text}>{about.text}</Markdown>
+				<Markdown className={cn('intro', s.intro)}>
+					{about.intro}
+				</Markdown>
+				<Markdown className={s.text}>
+					{about.text}
+				</Markdown>
 			</article>
 		</div>
 	)
