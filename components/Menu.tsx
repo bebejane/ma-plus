@@ -6,6 +6,7 @@ import type { Menu, MenuItem } from '/lib/menu'
 import { pathToSectionId } from '/lib/menu'
 import Link from 'next/link'
 import useStore from '/lib/store'
+import useDevice from '/lib/hooks/useDevice'
 import { useScrollInfo } from 'dato-nextjs-utils/hooks'
 
 export type MenuProps = { items: Menu, contact: ContactRecord }
@@ -18,8 +19,10 @@ export default function Menu({ items, contact }: MenuProps) {
   const [showMenu, setShowMenu] = useStore((state) => [state.showMenu, state.setShowMenu])
   const [selected, setSelected] = useState<MenuItem | undefined>()
   const [selectedSub, setSelectedSub] = useState<MenuItem | undefined>()
-  const { scrolledPosition, documentHeight, viewportHeight, isScrolledUp } = useScrollInfo()
-  const hideInactiveMenuItems = scrolledPosition > 0 //&& !isScrolledUp
+  const { scrolledPosition, isScrolledUp } = useScrollInfo()
+  const { isMobile, isTablet, isDesktop } = useDevice()
+
+  const hideInactiveMenuItems = scrolledPosition > 0 && isDesktop //&& !isScrolledUp
 
   const handleClick = (ev) => {
 
@@ -118,8 +121,6 @@ export default function Menu({ items, contact }: MenuProps) {
             )
           })}
         </ul>
-
-
       </nav>
     </>
   )

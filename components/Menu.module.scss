@@ -73,6 +73,7 @@
     >li {
       padding-left: 1em;
       cursor: pointer;
+      opacity: 1;
       transition: color var(--color-transition), opacity 0.2s ease-out;
 
       @include mq($until: tablet) {
@@ -93,13 +94,13 @@
 
       &.inactive,
       &.inactive>a {
-        color: gray !important;
+        color: var(--gray) !important;
       }
 
-      opacity: 1;
-
-      &.hidden {
-        opacity: 0;
+      @include mq($from: tablet) {
+        &.hidden {
+          opacity: 0;
+        }
       }
 
       &.what-we-do {
@@ -117,42 +118,56 @@
       &.contact {
         color: var(--contact-color);
       }
-    }
-  }
 
-  .sub {
-    position: fixed;
-    top: var(--navbar-height);
-    right: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    padding-right: var(--grid-unit);
-    bottom: calc(-1 * (var(--navbar-height) + var(--line)));
-    height: var(--navbar-height);
-    width: 100%;
-    border-bottom: var(--line) solid var(--section-color);
-    transition: border-bottom var(--color-transition);
-    z-index: var(--z-menu-sub);
-    backdrop-filter: blur(10px);
-    background-color: rgba(255, 255, 255, 0.6);
-
-    @include mq($until: tablet) {
-      all: unset;
-      position: relative;
-      display: flex;
-
-      ul {
+      .sub {
+        position: fixed;
+        top: var(--navbar-height);
+        right: 0;
         display: flex;
-        flex-direction: column;
-        list-style: none;
-        margin-top: 0.5rem;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: var(--grid-unit);
+        bottom: calc(-1 * (var(--navbar-height) + var(--line)));
+        height: var(--navbar-height);
+        width: 100%;
+        border-bottom: var(--line) solid var(--section-color);
+        transition: border-bottom var(--color-transition);
+        z-index: var(--z-menu-sub);
+        backdrop-filter: blur(10px);
+        background-color: rgba(255, 255, 255, 0.6);
 
-        li {
-          color: var(--black);
+        ul {
+          list-style: none;
+          display: flex;
+          flex-direction: row;
+
+          li {
+            color: var(--black);
+            padding-left: 1em;
+          }
+        }
+
+        @include mq($until: tablet) {
+          all: unset;
+          position: relative;
+          display: flex;
+
+          ul {
+            flex-direction: column;
+            margin-top: 0.5rem;
+
+            li {
+              color: var(--black);
+            }
+          }
+
         }
       }
     }
+
+
   }
+
+
 }
