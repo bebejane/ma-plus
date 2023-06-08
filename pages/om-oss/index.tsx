@@ -2,6 +2,7 @@ import s from './index.module.scss'
 import withGlobalProps from '/lib/withGlobalProps'
 import type { GetStaticProps } from 'next'
 import { AboutDocument } from '/graphql';
+import cn from 'classnames';
 import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
 
 export type Props = {
@@ -15,11 +16,11 @@ export default function About({ about }: Props) {
 			<aside>
 				<h3>Om oss</h3>
 				<p className={s.quotes}>
-					<Markdown>{about.quotes}</Markdown>
+					<Markdown className="small">{about.quotes}</Markdown>
 				</p>
 			</aside>
 			<article>
-				<Markdown className={s.intro}>{about.intro}</Markdown>
+				<Markdown className={cn("intro", s.intro)}>{about.intro}</Markdown>
 				<Markdown className={s.text}>{about.text}</Markdown>
 			</article>
 		</div>

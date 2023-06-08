@@ -26,9 +26,12 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
       <section className={s.header}>
         <header>
           <h3>{whatType.title}</h3>
-          <h3>Exempel på uppdrag</h3>
         </header>
-        <Markdown className={s.intro}>{whatType.intro}</Markdown>
+        <div>
+          <Markdown className={cn("intro", s.intro)}>{whatType.intro}</Markdown>
+          <h3>Exempel på uppdrag</h3>
+        </div>
+
       </section>
       <ul>
         {whatExamples.map(({ title, image, text, client, collaborators }, idx) =>
@@ -45,7 +48,7 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
 
             <div className={s.content}>
               <h1>{title}</h1>
-              <ul className={s.meta}>
+              <ul className={cn(s.meta, "small")}>
                 {client &&
                   <li>
                     <span>Uppdragsgivare:</span>

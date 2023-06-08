@@ -18,7 +18,7 @@ export default function WhoWeAre({ employees }: Props) {
 				<header>
 					<h3>Vilka vi är</h3>
 				</header>
-				<p className={s.intro}>
+				<p className={cn("intro", s.intro)}>
 					MA+ skräddarsyr team för varje enskilt projekt. Vissa personer återkommer i flera projekt och vissa plockas in för enskilda nedslag.
 				</p>
 			</section>
@@ -29,7 +29,7 @@ export default function WhoWeAre({ employees }: Props) {
 							{image && <Image data={image.responsiveImage} className={s.image} pictureClassName={s.picture} />}
 						</figure>
 						<div className={s.content}>
-							<h3>{name}</h3>
+							<h1>{name}</h1>
 							<Markdown className={s.text}>{text}</Markdown>
 						</div>
 					</li>

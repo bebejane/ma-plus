@@ -12,6 +12,8 @@
 
     .quotes {
       color: var(--section-color);
+      position: sticky;
+      top: calc(100vh - (var(--navbar-height) + 4rem));
     }
   }
 

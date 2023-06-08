@@ -8,9 +8,10 @@ body {
   }
 }
 
-h1 {
-  font-size: 1.1rem;
-  font-weight: bold;
+h1,
+h3 {
+  font-size: 1rem;
+  font-weight: 600;
   padding-bottom: var(--space);
   line-height: 1.25;
   font-family: $headline-font;
@@ -27,10 +28,7 @@ h2 {
 }
 
 h3 {
-  font-size: 0.85rem;
-  font-family: $headline-font;
-  text-align: left;
-  padding-bottom: 1em;
+  padding-bottom: 1rem;
 }
 
 p {
@@ -53,7 +51,6 @@ footer nav,
 .caption label {
   font-family: $headline-font;
   font-size: 0.75rem;
-  text-align: center;
 
   @include mq($from: wide) {
     font-size: 0.7rem;
@@ -61,6 +58,7 @@ footer nav,
 }
 
 nav,
+h3,
 .mid,
 button,
 figcaption,
