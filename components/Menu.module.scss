@@ -27,16 +27,63 @@
     line-height: 1;
   }
 
-  ul {
+  .burger {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    top: 0;
+    right: 0;
+    margin-right: var(--outer-margin);
+    z-index: var(--z-menu-burger);
+    height: var(--navbar-height);
+
+    @include mq($from: tablet) {
+      display: none;
+    }
+  }
+
+  >ul {
     display: flex;
     flex-direction: row;
     align-items: center;
     list-style: none;
 
-    li {
+    @include mq($until: tablet) {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: calc(20 * var(--grid-unit));
+      height: 100vh;
+      border-left: var(--line) solid var(--section-color);
+      padding-top: var(--navbar-height);
+      margin-top: calc(var(--line) * -1);
+      align-items: flex-start;
+      flex-direction: column;
+      background-color: var(--white);
+      z-index: var(--z-menu-mobile);
+      transition: transform 0.2s ease-out;
+      transform: translateX(100%);
+
+      &.show {
+        display: flex;
+        transform: translateX(0%);
+      }
+    }
+
+    >li {
       padding-left: 1em;
       cursor: pointer;
       transition: color var(--color-transition), opacity 0.2s ease-out;
+
+      @include mq($until: tablet) {
+        width: 100%;
+        padding: var(--outer-margin);
+        border-bottom: var(--line) solid var(--section-color);
+
+        &:first-child {
+          border-top: var(--line) solid var(--section-color);
+        }
+      }
 
       &.selected,
       &.selected>a {
@@ -74,14 +121,15 @@
   }
 
   .sub {
-    position: absolute;
+    position: fixed;
+    top: var(--navbar-height);
+    right: 0;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-end;
     padding-right: var(--grid-unit);
     bottom: calc(-1 * (var(--navbar-height) + var(--line)));
-    right: 0;
     height: var(--navbar-height);
     width: 100%;
     border-bottom: var(--line) solid var(--section-color);
@@ -90,5 +138,21 @@
     backdrop-filter: blur(10px);
     background-color: rgba(255, 255, 255, 0.6);
 
+    @include mq($until: tablet) {
+      all: unset;
+      position: relative;
+      display: flex;
+
+      ul {
+        display: flex;
+        flex-direction: column;
+        list-style: none;
+        margin-top: 0.5rem;
+
+        li {
+          color: var(--black);
+        }
+      }
+    }
   }
 }

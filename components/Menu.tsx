@@ -35,9 +35,11 @@ export default function Menu({ items, contact }: MenuProps) {
     }
   }
 
-
   useEffect(() => {
-    const handleRouteChangeComplete = (path: string) => setSelectedSub(undefined)
+    const handleRouteChangeComplete = (path: string) => {
+      setSelectedSub(undefined)
+      setShowMenu(false)
+    }
     router.events.on('routeChangeComplete', handleRouteChangeComplete)
     return () => router.events.off('routeChangeComplete', handleRouteChangeComplete)
   }, [])
@@ -63,9 +65,12 @@ export default function Menu({ items, contact }: MenuProps) {
           </Link>
         </div>
 
-        <ul ref={menuRef}>
-          {items.map((item, idx) => {
+        <div className={s.burger} onClick={() => setShowMenu(!showMenu)}>
+          {!showMenu ? 'Menu' : 'Stäng'}
+        </div>
 
+        <ul ref={menuRef} className={cn(showMenu && s.show)}>
+          {items.map((item, idx) => {
             const isSelected = selected?.id === item.id
             const isSubSelected = selectedSub?.id === item.id
 
@@ -86,33 +91,34 @@ export default function Menu({ items, contact }: MenuProps) {
                   :
                   <span>{item.label}</span>
                 }
+
+                {isSubSelected &&
+                  <div className={s.sub}>
+                    {selectedSub.id === 'contact' &&
+                      <ul>
+                        <li>{contact.address}</li>
+                        <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+                        <li><a href={`tel:${contact.phone}`}>{contact.phone}</a></li>
+                      </ul>
+                    }
+                    {selectedSub.id === 'what-we-do' &&
+                      <ul>
+                        {items.find(item => item.id === 'what-we-do')?.sub.map((item, idx) =>
+                          <li className={cn(asPath === item.slug && s.selected)}>
+                            <Link href={item.slug}>
+                              {item.label}
+                            </Link>
+                          </li>
+                        )}
+                      </ul>
+                    }
+                  </div>
+                }
               </li>
             )
           })}
         </ul>
 
-        {selectedSub &&
-          <div className={s.sub}>
-            {selectedSub.id === 'contact' &&
-              <ul>
-                <li>{contact.address}</li>
-                <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
-                <li><a href={`tel:${contact.phone}`}>{contact.phone}</a></li>
-              </ul>
-            }
-            {selectedSub.id === 'what-we-do' &&
-              <ul>
-                {items.find(item => item.id === 'what-we-do')?.sub.map((item, idx) =>
-                  <li className={cn(asPath === item.slug && s.selected)}>
-                    <Link href={item.slug}>
-                      {item.label}
-                    </Link>
-                  </li>
-                )}
-              </ul>
-            }
-          </div>
-        }
 
       </nav>
     </>

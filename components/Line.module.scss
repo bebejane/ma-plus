@@ -22,4 +22,8 @@
   &.about-us {
     left: var(--side-s);
   }
+
+  @include mq($until: tablet) {
+    display: none;
+  }
 }

@@ -3,23 +3,27 @@
   position: absolute;
   bottom: calc(var(--height) * -1);
   left: 0;
-  width: 100%;
-  height: calc(var(--height) * 1);
-  //background-color: var(--white);
-  border-top: var(--line) solid var(--section-color);
-  z-index: var(--z-footer);
   display: flex;
   align-items: center;
-  &.what-we-do {
-    padding-left: calc(var(--side-l) + var(--outer-margin));
-  }
+  width: 100%;
+  height: calc(var(--height) * 1);
+  border-top: var(--line) solid var(--section-color);
+  padding: var(--outer-margin);
+  z-index: var(--z-footer);
 
-  &.who-we-are {
-    padding-left: calc(var(--side-m) + var(--outer-margin));
-  }
+  @include mq($from: tablet) {
 
-  &.about-us {
-    padding-left: calc(var(--side-s) + var(--outer-margin));
+    &.what-we-do {
+      padding-left: calc(var(--side-l) + var(--outer-margin));
+    }
+
+    &.who-we-are {
+      padding-left: calc(var(--side-m) + var(--outer-margin));
+    }
+
+    &.about-us {
+      padding-left: calc(var(--side-s) + var(--outer-margin));
+    }
   }
 
   h3 {
