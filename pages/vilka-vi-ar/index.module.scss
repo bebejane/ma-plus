@@ -63,10 +63,8 @@
       .content {
         flex: 1 1 auto;
         padding: var(--outer-margin);
-        padding-right: calc(var(--grid-unit) * 3);
-
-        h1 {
-          padding-bottom: 1em;
+        @include mq($from: tablet) {
+          padding-right: calc(var(--grid-unit) * 3);
         }
 
         p:not(:first-of-type) {
@@ -74,6 +72,11 @@
         }
         p {
           margin-bottom: 0;
+          &:last-of-type {
+            @include mq($until: tablet) {
+              padding-bottom: 0.5em;
+            }
+          }
         }
       }
     }

@@ -25,6 +25,10 @@
 	--z-line: 1900;
 	--z-menu-sub: 1200;
 	--z-intro: 2000;
+
+	@include mq($until: tablet) {
+		--text-indent: 1rem;
+	}
 }
 
 body {
