@@ -11,6 +11,10 @@
   padding: var(--outer-margin);
   z-index: var(--z-footer);
 
+  @include mq($until: tablet) {
+    z-index: 0;
+  }
+
   @include mq($from: tablet) {
 
     &.what-we-do {

@@ -28,9 +28,9 @@
 	--z-menu: 1000;
 	--z-line: 1100;
 	--z-menu-sub: 1200;
-	--z-menu-mobile: 1300;
-	--z-menu-burger: 1400;
-	--z-footer: 1900;
+	--z-footer: 1300;
+	--z-menu-mobile: 1400;
+	--z-menu-burger: 1500;
 	--z-intro: 2000;
 
 	@include mq($until: tablet) {
