@@ -5,6 +5,7 @@
     width: 100%;
     border-bottom: var(--line) solid var(--section-color);
     padding: var(--outer-margin);
+    padding-bottom: 0;
 
     header {
       display: flex;
@@ -17,8 +18,15 @@
     }
 
     div h3 {
+      margin-top: calc(var(--grid-unit) + 1rem);
+      border-top: var(--line) solid var(--section-color);
+      height: var(--navbar-height);
       padding-bottom: 0;
-      padding-top: 2rem;
+      display: flex;
+      align-items: center;
+      padding-left: var(--grid-unit);
+      margin-left: calc(-1 * var(--grid-unit));
+      margin-right: calc(-1 * var(--grid-unit));
     }
 
     .intro {
