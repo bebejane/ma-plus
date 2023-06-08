@@ -35,7 +35,7 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
       </section>
       <ul>
         {whatExamples.map(({ title, image, text, client, collaborators }, idx) =>
-          <li>
+          <li key={idx}>
             <figure>
               {image &&
                 <Image

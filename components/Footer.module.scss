@@ -1,0 +1,30 @@
+.footer {
+  --height: calc(var(--navbar-height) + var(--outer-margin));
+  position: absolute;
+  bottom: calc(var(--height) * -1);
+  left: 0;
+  width: 100%;
+  height: calc(var(--height) *1);
+  background-color: var(--white);
+  border-top: var(--line) solid var(--section-color);
+  z-index: var(--z-footer);
+  padding-top: var(--outer-margin);
+
+  &.what-we-do {
+    padding-left: calc(var(--side-l) + var(--outer-margin));
+  }
+
+  &.who-we-are {
+    padding-left: calc(var(--side-m) + var(--outer-margin));
+  }
+
+  &.about-us {
+    padding-left: calc(var(--side-s) + var(--outer-margin));
+  }
+
+  h3 {
+    span {
+      margin-right: 1em;
+    }
+  }
+}

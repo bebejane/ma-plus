@@ -7,6 +7,7 @@
   display: flex;
   flex-direction: row;
   border-bottom: var(--line) solid var(--section-color);
+  transition: border-bottom var(--color-transition);
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
   padding-left: var(--grid-unit);
@@ -30,14 +31,22 @@
     li {
       padding-left: 1em;
       cursor: pointer;
+      transition: color var(--color-transition), opacity 0.2s ease-out;
 
       &.selected,
       &.selected>a {
+        transition: color var(--color-transition);
         color: var(--section-color);
       }
 
       &.selectedSub {
         color: gray;
+      }
+
+      opacity: 1;
+
+      &.inactive {
+        opacity: 0;
       }
     }
   }
@@ -54,6 +63,7 @@
     height: var(--navbar-height);
     width: 100%;
     border-bottom: var(--line) solid var(--section-color);
+    transition: border-bottom var(--color-transition);
     z-index: var(--z-menu-sub);
     backdrop-filter: blur(6px); // This be the blur
     background-color: rgba(255, 255, 255, 0.6);

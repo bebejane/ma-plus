@@ -50,6 +50,10 @@
             text-align: center;
           }
 
+          a {
+            color: var(--white);
+          }
+
           &.selected {
             font-weight: bold;
           }
@@ -57,7 +61,7 @@
       }
     }
 
-    > div {
+    >div {
       height: 100%;
     }
 

@@ -13,6 +13,8 @@
 	--contact-color: #db00ff;
 	--line: max(2px, 0.2vw);
 	--line-height: 1.25;
+	--color-transition: 0.2s ease-out;
+	--line-color-transition: border var(--color-transition);
 	--navbar-height: 3.3rem;
 	--text-indent: 2rem;
 
@@ -22,8 +24,9 @@
 	--side-l: calc(var(--grid-unit) * 10);
 
 	--z-menu: 1000;
-	--z-line: 1900;
 	--z-menu-sub: 1200;
+	--z-line: 1800;
+	--z-footer: 1900;
 	--z-intro: 2000;
 
 	@include mq($until: tablet) {
@@ -41,10 +44,12 @@ body {
 	-webkit-font-smoothing: antialiased;
 	font-feature-settings: "liga", "kern";
 	overflow-x: hidden;
+	position: relative;
 }
 
 html {
 	box-sizing: border-box;
+
 }
 
 html,
@@ -79,11 +84,9 @@ a {
 	text-decoration: none;
 	color: var(--foreground);
 
-	&:hover {
-	}
+	&:hover {}
 
-	&:visited {
-	}
+	&:visited {}
 }
 
 article p a {
@@ -105,31 +108,25 @@ button {
 	color: var(--foreground);
 	border: 0;
 
-	@include mq($from: tablet) {
-	}
+	@include mq($from: tablet) {}
 
 	&.back {
-		@include mq($from: tablet) {
-		}
+		@include mq($from: tablet) {}
 	}
 
-	&:hover {
-	}
+	&:hover {}
 }
 
 figcaption {
-	@include mq($until: tablet) {
-	}
+	@include mq($until: tablet) {}
 }
 
-hr {
-}
+hr {}
 
 input,
 textarea,
 select {
-	&:focus {
-	}
+	&:focus {}
 }
 
 select {

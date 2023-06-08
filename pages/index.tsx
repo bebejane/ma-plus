@@ -66,8 +66,12 @@ export default function Home({ start, whats }: Props) {
 					<h3>Vad vi gör</h3>
 					<ul className={s.whatTypes}>
 						{whats.map((what, i) =>
-							<li key={i} className={cn("intro", index === i && s.selected)} onClick={() => swiperRef.current.slideTo(i + 1)}>
-								{what.title}
+							<li
+								key={i}
+								className={cn("intro", index === i && s.selected)}
+								onMouseEnter={() => swiperRef.current.slideTo(i + 1)}
+							>
+								<Link href={`/vad-vi-gor/${what.slug}`}>{what.title}</Link>
 							</li>
 						)}
 					</ul>
