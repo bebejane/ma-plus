@@ -78,7 +78,7 @@ export default function Home({ start, whats }: Props) {
 				<div className="intro">
 					<DatoMarkdown>{start.text}</DatoMarkdown>
 				</div>
-				<Link className="mid" href="/om-oss">Läs mer om oss</Link>
+				<Link className="mid" href="/om-oss">Läs mer</Link>
 			</div>
 		</div>
 	)

@@ -22,3 +22,10 @@ $headline-font: "Jost", Arial, Helvetica, Sans-Serif;
   font-weight: 600;
   font-style: normal;
 }
+
+@font-face {
+  font-family: "Jost";
+  src: url("../../public/fonts/Jost-BookItalic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+}

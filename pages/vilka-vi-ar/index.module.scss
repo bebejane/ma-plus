@@ -33,7 +33,10 @@
       height: 100%;
 
       figure {
+        position: sticky;
+        top: 0;
         flex: 0 0 var(--side-m);
+        max-height: calc(1.2 * var(--side-m));
 
         .image,
         .picture {
@@ -51,7 +54,7 @@
           padding-bottom: 1em;
         }
 
-        p:not(first-of-type) {
+        p:not(:first-of-type) {
           text-indent: var(--text-indent);
         }
         p {

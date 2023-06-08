@@ -29,7 +29,7 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
         </header>
         <div>
           <Markdown className={cn("intro", s.intro)}>{whatType.intro}</Markdown>
-          <h3>Exempel på uppdrag</h3>
+          <h3>Exempel på uppdrag:</h3>
         </div>
 
       </section>
@@ -44,6 +44,7 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
                   pictureClassName={s.picture}
                 />
               }
+              <a className={s.download}>PDF</a>
             </figure>
 
             <div className={s.content}>
