@@ -1,5 +1,6 @@
 export { default as Block } from './blocks'
 export { default as Content } from './Content'
+export { default as Footer } from './Footer'
 export { default as Grid } from './Grid'
 export { default as Intro } from './Intro'
 export { default as Layout } from './Layout'
