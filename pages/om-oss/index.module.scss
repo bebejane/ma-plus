@@ -8,7 +8,13 @@
   }
 
   aside {
-    flex: 0 0 var(--side-s);
+    @include mq($until: tablet) {
+      display: none;
+    }
+
+    @include mq($from: tablet) {
+      flex: 0 0 var(--side-s);
+    }
 
     .quotes {
       color: var(--section-color);
@@ -19,6 +25,8 @@
 
   article {
     flex: 1 1 auto;
-    padding-right: calc(5 * var(--grid-unit));
+    @include mq($from: tablet) {
+      padding-right: calc(5 * var(--grid-unit));
+    }
   }
 }

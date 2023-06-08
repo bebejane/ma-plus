@@ -8,6 +8,9 @@
     padding-bottom: 0;
 
     header {
+      @include mq($until: tablet) {
+        display: none;
+      }
       display: flex;
       flex-direction: column;
       flex: 0 0 var(--side-l);
@@ -25,7 +28,7 @@
       align-items: center;
       padding-left: var(--grid-unit);
       margin-left: calc(-1 * var(--grid-unit));
-      margin-right: calc(-1 * var(--grid-unit));
+      margin-right: calc(-Kul1 * var(--grid-unit));
       position: sticky;
       top: 0;
     }
@@ -41,12 +44,22 @@
 
     > li {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+      @include mq($from: tablet) {
+        flex-direction: row;
+      }
       border-bottom: var(--line) solid var(--section-color);
       height: 100%;
 
       figure {
-        flex: 0 0 var(--side-l);
+        @include mq($until: tablet) {
+          display: flex;
+          height: 60vw;
+          width: 100%;
+        }
+        @include mq($from: tablet) {
+          flex: 0 0 var(--side-l);
+        }
         width: 100%;
         position: relative;
 
@@ -83,7 +96,12 @@
       }
 
       .content {
-        flex: 1 1 auto;
+        @include mq($from: tablet) {
+          width: 100%;
+        }
+        @include mq($from: tablet) {
+          flex: 1 1 auto;
+        }
         padding: var(--outer-margin);
 
         p {

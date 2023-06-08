@@ -7,6 +7,10 @@
     padding: var(--outer-margin);
 
     header {
+      @include mq($until: tablet) {
+        display: none;
+      }
+
       display: flex;
       flex-direction: column;
       flex: 0 0 var(--side-m);
@@ -17,7 +21,9 @@
     }
 
     .intro {
-      padding-right: calc(var(--grid-unit) * 2);
+      @include mq($from: tablet) {
+        padding-right: calc(var(--grid-unit) * 2);
+      }
     }
   }
 
@@ -28,15 +34,24 @@
 
     > li {
       display: flex;
-      flex-direction: row;
+      flex-direction: column;
+      @include mq($from: tablet) {
+        flex-direction: row;
+      }
       border-bottom: var(--line) solid var(--section-color);
       height: 100%;
 
       figure {
-        position: sticky;
-        top: 0;
         flex: 0 0 var(--side-m);
+        @include mq($until: tablet) {
+          max-height: 50vw;
+        }
         max-height: calc(1.2 * var(--side-m));
+
+        @include mq($from: tablet) {
+          position: sticky;
+          top: 0;
+        }
 
         .image,
         .picture {
