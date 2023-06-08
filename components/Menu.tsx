@@ -18,7 +18,23 @@ export default function Menu({ items, contact }: MenuProps) {
   const [showMenu, setShowMenu] = useStore((state) => [state.showMenu, state.setShowMenu])
   const [selected, setSelected] = useState<MenuItem | undefined>()
   const [selectedSub, setSelectedSub] = useState<MenuItem | undefined>()
-  const { scrolledPosition, documentHeight, viewportHeight } = useScrollInfo()
+  const { scrolledPosition, documentHeight, viewportHeight, isScrolledUp } = useScrollInfo()
+  const hideInactiveMenuItems = scrolledPosition > 0 && !isScrolledUp
+  const isContactActive = selectedSub && selected?.id === 'contact'
+
+  const handleClick = (ev) => {
+
+    const r = document.querySelector<HTMLElement>(':root')
+    const sectionId = pathToSectionId(asPath)
+    const item = items.find(item => item.id === ev.currentTarget.id)
+
+    if ((ev.target as HTMLElement).tagName !== 'A') {
+      const sSub = selectedSub?.id === item.id ? undefined : item
+      setSelectedSub(sSub)
+      r.style.setProperty('--section-color', `var(--${(sSub && item.id === 'contact') ? 'contact' : sectionId ?? 'home'}-color)`);
+    }
+  }
+
 
   useEffect(() => {
     const handleRouteChangeComplete = (path: string) => setSelectedSub(undefined)
@@ -29,7 +45,12 @@ export default function Menu({ items, contact }: MenuProps) {
   useEffect(() => {
     setSelected(items.find(item => item.id === pathToSectionId(asPath)))
   }, [asPath])
-  console.log(items)
+
+  useEffect(() => {
+    if (hideInactiveMenuItems)
+      setSelectedSub(undefined)
+  }, [hideInactiveMenuItems])
+
   return (
     <>
       <nav className={cn(s.menu, !showMenu && s.hide)}>
@@ -43,9 +64,10 @@ export default function Menu({ items, contact }: MenuProps) {
         <ul ref={menuRef}>
           {items.map((item, idx) =>
             <li
+              id={item.id}
               key={idx}
-              onClick={(ev) => (ev.target as HTMLElement).tagName !== 'A' && setSelectedSub(selectedSub?.id === item.id ? undefined : item)}
-              className={cn(selected?.id === item.id && s.selected, selectedSub?.id === item.id && s.selectedSub)}
+              onClick={handleClick}
+              className={cn(selected?.id === item.id && s.selected, selectedSub?.id === item.id && s.selectedSub, hideInactiveMenuItems && (selected && selected?.id !== item.id) && s.inactive)}
             >
               {item.slug ?
                 <Link href={item.slug}>{item.label}</Link>

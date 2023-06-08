@@ -29,6 +29,10 @@
           font-weight: normal;
           padding-bottom: 0.8em;
 
+          a {
+            color: var(--white);
+          }
+
           &.selected {
             font-weight: bold;
           }
@@ -36,7 +40,7 @@
       }
     }
 
-    > div {
+    >div {
       height: 100%;
     }
 

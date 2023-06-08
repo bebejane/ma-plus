@@ -9,7 +9,7 @@
   width: var(--line);
   z-index: var(--z-line);
   background-color: var(--section-color);
-  transition: all 0.3s ease-out;
+  transition: left 0.3s ease-out, background-color var(--color-transition);
 
   &.what-we-do {
     left: var(--side-l);

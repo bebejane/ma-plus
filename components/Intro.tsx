@@ -11,7 +11,7 @@ const steps = ['start', 'text', 'end']
 const types = ['Art', 'Architecture', 'Alternatives']
 const making = 'Making'
 
-const delay = 500
+const delay = 800
 
 export default function Intro({ }: Props) {
 
@@ -44,20 +44,17 @@ export default function Intro({ }: Props) {
             <span key={i}>{c}</span>
           )}
           &nbsp;
-          {types[textIndex]?.split('').map((c, i) =>
-            <span
-              key={`${i}-${textIndex}`}
-              className={s.c}
-              style={{ animationDelay: `${i * 0.1}s` }}
-              onAnimationEnd={() => {
-                if (i !== types[textIndex].split('').length - 1) return
-                if (textIndex < types.length - 1)
-                  setTimeout(() => setTextIndex(textIndex + 1), delay)
-                else if (textIndex === types.length - 1)
-                  setTimeout(() => setIndex(index + 1), delay)
-              }}
-            >{c}</span>
-          )}
+          <span
+            key={`${textIndex}`}
+            className={s.c}
+            onAnimationEnd={() => {
+              if (textIndex < types.length - 1)
+                setTimeout(() => setTextIndex(textIndex + 1), delay)
+              else if (textIndex === types.length - 1)
+                setTimeout(() => setIndex(index + 1), delay)
+            }}
+          >{types[textIndex]}</span>
+
         </h1>
       }
     </div>
