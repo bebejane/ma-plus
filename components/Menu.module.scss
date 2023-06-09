@@ -3,7 +3,6 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: var(--navbar-height);
   display: flex;
   flex-direction: row;
   border-bottom: var(--line) solid var(--section-color);
@@ -42,7 +41,7 @@
     }
   }
 
-  >ul {
+  > ul {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -63,6 +62,8 @@
       z-index: var(--z-menu-mobile);
       transition: transform 0s ease-out;
       transform: translateY(-100%);
+      backdrop-filter: blur(10px);
+      background-color: rgba(255, 255, 255, 0.6);
 
       &.show {
         display: flex;
@@ -70,7 +71,7 @@
       }
     }
 
-    >li {
+    > li {
       position: relative;
       padding-left: 1em;
       cursor: pointer;
@@ -81,6 +82,9 @@
         width: 100%;
         padding: var(--outer-margin);
         border-bottom: var(--line) solid var(--section-color);
+        height: var(--navbar-height);
+        display: flex;
+        align-items: center;
 
         &:first-child {
           border-top: var(--line) solid var(--section-color);
@@ -88,13 +92,13 @@
       }
 
       &.selected,
-      &.selected>a {
+      &.selected > a {
         transition: color var(--color-transition);
         color: var(--section-color);
       }
 
       &.inactive,
-      &.inactive>a {
+      &.inactive > a {
         color: var(--gray) !important;
       }
 
@@ -120,17 +124,16 @@
         color: var(--contact-color);
       }
 
-
       &:hover {
         &[data-type="what-we-do"] {
           color: var(--what-we-do-color);
         }
 
-        &[data-type="who-we-are"]>a {
+        &[data-type="who-we-are"] > a {
           color: var(--who-we-are-color);
         }
 
-        &[data-type="about-us"]>a {
+        &[data-type="about-us"] > a {
           color: var(--about-us-color);
         }
 
@@ -138,7 +141,6 @@
           color: var(--contact-color);
         }
       }
-
 
       .sub {
         position: fixed;
@@ -168,7 +170,7 @@
             padding-left: 1em;
 
             &.selected,
-            &.selected>a {
+            &.selected > a {
               color: var(--section-color);
             }
           }
@@ -185,15 +187,12 @@
 
             li {
               color: var(--black);
+              height: var(--navbar-height);
+              border-top: --line solid var(--section-color);
             }
           }
-
         }
       }
     }
-
-
   }
-
-
 }

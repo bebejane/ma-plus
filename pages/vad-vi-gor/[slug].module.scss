@@ -38,6 +38,9 @@
     }
 
     div h3 {
+      @include mq($until: tablet) {
+        display: none;
+      }
       margin-top: calc(var(--grid-unit) + 1rem);
       border-top: var(--line) solid var(--section-color);
       height: var(--navbar-height);

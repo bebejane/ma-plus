@@ -30,6 +30,12 @@
 
   h3 {
     padding-bottom: 0;
+    @include mq($until: tablet) {
+      padding-left: var(--outer-margin);
+      span:first-of-type {
+        display: none;
+      }
+    }
 
     span {
       margin-right: 1em;
