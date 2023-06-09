@@ -15,17 +15,6 @@
   z-index: var(--z-menu);
   height: var(--navbar-height);
 
-  &.home {
-    // Scrollbar jump fix
-    @include mq($from: tablet) {
-      padding-right: calc(var(--scrollbar-width) + var(--outer-margin));
-
-      @-moz-document url-prefix() {
-        padding-right: calc(var(--outer-margin));
-      }
-    }
-  }
-
   &.background {
     background-color: rgba(252, 252, 252, 0.7);
     backdrop-filter: blur(10px);
@@ -53,7 +42,7 @@
     }
   }
 
-  > ul {
+  >ul {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -74,7 +63,7 @@
       backdrop-filter: blur(10px);
       background-color: rgba(252, 252, 252, 0.7);
       z-index: var(--z-menu-mobile);
-      transition: transform 0.2s ease-out;
+      transition: transform 0.3s cubic-bezier(.12, .94, .36, 1.01);
       transform: translateX(100%);
 
       &.show {
@@ -83,7 +72,7 @@
       }
     }
 
-    > li {
+    >li {
       position: relative;
       padding-left: 1em;
       cursor: pointer;
@@ -97,8 +86,8 @@
         display: flex;
         flex-direction: column;
 
-        > span,
-        > a {
+        >span,
+        >a {
           display: flex;
           align-items: center;
           padding: var(--outer-margin);
@@ -111,13 +100,13 @@
       }
 
       &.selected,
-      &.selected > a {
+      &.selected>a {
         transition: color var(--color-transition);
         color: var(--section-color);
       }
 
       &.inactive,
-      &.inactive > a {
+      &.inactive>a {
         color: var(--gray) !important;
       }
 
@@ -171,7 +160,7 @@
             padding-left: 1em;
 
             &.selected,
-            &.selected > a {
+            &.selected>a {
               color: var(--section-color);
             }
           }

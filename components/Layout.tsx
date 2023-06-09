@@ -26,10 +26,8 @@ export default function Layout({ children, menu: menuFromProps, contact }: Layou
 	return (
 		<>
 			<Menu items={menu} contact={contact} />
-			<Content>
-				{children}
-			</Content>
-			{router.asPath !== '/' && <Footer contact={contact} />}
+			<Content>{children}</Content>
+			<Footer contact={contact} />
 			<Line />
 			<Intro />
 			<Grid />

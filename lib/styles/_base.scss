@@ -21,7 +21,7 @@
 	--navbar-height: 3.3rem;
 	--text-indent: 2rem;
 
-	--side-default: calc(calc(var(--grid-unit) * 13) - calc(var(--line) / 2));
+	--side-default: 50%;
 	--side-s: calc(var(--grid-unit) * 6);
 	--side-m: calc(var(--grid-unit) * 8);
 	--side-l: calc(var(--grid-unit) * 10);
@@ -91,11 +91,9 @@ a {
 	text-decoration: none;
 	color: var(--foreground);
 
-	&:hover {
-	}
+	&:hover {}
 
-	&:visited {
-	}
+	&:visited {}
 }
 
 article p a {
@@ -110,6 +108,7 @@ article p a {
 
 .intro {
 	margin-bottom: var(--small-space);
+
 	@include mq($from: tablet) {
 		margin-top: -0.2em;
 	}
@@ -119,31 +118,25 @@ button {
 	color: var(--foreground);
 	border: 0;
 
-	@include mq($from: tablet) {
-	}
+	@include mq($from: tablet) {}
 
 	&.back {
-		@include mq($from: tablet) {
-		}
+		@include mq($from: tablet) {}
 	}
 
-	&:hover {
-	}
+	&:hover {}
 }
 
 figcaption {
-	@include mq($until: tablet) {
-	}
+	@include mq($until: tablet) {}
 }
 
-hr {
-}
+hr {}
 
 input,
 textarea,
 select {
-	&:focus {
-	}
+	&:focus {}
 }
 
 select {
