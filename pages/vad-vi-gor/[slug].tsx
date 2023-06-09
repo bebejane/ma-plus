@@ -30,7 +30,6 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
         </header>
         <div>
           <Markdown className={cn("intro", s.intro)}>{whatType.intro}</Markdown>
-          <h3></h3>
         </div>
 
       </section>
