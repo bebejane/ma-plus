@@ -31,7 +31,7 @@ export default function Intro({ }: Props) {
     <div
       onClick={() => setIntroFinished(true)}
       className={cn(s.container, step === 'end' && s.end)}
-      onAnimationEnd={() => step === 'end' && setTimeout(() => setIntroFinished(true), delay)}
+      onAnimationEnd={() => step === 'end' && setTimeout(() => setIntroFinished(true), 1000)}
     >
       <div className={cn(s.line, s.v, s[step])} />
       <div className={cn(s.line, s.h, s[step])} onAnimationEnd={() => {
@@ -47,11 +47,12 @@ export default function Intro({ }: Props) {
           <span
             key={`${textIndex}`}
             className={s.c}
+            style={{ animationDelay: textIndex === 0 ? `${delay}ms` : '0ms' }}
             onAnimationEnd={() => {
               if (textIndex < types.length - 1)
-                setTimeout(() => setTextIndex(textIndex + 1), delay)
+                setTextIndex(textIndex + 1)
               else if (textIndex === types.length - 1)
-                setTimeout(() => setIndex(index + 1), delay)
+                setTimeout(() => setIndex(index + 1), 0)
             }}
           >{types[textIndex]}</span>
 
