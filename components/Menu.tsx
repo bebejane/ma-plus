@@ -16,11 +16,11 @@ export default function Menu({ items, contact }: MenuProps) {
   const router = useRouter()
   const { asPath } = router
   const menuRef = useRef<HTMLUListElement | null>(null);
-  const [showMenu, setShowMenu] = useStore((state) => [state.showMenu, state.setShowMenu])
+  const [showMenu, setShowMenu, scrollInfo] = useStore((state) => [state.showMenu, state.setShowMenu, state.scrollInfo])
   const [hovering, setHovering] = useState(false)
   const [selected, setSelected] = useState<MenuItem | undefined>()
   const [selectedSub, setSelectedSub] = useState<MenuItem | undefined>()
-  const { scrolledPosition, isScrolledUp } = useScrollInfo()
+  const { scrolledPosition, isScrolledUp } = scrollInfo
   const { isMobile, isTablet, isDesktop } = useDevice()
 
   const blurBackground = scrolledPosition > 0 && (isScrolledUp || hovering)

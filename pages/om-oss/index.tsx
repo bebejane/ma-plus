@@ -4,6 +4,7 @@ import type { GetStaticProps } from 'next'
 import { AboutDocument } from '/graphql';
 import cn from 'classnames';
 import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
+import { PageHeader } from '/components';
 
 export type Props = {
 	about: AboutRecord
@@ -14,7 +15,7 @@ export default function About({ about }: Props) {
 	return (
 		<div className={s.container}>
 			<aside>
-				<h3>Om oss</h3>
+				<PageHeader>Om oss</PageHeader>
 				<Markdown className={cn(s.quotes, 'small')}>
 					{about.quotes}
 				</Markdown>

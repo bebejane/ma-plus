@@ -3,12 +3,13 @@ import cn from 'classnames'
 import withGlobalProps from "/lib/withGlobalProps";
 import { apiQuery } from "dato-nextjs-utils/api";
 import { AllWhatTypesDocument, WhatExamplesDocument } from "/graphql";
-import { } from '/components';
+import { PageHeader } from '/components';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useScrollInfo } from 'dato-nextjs-utils/hooks';
 import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
 import { Image } from 'react-datocms';
+import useStore from '/lib/store';
 
 export type Props = {
   whatExamples: WhatExampleRecord[]
@@ -17,17 +18,15 @@ export type Props = {
 
 export default function WhatWeDo({ whatExamples, whatType }: Props) {
 
-  const { asPath } = useRouter()
-  const { scrolledPosition, documentHeight, viewportHeight } = useScrollInfo()
-  const [showWebPage, setShowWebPage] = useState(true)
+  const [hidePageHeader] = useStore((state) => [state.hidePageHeader])
 
   return (
     <div className={s.container}>
       <section className={s.header}>
         <header>
-          <h3>{whatType.title}</h3>
-          <div className={s.line}><h3>Exempel på uppdrag</h3>
-          </div>
+          <PageHeader>
+            {whatType.title}
+          </PageHeader>
         </header>
         <div>
           <Markdown className={cn("intro", s.intro)}>{whatType.intro}</Markdown>
