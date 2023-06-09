@@ -120,6 +120,26 @@
         color: var(--contact-color);
       }
 
+
+      &:hover {
+        &[data-type="what-we-do"] {
+          color: var(--what-we-do-color);
+        }
+
+        &[data-type="who-we-are"]>a {
+          color: var(--who-we-are-color);
+        }
+
+        &[data-type="about-us"]>a {
+          color: var(--about-us-color);
+        }
+
+        &[data-type="contact"] {
+          color: var(--contact-color);
+        }
+      }
+
+
       .sub {
         position: fixed;
         top: var(--navbar-height);

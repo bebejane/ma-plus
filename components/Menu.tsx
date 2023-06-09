@@ -23,7 +23,7 @@ export default function Menu({ items, contact }: MenuProps) {
   const { scrolledPosition, isScrolledUp } = useScrollInfo()
   const { isMobile, isTablet, isDesktop } = useDevice()
 
-  const blurBackground = scrolledPosition > 0 //&& isDesktop
+  const blurBackground = scrolledPosition > 0 && isScrolledUp
   const hideInactiveMenuItems = scrolledPosition > 0 && isDesktop && !hovering
 
   const handleClick = (ev) => {
@@ -87,6 +87,7 @@ export default function Menu({ items, contact }: MenuProps) {
                 id={item.id}
                 key={idx}
                 onClick={handleClick}
+                data-type={item.id}
                 className={cn(
                   isSelected && !selectedSub && s.selected,
                   selectedSub && isSelected && s.inactive,
