@@ -113,7 +113,7 @@ export default function Menu({ items, contact }: MenuProps) {
                     {selectedSub.id === 'what-we-do' &&
                       <ul data-type={selectedSub.id}>
                         {items.find(item => item.id === 'what-we-do')?.sub.map((item, idx) =>
-                          <li className={cn(asPath === item.slug && s.selected)}>
+                          <li key={idx} className={cn(asPath === item.slug && s.selected)}>
                             <Link href={item.slug} data-type={selectedSub.id}>
                               {item.label}
                             </Link>

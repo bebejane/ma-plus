@@ -12,7 +12,7 @@ export interface StoreState {
 }
 
 const useStore = create<StoreState>((set) => ({
-  showMenu: true,
+  showMenu: false,
   introFinished: false,
   scrollInfo: {},
   hidePageHeader: false,
