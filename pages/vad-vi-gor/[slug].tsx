@@ -26,10 +26,12 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
       <section className={s.header}>
         <header>
           <h3>{whatType.title}</h3>
+          <div className={s.line}><h3>Exempel på uppdrag</h3>
+          </div>
         </header>
         <div>
           <Markdown className={cn("intro", s.intro)}>{whatType.intro}</Markdown>
-          <h3>Exempel på uppdrag:</h3>
+          <h3></h3>
         </div>
 
       </section>

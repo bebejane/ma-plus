@@ -8,6 +8,7 @@
     padding-bottom: 0;
 
     header {
+      position: relative;
       @include mq($until: tablet) {
         display: none;
       }
@@ -16,6 +17,17 @@
       flex: 0 0 var(--side-l);
       po h3:first-child {
         flex: 1 1 100%;
+      }
+
+      .line {
+        //border-top: var(--line) solid var(--section-color);
+        position: absolute;
+        bottom: 0;
+        left: calc(-1 * var(--grid-unit));
+        width: 100%;
+        h3 {
+          margin-left: 0;
+        }
       }
     }
 

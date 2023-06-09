@@ -8,7 +8,6 @@
   width: 100%;
   height: calc(var(--height) * 1);
   border-top: var(--line) solid var(--section-color);
-  padding: var(--outer-margin);
   z-index: var(--z-footer);
 
   @include mq($until: tablet) {
@@ -16,7 +15,6 @@
   }
 
   @include mq($from: tablet) {
-
     &.what-we-do {
       padding-left: calc(var(--side-l) + var(--outer-margin));
     }
