@@ -35,6 +35,8 @@
 	--z-menu-burger: 1500;
 	--z-intro: 2000;
 
+	--scrollbar-width: 10px;
+
 	@include mq($until: tablet) {
 		--text-indent: 1rem;
 	}
@@ -68,11 +70,11 @@ body {
 }
 
 ::-webkit-scrollbar:vertical {
-	width: 10px;
+	width: var(--scrollbar-width);
 }
 
 ::-webkit-scrollbar:horizontal {
-	height: 10px;
+	height: var(--scrollbar-width);
 }
 
 ::-webkit-scrollbar-thumb {

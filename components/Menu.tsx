@@ -61,7 +61,7 @@ export default function Menu({ items, contact }: MenuProps) {
   return (
     <>
       <nav
-        className={cn(s.menu, !showMenu && s.hide, blurBackground && s.background)}
+        className={cn(s.menu, !showMenu && s.hide, blurBackground && s.background, asPath === '/' && s.home)}
         onMouseEnter={() => setHovering(true)}
         onMouseLeave={() => setHovering(false)}
       >
