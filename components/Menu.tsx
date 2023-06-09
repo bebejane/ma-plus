@@ -96,25 +96,25 @@ export default function Menu({ items, contact }: MenuProps) {
                 )}
               >
                 {item.slug ?
-                  <Link href={item.slug}>{item.label}</Link>
+                  <Link href={item.slug} data-type={item.id}>{item.label}</Link>
                   :
-                  <span>{item.label}</span>
+                  <span data-type={item.id}>{item.label}</span>
                 }
 
                 {isSubSelected &&
                   <div className={s.sub}>
                     {selectedSub.id === 'contact' &&
-                      <ul>
+                      <ul data-type={selectedSub.id}>
                         <li>{contact.address}</li>
                         <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
                         <li><a href={`tel:${contact.phone}`}>{contact.phone}</a></li>
                       </ul>
                     }
                     {selectedSub.id === 'what-we-do' &&
-                      <ul>
+                      <ul data-type={selectedSub.id}>
                         {items.find(item => item.id === 'what-we-do')?.sub.map((item, idx) =>
                           <li className={cn(asPath === item.slug && s.selected)}>
-                            <Link href={item.slug}>
+                            <Link href={item.slug} data-type={selectedSub.id}>
                               {item.label}
                             </Link>
                           </li>
