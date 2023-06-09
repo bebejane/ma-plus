@@ -29,7 +29,7 @@ export default function Home({ start, whats }: Props) {
 
 	useEffect(() => {
 		if (introFinished && swiperRef.current)
-			setTimeout(() => swiperRef.current.autoplay.start(), 2000)
+			setTimeout(() => swiperRef.current?.autoplay?.start(), 2000)
 
 	}, [introFinished])
 
