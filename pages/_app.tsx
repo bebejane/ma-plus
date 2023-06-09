@@ -33,7 +33,7 @@ function MyApp({ Component, pageProps, router }: AppProps) {
 
   return (
     <>
-      <DefaultDatoSEO site={site} siteTitle={'MA Plus'} path={asPath} />
+      <DefaultDatoSEO site={site} siteTitle={'MA+'} path={asPath} />
       <Layout menu={menu} contact={pageProps.contact} title={'MA Plus'}>
         <Component {...pageProps} />
       </Layout>

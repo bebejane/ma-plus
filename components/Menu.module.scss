@@ -3,6 +3,7 @@
   top: 0;
   left: 0;
   width: 100%;
+  height: var(--navbar-height);
   display: flex;
   flex-direction: row;
   border-bottom: var(--line) solid var(--section-color);
@@ -59,15 +60,15 @@
       align-items: flex-start;
       flex-direction: column;
       background-color: var(--white);
-      z-index: var(--z-menu-mobile);
-      transition: transform 0s ease-out;
-      transform: translateY(-100%);
       backdrop-filter: blur(10px);
       background-color: rgba(255, 255, 255, 0.6);
+      z-index: var(--z-menu-mobile);
+      transition: transform 0.2s ease-out;
+      transform: translateX(100%);
 
       &.show {
         display: flex;
-        transform: translateY(0%);
+        transform: translateX(0%);
       }
     }
 
@@ -80,11 +81,18 @@
 
       @include mq($until: tablet) {
         width: 100%;
-        padding: var(--outer-margin);
+        padding: 0;
         border-bottom: var(--line) solid var(--section-color);
-        height: var(--navbar-height);
         display: flex;
-        align-items: center;
+        flex-direction: column;
+
+        > span,
+        > a {
+          display: flex;
+          align-items: center;
+          padding: var(--outer-margin);
+          min-height: var(--navbar-height);
+        }
 
         &:first-child {
           border-top: var(--line) solid var(--section-color);
@@ -122,24 +130,6 @@
 
       &.contact {
         color: var(--contact-color);
-      }
-
-      &:hover {
-        &[data-type="what-we-do"] {
-          color: var(--what-we-do-color);
-        }
-
-        &[data-type="who-we-are"] > a {
-          color: var(--who-we-are-color);
-        }
-
-        &[data-type="about-us"] > a {
-          color: var(--about-us-color);
-        }
-
-        &[data-type="contact"] {
-          color: var(--contact-color);
-        }
       }
 
       .sub {
@@ -182,8 +172,10 @@
           display: flex;
 
           ul {
+            width: 100%;
+            list-style: none;
             flex-direction: column;
-            margin-top: 0.5rem;
+            justify-content: center;
 
             li {
               display: flex;
@@ -191,10 +183,47 @@
               color: var(--black);
               height: var(--navbar-height);
               border-top: var(--line) solid var(--section-color);
+
+              span,
+              a {
+                margin-left: 1em;
+              }
+            }
+
+            &[data-type="contact"] {
+              padding-top: var(--outer-margin);
+              padding-bottom: var(--outer-margin);
+              border-top: var(--line) solid var(--section-color);
+
+              li {
+                border-top: 0;
+                height: 1.3em;
+
+                span,
+                a {
+                  margin-left: 0em;
+                }
+              }
             }
           }
         }
       }
     }
+  }
+
+  [data-type="what-we-do"]:hover {
+    color: var(--what-we-do-color);
+  }
+
+  [data-type="who-we-are"]:hover {
+    color: var(--who-we-are-color);
+  }
+
+  [data-type="about-us"]:hover {
+    color: var(--about-us-color);
+  }
+
+  [data-type="contact"]:hover {
+    color: var(--contact-color);
   }
 }
