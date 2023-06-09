@@ -34,7 +34,7 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
 
       </section>
       <ul>
-        {whatExamples.map(({ title, image, text, client, collaborators }, idx) =>
+        {whatExamples.map(({ title, image, text, client, collaborators, pdf }, idx) =>
           <li key={idx}>
             <figure>
               {image &&
@@ -44,7 +44,7 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
                   pictureClassName={s.picture}
                 />
               }
-              <a className={s.download}>PDF</a>
+              {pdf && <a href={pdf.url} className={s.download}>PDF</a>}
             </figure>
 
             <div className={s.content}>

@@ -61,12 +61,12 @@
       flex-direction: column;
       background-color: var(--white);
       z-index: var(--z-menu-mobile);
-      transition: transform 0.2s ease-out;
-      transform: translateX(100%);
+      transition: transform 0s ease-out;
+      transform: translateY(-100%);
 
       &.show {
         display: flex;
-        transform: translateX(0%);
+        transform: translateY(0%);
       }
     }
 
