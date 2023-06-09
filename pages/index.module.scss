@@ -48,6 +48,8 @@
           padding-bottom: 0.8em;
           @include mq($until: tablet) {
             text-align: center;
+            font-size: 1.7rem;
+            padding-bottom: 0.4em;
           }
 
           a {
@@ -61,7 +63,7 @@
       }
     }
 
-    >div {
+    > div {
       height: 100%;
     }
 
@@ -86,6 +88,9 @@
         background-color: var(--black);
 
         figcaption {
+          @include mq($until: tablet) {
+            display: none;
+          }
           position: absolute;
           padding: var(--outer-margin);
           z-index: 11;

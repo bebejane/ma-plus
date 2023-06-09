@@ -12,6 +12,7 @@
 
   @include mq($until: tablet) {
     z-index: 0;
+    justify-content: center;
   }
 
   @include mq($from: tablet) {
