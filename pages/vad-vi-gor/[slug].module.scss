@@ -9,26 +9,14 @@
 
     header {
       position: relative;
+
       @include mq($until: tablet) {
         display: none;
       }
+
       display: flex;
       flex-direction: column;
       flex: 0 0 var(--side-l);
-      po h3:first-child {
-        flex: 1 1 100%;
-      }
-
-      .line {
-        //border-top: var(--line) solid var(--section-color);
-        position: absolute;
-        bottom: 0;
-        left: calc(-1 * var(--grid-unit));
-        width: 100%;
-        h3 {
-          margin-left: 0;
-        }
-      }
     }
 
     div {
@@ -55,21 +43,22 @@
       width: calc(100% + (var(--grid-unit) * 2));
     }
 
-    .intro {
-    }
+    .intro {}
   }
 
-  > ul {
+  >ul {
     list-style: none;
     padding: 0;
     margin: 0;
 
-    > li {
+    >li {
       display: flex;
       flex-direction: column;
+
       @include mq($from: tablet) {
         flex-direction: row;
       }
+
       border-bottom: var(--line) solid var(--section-color);
       height: 100%;
 
@@ -83,9 +72,11 @@
           height: 60vw;
           width: 100%;
         }
+
         @include mq($from: tablet) {
           flex: 0 0 var(--side-l);
         }
+
         width: 100%;
         position: relative;
 
@@ -114,6 +105,7 @@
           text-transform: uppercase;
           font-weight: 500;
           transition: all 0.5s;
+
           &:hover {
             background-color: var(--section-color);
             color: var(--white);
@@ -125,9 +117,11 @@
         @include mq($from: tablet) {
           width: 100%;
         }
+
         @include mq($from: tablet) {
           flex: 1 1 auto;
         }
+
         padding: var(--outer-margin);
 
         p {
@@ -150,6 +144,7 @@
           flex-direction: column;
           padding-top: 0rem;
           padding-bottom: 0.75rem;
+
           @include mq($from: tablet) {
             padding-bottom: 1rem;
           }

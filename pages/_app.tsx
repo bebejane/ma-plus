@@ -3,12 +3,20 @@ import type { AppProps } from 'next/app'
 import { useEffect } from 'react';
 import { pathToSectionId } from '/lib/menu';
 import { DefaultDatoSEO } from 'dato-nextjs-utils/components';
+import { useScrollInfo } from 'dato-nextjs-utils/hooks';
 import { Layout } from '/components';
+import useStore from '/lib/store';
 
 function MyApp({ Component, pageProps, router }: AppProps) {
 
   const { asPath } = router
   const { site, menu } = pageProps as any;
+  const [setScrollInfo] = useStore((state) => [state.setScrollInfo])
+  const scrollInfo = useScrollInfo()
+
+  useEffect(() => {
+    setScrollInfo(scrollInfo)
+  }, [scrollInfo])
 
   useEffect(() => {
 

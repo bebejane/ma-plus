@@ -5,7 +5,8 @@ import type { GetStaticProps } from 'next'
 import { AllEmployeesDocument } from '/graphql';
 import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
 import { Image } from 'react-datocms';
-import { Reveal } from '/components'
+import { PageHeader, Reveal } from '/components'
+import useStore from '/lib/store';
 
 export type Props = {
 	employees: EmployeeRecord[]
@@ -17,7 +18,9 @@ export default function WhoWeAre({ employees }: Props) {
 		<div className={s.container}>
 			<section className={s.header}>
 				<header>
-					<h3>Vilka vi är</h3>
+					<PageHeader>
+						Vilka vi är
+					</PageHeader>
 				</header>
 				<p className={cn("intro", s.intro)}>
 					MA+ skräddarsyr team för varje enskilt projekt. Vissa personer återkommer i flera projekt och vissa plockas in för enskilda nedslag.
