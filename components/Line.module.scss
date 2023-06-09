@@ -11,6 +11,10 @@
   background-color: var(--section-color);
   transition: left 0.3s ease-out, background-color var(--color-transition);
 
+  &.home {
+    z-index: var(--z-line-home);
+  }
+
   &.what-we-do {
     left: var(--side-l);
   }

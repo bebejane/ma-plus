@@ -13,4 +13,7 @@ fragment WhatExampleFragment on WhatExampleRecord {
 		intro(markdown: false)
 		slug
 	}
+	pdf {
+		...FileFragment
+	}
 }

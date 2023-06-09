@@ -61,16 +61,17 @@
       flex-direction: column;
       background-color: var(--white);
       z-index: var(--z-menu-mobile);
-      transition: transform 0.2s ease-out;
-      transform: translateX(100%);
+      transition: transform 0s ease-out;
+      transform: translateY(-100%);
 
       &.show {
         display: flex;
-        transform: translateX(0%);
+        transform: translateY(0%);
       }
     }
 
     >li {
+      position: relative;
       padding-left: 1em;
       cursor: pointer;
       opacity: 1;
@@ -118,6 +119,26 @@
       &.contact {
         color: var(--contact-color);
       }
+
+
+      &:hover {
+        &[data-type="what-we-do"] {
+          color: var(--what-we-do-color);
+        }
+
+        &[data-type="who-we-are"]>a {
+          color: var(--who-we-are-color);
+        }
+
+        &[data-type="about-us"]>a {
+          color: var(--about-us-color);
+        }
+
+        &[data-type="contact"] {
+          color: var(--contact-color);
+        }
+      }
+
 
       .sub {
         position: fixed;

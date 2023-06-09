@@ -13,6 +13,7 @@ import { useRef, useState, useEffect } from "react";
 import { Loader } from "/components";
 import { DatoMarkdown } from "dato-nextjs-utils/components";
 import Link from "next/link";
+import useStore from "/lib/store";
 
 SwiperCore.use([EffectFade, Autoplay]);
 
@@ -21,10 +22,16 @@ export type Props = { site: Site, start: StartRecord, whats: WhatRecord[] }
 export default function Home({ start, whats }: Props) {
 
 	const images = [start.imageCityPlanning, start.imageCulturePolitics, start.imageOrganizationDevelopment, start.imageTexts]
-
+	const [introFinished] = useStore((state) => [state.introFinished])
 	const swiperRef = useRef<SwiperType | undefined>()
 	const [index, setIndex] = useState(0)
 	const [loaded, setLoaded] = useState<any>({})
+
+	useEffect(() => {
+		if (introFinished && swiperRef.current)
+			setTimeout(() => swiperRef.current?.autoplay?.start(), 2000)
+
+	}, [introFinished])
 
 	return (
 		<div className={s.container}>
@@ -36,7 +43,7 @@ export default function Home({ start, whats }: Props) {
 					centeredSlides={true}
 					slidesPerView={1}
 					initialSlide={0}
-					autoplay={{ delay: 2000, disableOnInteraction: true }}
+					autoplay={!introFinished ? false : { delay: 2000, disableOnInteraction: true }}
 					effect="fade"
 					onSlideChange={({ realIndex }) => setIndex(realIndex)}
 					onSwiper={(swiper) => swiperRef.current = swiper}

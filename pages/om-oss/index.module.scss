@@ -18,6 +18,7 @@
 
     .quotes {
       color: var(--section-color);
+      transition: color var(--color-transition);
       position: sticky;
       top: calc(100vh - (var(--navbar-height) + 4rem));
     }
@@ -25,6 +26,7 @@
 
   article {
     flex: 1 1 auto;
+
     @include mq($from: tablet) {
       padding-right: calc(5 * var(--grid-unit));
     }

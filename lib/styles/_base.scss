@@ -7,11 +7,13 @@
 	--foreground: var(--black);
 	--grid-unit: calc(100vw / 26);
 	--outer-margin: var(--grid-unit);
+
 	--home-color: var(--black);
 	--about-us-color: #ed571b;
 	--what-we-do-color: #001aff;
 	--who-we-are-color: #1dcf65;
 	--contact-color: #db00ff;
+
 	--line: max(2px, 0.2vw);
 	--line-height: 1.25;
 	--color-transition: 0.2s ease-out;
@@ -24,7 +26,7 @@
 	--side-m: calc(var(--grid-unit) * 8);
 	--side-l: calc(var(--grid-unit) * 10);
 
-
+	--z-line-home: 900;
 	--z-menu: 1000;
 	--z-line: 1100;
 	--z-menu-sub: 1200;
