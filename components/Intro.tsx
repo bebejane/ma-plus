@@ -39,7 +39,7 @@ export default function Intro({ }: Props) {
         setTextIndex(i)
       }
       await sleep(delay)
-      setStep('end')
+      //setStep('end')
     }
 
     if (step === 'text')
@@ -63,11 +63,8 @@ export default function Intro({ }: Props) {
       }} />
       {index > 0 && step === 'text' &&
         <h1>
-          {making.split('').map((c, i) =>
-            <span key={i}>{c}</span>
-          )}
-          &nbsp;
-          {types[textIndex] && <span className={s.c}>{types[textIndex]}</span>}
+          <span>Making</span>
+          <span className={s.c}>{types?.[textIndex]}</span>
         </h1>
       }
     </div>

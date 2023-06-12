@@ -32,10 +32,10 @@ export default function Menu({ items, contact }: MenuProps) {
 
     if ((ev.target as HTMLElement).tagName === 'SPAN') {
       const sSub = selectedSub?.id === item.id ? undefined : item
-      setSelectedSub(sSub)
       const r = document.querySelector<HTMLElement>(':root')
       const sectionId = pathToSectionId(asPath)
       r.style.setProperty('--section-color', `var(--${sSub ? item.id : sectionId ?? 'home'}-color)`);
+      setSelectedSub(sSub)
     }
   }
 
