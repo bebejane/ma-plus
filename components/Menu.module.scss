@@ -130,6 +130,10 @@
 
       &.contact {
         color: var(--contact-color);
+
+        a:hover {
+          color: var(--contact-color) !important;
+        }
       }
 
       .sub {

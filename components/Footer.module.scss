@@ -29,7 +29,7 @@
     }
 
     &.home {
-      padding-left: calc(var(--outer-margin));
+      padding-left: calc(var(--side-default) + var(--outer-margin));
     }
   }
 
@@ -41,6 +41,12 @@
 
       span:first-of-type {
         display: none;
+      }
+    }
+
+    @include mq($from: tablet) {
+      a:hover {
+        color: var(--contact-color) !important;
       }
     }
 

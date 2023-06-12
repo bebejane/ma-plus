@@ -3,6 +3,7 @@ query Contact {
 		id
 		email
 		address
+		googleMaps
 		phone
 	}
 }

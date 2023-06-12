@@ -30,10 +30,9 @@ export default function Menu({ items, contact }: MenuProps) {
 
     const item = items.find(item => item.id === ev.currentTarget.id)
 
-    if ((ev.target as HTMLElement).tagName !== 'A') {
+    if ((ev.target as HTMLElement).tagName === 'SPAN') {
       const sSub = selectedSub?.id === item.id ? undefined : item
       setSelectedSub(sSub)
-
       const r = document.querySelector<HTMLElement>(':root')
       const sectionId = pathToSectionId(asPath)
       r.style.setProperty('--section-color', `var(--${sSub ? item.id : sectionId ?? 'home'}-color)`);
@@ -105,7 +104,7 @@ export default function Menu({ items, contact }: MenuProps) {
                   <div className={s.sub}>
                     {selectedSub.id === 'contact' &&
                       <ul data-type={selectedSub.id}>
-                        <li>{contact.address}</li>
+                        <li><a href={contact.googleMaps}>{contact.address}</a></li>
                         <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
                         <li><a href={`tel:${contact.phone}`}>{contact.phone}</a></li>
                       </ul>
