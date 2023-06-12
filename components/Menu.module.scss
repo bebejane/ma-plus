@@ -4,6 +4,7 @@
   left: 0;
   width: 100%;
   height: var(--navbar-height);
+  max-height: var(--navbar-height);
   display: flex;
   flex-direction: row;
   border-bottom: var(--line) solid var(--section-color);
@@ -13,7 +14,6 @@
   padding-left: var(--grid-unit);
   padding-right: var(--grid-unit);
   z-index: var(--z-menu);
-  height: var(--navbar-height);
 
   &.background {
     background-color: rgba(252, 252, 252, 0.7);

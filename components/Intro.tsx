@@ -2,6 +2,8 @@ import s from './Intro.module.scss'
 import cn from 'classnames'
 import { useState, useEffect } from 'react'
 import useStore from '/lib/store'
+import { useRouter } from 'next/router'
+import { pathToSectionId } from '/lib/menu'
 
 type Props = {
 
@@ -19,6 +21,8 @@ export default function Intro({ }: Props) {
   const [textIndex, setTextIndex] = useState(0)
   const [step, setStep] = useState(steps[index])
   const [introFinished, setIntroFinished] = useStore((state) => [state.introFinished, state.setIntroFinished])
+  const router = useRouter()
+  const sectionId = pathToSectionId(router.asPath)
 
   useEffect(() => {
     if (index <= steps.length - 1)
@@ -30,10 +34,10 @@ export default function Intro({ }: Props) {
   return (
     <div
       onClick={() => setIntroFinished(true)}
-      className={cn(s.container, step === 'end' && s.end)}
+      className={cn(s.container, s[sectionId], step === 'end' && s.end)}
       onAnimationEnd={() => step === 'end' && setTimeout(() => setIntroFinished(true), 1000)}
     >
-      <div className={cn(s.line, s.v, s[step])} />
+      <div className={cn(s.line, s.v, s[step], s[sectionId])} />
       <div className={cn(s.line, s.h, s[step])} onAnimationEnd={() => {
         if (step === 'end') return
         setIndex(index + 1)
