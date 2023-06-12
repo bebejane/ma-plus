@@ -87,7 +87,7 @@ export default function Home({ start, whats }: Props) {
 				</nav>
 				<ul className={s.pagination}>
 					{images.map((image, i) =>
-						<li key={i} className={cn(i === index && s.selected)} onClick={() => swiperRef.current.slideTo(i + 1)}><span>■</span></li>
+						<li key={i} className={cn(i === index && s.selected)} onClick={() => swiperRef.current.slideTo(i + 1)}><span>•</span></li>
 					)}
 				</ul>
 			</div>
