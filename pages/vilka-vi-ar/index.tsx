@@ -32,7 +32,7 @@ export default function WhoWeAre({ employees }: Props) {
 						<figure>
 							{image && <Image data={image.responsiveImage} className={s.image} pictureClassName={s.picture} />}
 						</figure>
-						<Reveal effect="fade" delay={300} duration={300}>
+						<Reveal effect="fadeUp" delay={500} duration={300} distance={1}>
 							<div className={s.content}>
 								<h1>{name}</h1>
 								<Markdown className={s.text}>{text}</Markdown>

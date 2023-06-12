@@ -3,7 +3,7 @@ import cn from 'classnames'
 import withGlobalProps from "/lib/withGlobalProps";
 import { apiQuery } from "dato-nextjs-utils/api";
 import { AllWhatTypesDocument, WhatExamplesDocument } from "/graphql";
-import { PageHeader } from '/components';
+import { PageHeader, Reveal } from '/components';
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import { useScrollInfo } from 'dato-nextjs-utils/hooks';
@@ -46,25 +46,26 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
               }
               {pdf && <a href={pdf.url} className={s.download}>PDF</a>}
             </figure>
-
-            <div className={s.content}>
-              <h1>{title}</h1>
-              <ul className={cn(s.meta, "small")}>
-                {client &&
-                  <li>
-                    <span>Uppdragsgivare:</span>
-                    <span>{client}</span>
-                  </li>
-                }
-                {collaborators &&
-                  <li>
-                    <span>Medverkande:</span>
-                    <span>{collaborators}</span>
-                  </li>
-                }
-              </ul>
-              <Markdown className={s.text}>{text}</Markdown>
-            </div>
+            <Reveal effect="fadeUp" delay={500} duration={300} distance={1}>
+              <div className={s.content}>
+                <h1>{title}</h1>
+                <ul className={cn(s.meta, "small")}>
+                  {client &&
+                    <li>
+                      <span>Uppdragsgivare:</span>
+                      <span>{client}</span>
+                    </li>
+                  }
+                  {collaborators &&
+                    <li>
+                      <span>Medverkande:</span>
+                      <span>{collaborators}</span>
+                    </li>
+                  }
+                </ul>
+                <Markdown className={s.text}>{text}</Markdown>
+              </div>
+            </Reveal>
 
           </li>
         )}
