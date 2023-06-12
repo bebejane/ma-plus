@@ -149,10 +149,21 @@
         height: var(--navbar-height);
         width: 100%;
         border-bottom: var(--line) solid var(--section-color);
-        transition: border-bottom var(--color-transition);
+        transition: border-bottom var(--color-transition), height var(--color-transition);
         z-index: var(--z-menu-sub);
         backdrop-filter: blur(10px);
         background-color: rgba(252, 252, 252, 0.7);
+
+        @include mq($from: tablet) {
+          height: 0;
+          overflow: hidden;
+          margin-top: calc(-1 * var(--line));
+
+          &.show {
+            height: var(--navbar-height);
+            margin-top: 0;
+          }
+        }
 
         ul {
           list-style: none;

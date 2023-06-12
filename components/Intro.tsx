@@ -22,7 +22,6 @@ export default function Intro({ }: Props) {
   const [textIndex, setTextIndex] = useState(-1)
   const [step, setStep] = useState(steps[index])
   const [introFinished, setIntroFinished] = useStore((state) => [state.introFinished, state.setIntroFinished])
-  const intervalRef = useRef(null)
   const router = useRouter()
   const sectionId = pathToSectionId(router.asPath)
 

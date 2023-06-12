@@ -21,7 +21,7 @@ export default function Menu({ items, contact }: MenuProps) {
   const [selected, setSelected] = useState<MenuItem | undefined>()
   const [selectedSub, setSelectedSub] = useState<MenuItem | undefined>()
   const { scrolledPosition, isScrolledUp } = scrollInfo
-  const { isMobile, isTablet, isDesktop } = useDevice()
+  const { isMobile, isDesktop } = useDevice()
 
   const blurBackground = scrolledPosition > 0 && (isScrolledUp || hovering)
   const hideInactiveMenuItems = scrolledPosition > 0 && isDesktop && !hovering && !isScrolledUp
@@ -99,17 +99,16 @@ export default function Menu({ items, contact }: MenuProps) {
                   :
                   <span data-type={item.id}>{item.label}</span>
                 }
-
-                {isSubSelected &&
-                  <div className={s.sub}>
-                    {selectedSub.id === 'contact' &&
+                {((isMobile && isSubSelected) || isDesktop) &&
+                  <div className={cn(s.sub, selectedSub && s.show)}>
+                    {selectedSub?.id === 'contact' &&
                       <ul data-type={selectedSub.id}>
                         <li><a href={contact.googleMaps}>{contact.address}</a></li>
                         <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
                         <li><a href={`tel:${contact.phone}`}>{contact.phone}</a></li>
                       </ul>
                     }
-                    {selectedSub.id === 'what-we-do' &&
+                    {selectedSub?.id === 'what-we-do' &&
                       <ul data-type={selectedSub.id}>
                         {items.find(item => item.id === 'what-we-do')?.sub.map((item, idx) =>
                           <li key={idx} className={cn(asPath === item.slug && s.selected)}>
