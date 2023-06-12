@@ -39,7 +39,7 @@ export default function Intro({ }: Props) {
         setTextIndex(i)
       }
       await sleep(delay)
-      //setStep('end')
+      setStep('end')
     }
 
     if (step === 'text')
