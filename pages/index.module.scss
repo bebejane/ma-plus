@@ -135,6 +135,7 @@
     flex: 0 0 50%;
     padding: var(--outer-margin);
     @include mq($until: tablet) {
+      border-top: var(--line) solid var(--black);
       padding-top: calc(2 * var(--outer-margin));
       padding-bottom: calc(2 * var(--outer-margin));
     }
