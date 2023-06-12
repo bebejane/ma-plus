@@ -1,55 +1,64 @@
 $duration: 1s;
 $delay : .3s;
-$easing: cubic-bezier(.17,.67,.44,1.16);
+$easing: cubic-bezier(.17, .67, .44, 1.16);
 
 .fade {
   opacity: 0;
-  animation: fade $duration cubic-bezier(.17,.67,.44,1.16) $delay forwards;
+  animation: fade $duration cubic-bezier(.17, .67, .44, 1.16) $delay forwards;
+
   @keyframes fade {
-    to{
+    to {
       opacity: 1;
     }
   }
 }
+
 .fadeUp {
   opacity: 0;
   transform: translateY(50px);
-  animation: fadeUp $duration cubic-bezier(.17,.67,.44,1.16) $delay forwards;
+  animation: fadeUp $duration cubic-bezier(.17, .67, .44, 1.16) $delay forwards;
+
   @keyframes fadeUp {
-    to{
+    to {
       opacity: 1;
       transform: translateY(0px);
     }
   }
 }
+
 .slideInLeft {
   opacity: 0;
   transform: translateX(-50px);
-  animation: slideInLeft $duration cubic-bezier(.17,.67,.44,1.16) $delay forwards;
+  animation: slideInLeft $duration cubic-bezier(.17, .67, .44, 1.16) $delay forwards;
+
   @keyframes slideInLeft {
-    to{
+    to {
       opacity: 1;
       transform: translateX(0%);
     }
   }
 }
+
 .slideInRight {
   opacity: 0;
   transform: translateX(50px);
-  animation: slideInRight $duration cubic-bezier(.17,.67,.44,1.16) $delay forwards;
+  animation: slideInRight $duration cubic-bezier(.17, .67, .44, 1.16) $delay forwards;
+
   @keyframes slideInRight {
-    to{
+    to {
       opacity: 1;
       transform: translateX(0%);
     }
   }
 }
+
 .zoomIn {
   opacity: 1;
   transform: scale(0.9);
-  animation: zoomIn $duration cubic-bezier(.17,.67,.44,1.16) $delay forwards;
+  animation: zoomIn $duration cubic-bezier(.17, .67, .44, 1.16) $delay forwards;
+
   @keyframes zoomIn {
-    to{
+    to {
       opacity: 1;
       transform: scale(1);
     }

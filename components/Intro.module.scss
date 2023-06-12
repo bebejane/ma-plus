@@ -8,6 +8,8 @@
   z-index: var(--z-intro);
   cursor: pointer;
 
+  color: var(--section-color);
+
   &.end {
     animation: fadeout 1s ease-out 0.4s forwards;
     pointer-events: none;
@@ -25,9 +27,22 @@
 
   .line {
     position: absolute;
-    background-color: var(--black);
+    background-color: var(--section-color);
     top: 0;
     left: 0;
+    --endX: 50%;
+
+    &.what-we-do {
+      --endX: var(--side-l);
+    }
+
+    &.who-we-are {
+      --endX: var(--side-m);
+    }
+
+    &.about-us {
+      --endX: var(--side-s);
+    }
 
     &.v {
       width: var(--line);
@@ -51,11 +66,12 @@
       }
 
       &.end {
-        animation: end-v 0.7s ease-in-out forwards;
+        animation: end-v 0.3s ease-in-out forwards;
 
         @keyframes end-v {
           to {
-            transform: translateY(100%);
+            left: var(--endX);
+            transform: translateX(0%);
           }
         }
       }
@@ -84,10 +100,12 @@
       &.end {
         animation: end-h 0.4s ease-in-out forwards;
         width: 100%;
+        height: var(--line);
 
         @keyframes end-h {
           to {
-            top: var(--navbar-height);
+            transform: translateY(0%);
+            top: calc(var(--navbar-height) - var(--line));
           }
         }
       }

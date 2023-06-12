@@ -27,14 +27,26 @@
     &.about-us {
       padding-left: calc(var(--side-s) + var(--outer-margin));
     }
+
+    &.home {
+      padding-left: calc(var(--side-default) + var(--outer-margin));
+    }
   }
 
   h3 {
     padding-bottom: 0;
+
     @include mq($until: tablet) {
       padding-left: var(--outer-margin);
+
       span:first-of-type {
         display: none;
+      }
+    }
+
+    @include mq($from: tablet) {
+      a:hover {
+        color: var(--contact-color) !important;
       }
     }
 
