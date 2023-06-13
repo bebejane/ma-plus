@@ -56,10 +56,7 @@ export default function Intro({ }: Props) {
       onAnimationEnd={() => step === 'end' && setTimeout(() => setIntroFinished(true), 1000)}
     >
       <div className={cn(s.line, s.v, s[step], s[sectionId])} />
-      <div className={cn(s.line, s.h, s[step])} onAnimationEnd={() => {
-        if (step === 'end') return
-        setIndex(index + 1)
-      }} />
+      <div className={cn(s.line, s.h, s[step])} onAnimationEnd={() => step !== 'end' && setIndex(index + 1)} />
       {index > 0 && step === 'text' &&
         <h1>
           <span>Making</span>
