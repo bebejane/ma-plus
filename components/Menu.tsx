@@ -103,9 +103,9 @@ export default function Menu({ items, contact }: MenuProps) {
                   <div className={cn(s.sub, selectedSub && s.show)}>
                     {selectedSub?.id === 'contact' &&
                       <ul data-type={selectedSub.id}>
-                        <li><a href={contact.googleMaps}>{contact.address}</a></li>
                         <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
                         <li><a href={`tel:${contact.phone}`}>{contact.phone}</a></li>
+                        <li><a href={contact.instagram}>Instagram</a></li>
                       </ul>
                     }
                     {selectedSub?.id === 'what-we-do' &&

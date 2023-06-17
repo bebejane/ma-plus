@@ -68,13 +68,27 @@
       &.end {
         animation: end-v 0.3s ease-in-out forwards;
 
-        @keyframes end-v {
-          to {
-            left: var(--endX);
-            transform: translateX(0%);
+        @include mq($from: tablet) {
+
+          @keyframes end-v {
+            to {
+              left: var(--endX);
+              transform: translateX(0%);
+            }
           }
         }
       }
+
+      @include mq($until: tablet) {
+
+        @keyframes end-v {
+          to {
+            height: 100%;
+            transform: translateY(100%);
+          }
+        }
+      }
+
     }
 
     &.h {

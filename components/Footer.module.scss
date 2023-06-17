@@ -39,7 +39,7 @@
     @include mq($until: tablet) {
       padding-left: var(--outer-margin);
 
-      span:first-of-type {
+      span:last-of-type {
         display: none;
       }
     }
