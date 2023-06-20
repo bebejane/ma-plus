@@ -24,7 +24,7 @@ export default function Menu({ items, contact }: MenuProps) {
   const { isMobile, isDesktop } = useDevice()
 
   const blurBackground = scrolledPosition > 0 && (isScrolledUp || hovering)
-  const hideInactiveMenuItems = scrolledPosition > 0 && isDesktop && !hovering && !isScrolledUp
+  const hideInactiveMenuItems = scrolledPosition > 0 && isDesktop && !hovering && !isScrolledUp && selected
 
   const handleClick = (ev) => {
 

@@ -46,9 +46,12 @@ export default function Intro({ }: Props) {
 
     const animateLogo = async () => {
 
-      if (isMobile) return setStep('end')
+
       const logo = document.getElementById('logo')
       const header = document.getElementById('intro-header')
+
+      if (isMobile || !header) return setStep('end')
+
       const ma = document.querySelectorAll('#intro-header > span > span:first-child')
       const other = document.querySelectorAll('#intro-header > span > span:not(:first-child)')
       const speed = 700
