@@ -64,7 +64,7 @@ export default function Menu({ items, contact }: MenuProps) {
         onMouseEnter={() => setHovering(true)}
         onMouseLeave={() => setHovering(false)}
       >
-        <div className={s.logo}>
+        <div id="logo" className={s.logo}>
           <Link href={'/'}>
             <span className="logo">
               MA+

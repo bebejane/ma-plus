@@ -7,7 +7,6 @@
   height: 100%;
   z-index: var(--z-intro);
   cursor: pointer;
-
   color: var(--section-color);
 
   &.end {
@@ -139,7 +138,7 @@
 
     .c {
       &::before {
-        content: " ";
+        //content: " ";
       }
 
       animation: reveal 1s steps(1, start) forwards;
@@ -153,7 +152,7 @@
     }
 
     @include mq($until: tablet) {
-      span {
+      >span {
         display: block;
         min-height: 1.3em;
 
@@ -167,4 +166,34 @@
       }
     }
   }
+}
+
+.hideletter {
+  animation: hide-letter 0.5s ease-out forwards;
+
+  @include mq($from: tablet) {
+    opacity: 0;
+  }
+
+  @keyframes hide-letter {
+    to {
+      font-size: 0;
+
+      @include mq($from: tablet) {
+        opacity: 0;
+      }
+
+    }
+  }
+}
+
+.expandletter {
+  animation: expand-letter 0.5s ease-out forwards;
+
+  @keyframes expand-letter {
+    to {
+      font-size: --lo;
+    }
+  }
+
 }
