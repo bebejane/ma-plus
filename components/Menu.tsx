@@ -57,6 +57,14 @@ export default function Menu({ items, contact }: MenuProps) {
       setSelectedSub(undefined)
   }, [hideInactiveMenuItems])
 
+  useEffect(() => {
+    if (showMenu) return
+    const r = document.querySelector<HTMLElement>(':root')
+    const sectionId = pathToSectionId(asPath)
+    r.style.setProperty('--section-color', `var(--${sectionId}-color)`);
+
+  }, [showMenu])
+
   return (
     <>
       <nav
@@ -99,7 +107,7 @@ export default function Menu({ items, contact }: MenuProps) {
                   :
                   <span data-type={item.id}>{item.label}</span>
                 }
-                {((isMobile && isSubSelected) || isDesktop) &&
+                {((isMobile && isSubSelected) || isDesktop) && selectedSub?.id === item.id &&
                   <div className={cn(s.sub, selectedSub && s.show)}>
                     {selectedSub?.id === 'contact' &&
                       <ul data-type={selectedSub.id}>
