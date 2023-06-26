@@ -90,7 +90,7 @@ export default function Intro({ }: Props) {
       <div className={cn(s.line, s.v, s[step], s[sectionId])} />
       <div className={cn(s.line, s.h, s[step])} onAnimationEnd={() => step !== 'end' && setIndex(index + 1)} />
       {index > 0 && (step === 'text' || (step === 'end' && !isMobile)) &&
-        <h1 id="intro-header">
+        <h1 id="intro-header" className="logo">
           <span className={s.c}>{'Making'.split('').map((c, i) => <span key={i}>{c}</span>)}<span>&nbsp;</span></span>
           <span className={s.c}>{types?.[textIndex]?.split('').map((c, i) => <span key={i}>{c}</span>)}</span>
         </h1>

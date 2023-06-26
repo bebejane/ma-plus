@@ -27,12 +27,12 @@
     }
   }
 
-  >ul {
+  > ul {
     list-style: none;
     padding: 0;
     margin: 0;
 
-    >li {
+    > li {
       display: flex;
       flex-direction: column;
 
@@ -74,6 +74,7 @@
 
         h1 {
           margin-left: var(--outer-margin);
+          padding-bottom: 0;
         }
       }
 
