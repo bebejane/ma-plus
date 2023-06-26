@@ -134,6 +134,28 @@ export default function Menu({ items, contact }: MenuProps) {
           })}
         </ul>
       </nav>
+
+      <div className={cn(s.desktopSub, selectedSub && s.show, 'mid')}>
+        {selectedSub?.id === 'contact' &&
+          <ul data-type={selectedSub.id}>
+            <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
+            <li><a href={`tel:${contact.phone}`}>{contact.phone}</a></li>
+            <li><a href={contact.instagram}>Instagram</a></li>
+          </ul>
+        }
+        {selectedSub?.id === 'what-we-do' &&
+          <ul data-type={selectedSub.id}>
+            {items.find(item => item.id === 'what-we-do')?.sub.map((item, idx) =>
+              <li key={idx} className={cn(asPath === item.slug && s.selected)}>
+                <Link href={item.slug} data-type={selectedSub.id}>
+                  {item.label}
+                </Link>
+              </li>
+            )}
+          </ul>
+        }
+      </div>
+
     </>
   )
 }

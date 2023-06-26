@@ -3,5 +3,6 @@ query We {
 		id
 		title
 		intro(markdown: false)
+		headlineEmployee
 	}
 }

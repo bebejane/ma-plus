@@ -137,87 +137,49 @@
       }
 
       .sub {
-        position: fixed;
-        top: var(--navbar-height);
-        right: 0;
+        position: relative;
         display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: flex-end;
-        padding-right: var(--grid-unit);
-        bottom: calc(-1 * (var(--navbar-height) + var(--line)));
-        height: var(--navbar-height);
-        width: 100%;
-        border-bottom: var(--line) solid var(--section-color);
-        transition: border-bottom var(--color-transition), height var(--color-transition);
-        z-index: var(--z-menu-sub);
-        backdrop-filter: blur(10px);
-        background-color: rgba(252, 252, 252, 0.7);
 
         @include mq($from: tablet) {
-          height: 0;
-          overflow: hidden;
-          margin-top: calc(-1 * var(--line));
-
-          &.show {
-            height: var(--navbar-height);
-            margin-top: 0;
-          }
+          display: none;
         }
 
         ul {
+          width: 100%;
           list-style: none;
-          display: flex;
-          flex-direction: row;
+          flex-direction: column;
+          justify-content: center;
 
           li {
+            display: flex;
+            align-items: center;
             color: var(--black);
-            padding-left: 1em;
+            height: var(--navbar-height);
+            border-top: var(--line) solid var(--section-color);
 
             &.selected,
             &.selected>a {
               color: var(--section-color);
             }
+
+            span,
+            a {
+              margin-left: 1em;
+            }
           }
-        }
 
-        @include mq($until: tablet) {
-          all: unset;
-          position: relative;
-          display: flex;
-
-          ul {
-            width: 100%;
-            list-style: none;
-            flex-direction: column;
-            justify-content: center;
+          &[data-type="contact"] {
+            padding-top: var(--outer-margin);
+            padding-bottom: var(--outer-margin);
+            border-top: var(--line) solid var(--section-color);
 
             li {
-              display: flex;
-              align-items: center;
-              color: var(--black);
-              height: var(--navbar-height);
-              border-top: var(--line) solid var(--section-color);
+              border-top: 0;
+              height: 2.5em;
 
               span,
               a {
-                margin-left: 1em;
-              }
-            }
-
-            &[data-type="contact"] {
-              padding-top: var(--outer-margin);
-              padding-bottom: var(--outer-margin);
-              border-top: var(--line) solid var(--section-color);
-
-              li {
-                border-top: 0;
-                height: 2.5em;
-
-                span,
-                a {
-                  margin-left: 0em;
-                }
+                margin-left: 0em;
               }
             }
           }
@@ -241,6 +203,53 @@
 
     [data-type="contact"]:hover {
       color: var(--contact-color);
+    }
+  }
+}
+
+.desktopSub {
+  @include mq($until: tablet) {
+    display: none;
+  }
+
+  position: fixed;
+  top: var(--navbar-height);
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: var(--grid-unit);
+  height: 0;
+  width: 100%;
+  overflow: hidden;
+  margin-top: calc(-1 * var(--line));
+  border-bottom: var(--line) solid var(--section-color);
+  transition: border-bottom var(--color-transition),
+  height var(--color-transition);
+  z-index: var(--z-menu-sub);
+  backdrop-filter: blur(10px);
+  background-color: rgba(252, 252, 252, 0.7);
+
+
+  &.show {
+    height: var(--navbar-height);
+    margin-top: 0;
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+
+    li {
+      color: var(--black);
+      padding-left: 1em;
+
+      &.selected,
+      &.selected>a {
+        color: var(--section-color);
+      }
     }
   }
 }
