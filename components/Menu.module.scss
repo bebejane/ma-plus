@@ -188,26 +188,10 @@
     }
   }
 
-  @include mq($from: tablet) {
-    [data-type="what-we-do"]:hover {
-      color: var(--what-we-do-color);
-    }
-
-    [data-type="who-we-are"]:hover {
-      color: var(--who-we-are-color);
-    }
-
-    [data-type="about-us"]:hover {
-      color: var(--about-us-color);
-    }
-
-    [data-type="contact"]:hover {
-      color: var(--contact-color);
-    }
-  }
 }
 
 .desktopSub {
+
   @include mq($until: tablet) {
     display: none;
   }

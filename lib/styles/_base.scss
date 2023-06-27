@@ -91,11 +91,9 @@ a {
 	text-decoration: none;
 	color: var(--foreground);
 
-	&:hover {
-	}
+	&:hover {}
 
-	&:visited {
-	}
+	&:visited {}
 }
 
 article p a {
@@ -120,31 +118,25 @@ button {
 	color: var(--foreground);
 	border: 0;
 
-	@include mq($from: tablet) {
-	}
+	@include mq($from: tablet) {}
 
 	&.back {
-		@include mq($from: tablet) {
-		}
+		@include mq($from: tablet) {}
 	}
 
-	&:hover {
-	}
+	&:hover {}
 }
 
 figcaption {
-	@include mq($until: tablet) {
-	}
+	@include mq($until: tablet) {}
 }
 
-hr {
-}
+hr {}
 
 input,
 textarea,
 select {
-	&:focus {
-	}
+	&:focus {}
 }
 
 select {
@@ -169,4 +161,22 @@ select {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+
+@include mq($from: tablet) {
+	[data-type="what-we-do"]:hover {
+		color: var(--what-we-do-color);
+	}
+
+	[data-type="who-we-are"]:hover {
+		color: var(--who-we-are-color);
+	}
+
+	[data-type="about-us"]:hover {
+		color: var(--about-us-color);
+	}
+
+	[data-type="contact"]:hover {
+		color: var(--contact-color);
+	}
 }
