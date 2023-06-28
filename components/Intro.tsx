@@ -68,8 +68,8 @@ export default function Intro({ }: Props) {
       header.style.margin = '0'
       header.style.padding = '0'
       header.style.left = logo.getBoundingClientRect().left + 'px'
-      header.style.top = `calc(${logo.getBoundingClientRect().top + 'px'} - 4px)`
-      await sleep(speed)
+      header.style.top = `calc(${logo.getBoundingClientRect().top + 'px'} - 5px)`
+      await sleep(speed / 2)
       setStep('end')
     }
 

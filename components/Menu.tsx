@@ -20,11 +20,11 @@ export default function Menu({ items, contact }: MenuProps) {
   const [hovering, setHovering] = useState(false)
   const [selected, setSelected] = useState<MenuItem | undefined>()
   const [selectedSub, setSelectedSub] = useState<MenuItem | undefined>()
-  const { scrolledPosition, isScrolledUp } = scrollInfo
+  const { scrolledPosition, isScrolledUp } = useScrollInfo()
   const { isMobile, isDesktop } = useDevice()
 
-  const blurBackground = scrolledPosition > 0 && (isScrolledUp || hovering)
-  const hideInactiveMenuItems = scrolledPosition > 0 && isDesktop && !hovering && !isScrolledUp && selected
+  const blurBackground = scrolledPosition > 0 && (isScrolledUp || hovering || selectedSub)
+  const hideInactiveMenuItems = scrolledPosition > 0 && isDesktop && !isScrolledUp && selected && !selectedSub
 
   const handleClick = (ev) => {
 
@@ -53,17 +53,19 @@ export default function Menu({ items, contact }: MenuProps) {
   }, [asPath])
 
   useEffect(() => {
-    if (hideInactiveMenuItems)
-      setSelectedSub(undefined)
+    if (hideInactiveMenuItems) setSelectedSub(undefined)
+
   }, [hideInactiveMenuItems])
 
   useEffect(() => {
+
     if (showMenu) return
     const r = document.querySelector<HTMLElement>(':root')
     const sectionId = pathToSectionId(asPath)
     r.style.setProperty('--section-color', `var(--${sectionId}-color)`);
 
   }, [showMenu])
+
 
   return (
     <>
@@ -85,6 +87,7 @@ export default function Menu({ items, contact }: MenuProps) {
         </div>
 
         <ul ref={menuRef} className={cn(showMenu && s.show)}>
+
           {items.map((item, idx) => {
             const isSelected = selected?.id === item.id
             const isSubSelected = selectedSub?.id === item.id
@@ -137,10 +140,10 @@ export default function Menu({ items, contact }: MenuProps) {
 
       <div className={cn(s.desktopSub, selectedSub && s.show, 'mid')}>
         {selectedSub?.id === 'contact' &&
-          <ul data-type={selectedSub.id}>
-            <li><a href={`mailto:${contact.email}`}>{contact.email}</a></li>
-            <li><a href={`tel:${contact.phone}`}>{contact.phone}</a></li>
-            <li><a href={contact.instagram}>Instagram</a></li>
+          <ul>
+            <li><a data-type={selectedSub.id} href={`mailto:${contact.email}`}>{contact.email}</a></li>
+            <li><a data-type={selectedSub.id} href={`tel:${contact.phone}`}>{contact.phone}</a></li>
+            <li><a data-type={selectedSub.id} href={contact.instagram}>Instagram</a></li>
           </ul>
         }
         {selectedSub?.id === 'what-we-do' &&
@@ -155,7 +158,6 @@ export default function Menu({ items, contact }: MenuProps) {
           </ul>
         }
       </div>
-
     </>
   )
 }
