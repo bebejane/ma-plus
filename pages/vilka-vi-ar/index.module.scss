@@ -27,12 +27,12 @@
     }
   }
 
-  > ul {
+  >ul {
     list-style: none;
     padding: 0;
     margin: 0;
 
-    > li {
+    >li {
       display: flex;
       flex-direction: column;
 
@@ -48,6 +48,9 @@
       }
 
       figure {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         flex: 0 0 var(--side-m);
 
         @include mq($until: tablet) {
@@ -65,6 +68,7 @@
         .picture {
           object-fit: cover;
           height: 100%;
+          max-width: 100% !important;
         }
       }
 

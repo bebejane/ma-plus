@@ -36,7 +36,13 @@ export default function WhoWeAre({ employees, we }: Props) {
 						}
 						<li key={idx}>
 							<figure>
-								{image && <Image data={image.responsiveImage} className={s.image} pictureClassName={s.picture} />}
+								{image &&
+									<Image
+										data={image.responsiveImage}
+										className={s.image}
+										pictureClassName={s.picture}
+									/>
+								}
 							</figure>
 							<Reveal effect="fadeUp" delay={500} duration={300} distance={1}>
 								<div className={s.content}>
