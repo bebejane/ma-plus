@@ -16,13 +16,14 @@ export default function Menu({ items, contact }: MenuProps) {
   const router = useRouter()
   const { asPath } = router
   const menuRef = useRef<HTMLUListElement | null>(null);
+
   const [showMenu, setShowMenu, scrollInfo] = useStore((state) => [state.showMenu, state.setShowMenu, state.scrollInfo])
   const [hovering, setHovering] = useState(false)
   const [selected, setSelected] = useState<MenuItem | undefined>()
   const [selectedSub, setSelectedSub] = useState<MenuItem | undefined>()
   const { scrolledPosition, isScrolledUp } = useScrollInfo()
   const { isMobile, isDesktop } = useDevice()
-
+  const whatWeDoSection = selected?.id === 'what-we-do'
   const blurBackground = scrolledPosition > 0 && (isScrolledUp || hovering || selectedSub)
   const hideInactiveMenuItems = scrolledPosition > 0 && isDesktop && !isScrolledUp && selected && !selectedSub
 
@@ -41,19 +42,24 @@ export default function Menu({ items, contact }: MenuProps) {
 
   useEffect(() => {
     const handleRouteChangeComplete = (path: string) => {
-      setSelectedSub(undefined)
+      if (!whatWeDoSection)
+        setSelectedSub(undefined)
       setShowMenu(false)
     }
     router.events.on('routeChangeComplete', handleRouteChangeComplete)
     return () => router.events.off('routeChangeComplete', handleRouteChangeComplete)
-  }, [])
+  }, [whatWeDoSection])
 
   useEffect(() => {
-    setSelected(items.find(item => item.id === pathToSectionId(asPath)))
-  }, [asPath])
+    const selected = items.find(item => item.id === pathToSectionId(asPath))
+    setSelected(selected)
+    if (whatWeDoSection)
+      setSelectedSub(selected?.sub?.find(item => item.slug === asPath))
+  }, [whatWeDoSection, asPath])
 
   useEffect(() => {
-    if (hideInactiveMenuItems) setSelectedSub(undefined)
+    if (hideInactiveMenuItems)
+      setSelectedSub(undefined)
 
   }, [hideInactiveMenuItems])
 
@@ -70,7 +76,7 @@ export default function Menu({ items, contact }: MenuProps) {
   return (
     <>
       <nav
-        className={cn(s.menu, !showMenu && s.hide, blurBackground && s.background, asPath === '/' && s.home)}
+        className={cn(s.menu, showMenu && s.hide, blurBackground && s.background, asPath === '/' && s.home)}
         onMouseEnter={() => setHovering(true)}
         onMouseLeave={() => setHovering(false)}
       >
@@ -110,7 +116,7 @@ export default function Menu({ items, contact }: MenuProps) {
                   :
                   <span data-type={item.id}>{item.label}</span>
                 }
-                {((isMobile && isSubSelected) || isDesktop) && selectedSub?.id === item.id &&
+                {(((isMobile && isSubSelected) || isDesktop) && selectedSub?.id === item.id) &&
                   <div className={cn(s.sub, selectedSub && s.show)}>
                     {selectedSub?.id === 'contact' &&
                       <ul data-type={selectedSub.id}>
