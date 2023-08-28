@@ -83,7 +83,7 @@ export default function Menu({ items, contact }: MenuProps) {
         <div id="logo" className={s.logo}>
           <Link href={'/'}>
             <span className="logo">
-              MAA-STUDIO
+              MAA Studio
             </span>
           </Link>
         </div>
