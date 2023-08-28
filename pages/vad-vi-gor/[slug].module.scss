@@ -1,5 +1,8 @@
 .container {
-  margin-top: var(--navbar-height);
+
+  @include mq($from: tablet) {
+    margin-top: var(--navbar-height);
+  }
 
   section.header {
     display: flex;

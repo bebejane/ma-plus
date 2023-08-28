@@ -169,9 +169,14 @@
           }
 
           &[data-type="contact"] {
+
             padding-top: var(--outer-margin);
             padding-bottom: var(--outer-margin);
             border-top: var(--line) solid var(--section-color);
+
+            @include mq($until: tablet) {
+              padding-left: var(--outer-margin);
+            }
 
             li {
               border-top: 0;
