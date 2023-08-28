@@ -54,7 +54,7 @@
         flex: 0 0 var(--side-m);
 
         @include mq($until: tablet) {
-          max-height: 50vw;
+          max-height: 70vw;
         }
 
         max-height: calc(1.2 * var(--side-m));
@@ -74,10 +74,16 @@
 
       &.divider {
         padding: var(--outer-margin);
-        padding-left: var(--side-m);
+
+        @include mq($from: tablet) {
+          padding-left: var(--side-m);
+        }
 
         h1 {
-          margin-left: var(--outer-margin);
+          @include mq($from: tablet) {
+            margin-left: var(--outer-margin);
+          }
+
           padding-bottom: 0;
         }
       }
