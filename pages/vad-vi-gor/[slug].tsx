@@ -4,9 +4,6 @@ import withGlobalProps from "/lib/withGlobalProps";
 import { apiQuery } from "dato-nextjs-utils/api";
 import { AllWhatTypesDocument, WhatExamplesDocument } from "/graphql";
 import { PageHeader, Reveal } from '/components';
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
-import { useScrollInfo } from 'dato-nextjs-utils/hooks';
 import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
 import { Image } from 'react-datocms';
 import useStore from '/lib/store';
@@ -17,8 +14,6 @@ export type Props = {
 }
 
 export default function WhatWeDo({ whatExamples, whatType }: Props) {
-
-  const [hidePageHeader] = useStore((state) => [state.hidePageHeader])
 
   return (
     <div className={s.container}>
@@ -48,7 +43,7 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
             </figure>
             <Reveal effect="fadeUp" delay={500} duration={300} distance={1}>
               <div className={s.content}>
-                <h1>{title}</h1>
+                <h1><Markdown>{title}</Markdown></h1>
                 <ul className={cn(s.meta, "small")}>
                   {client &&
                     <li>
