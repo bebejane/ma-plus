@@ -182,5 +182,13 @@
       padding-top: calc(2 * var(--outer-margin));
       padding-bottom: calc(2 * var(--outer-margin));
     }
+
+    p:first-of-type {
+      margin-bottom: 0;
+    }
+
+    p:last-of-type {
+      text-indent: 1em;
+    }
   }
 }

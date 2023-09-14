@@ -91,12 +91,14 @@ a {
 	text-decoration: none;
 	color: var(--foreground);
 
-	&:hover {}
+	&:hover {
+	}
 
-	&:visited {}
+	&:visited {
+	}
 }
 
-article p a {
+p a {
 	text-decoration: underline 1px !important;
 	text-underline-offset: 0.15em;
 	text-decoration-thickness: 1px;
@@ -118,25 +120,31 @@ button {
 	color: var(--foreground);
 	border: 0;
 
-	@include mq($from: tablet) {}
-
-	&.back {
-		@include mq($from: tablet) {}
+	@include mq($from: tablet) {
 	}
 
-	&:hover {}
+	&.back {
+		@include mq($from: tablet) {
+		}
+	}
+
+	&:hover {
+	}
 }
 
 figcaption {
-	@include mq($until: tablet) {}
+	@include mq($until: tablet) {
+	}
 }
 
-hr {}
+hr {
+}
 
 input,
 textarea,
 select {
-	&:focus {}
+	&:focus {
+	}
 }
 
 select {
