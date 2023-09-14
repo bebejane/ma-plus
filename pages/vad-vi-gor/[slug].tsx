@@ -13,15 +13,6 @@ export type Props = {
   whatType: WhatRecord
 }
 
-function LinkRenderer(props: any) {
-  return (
-    <a href={props.href} target="_blank" rel="noreferrer">
-      {props.children}
-    </a>
-  );
-}
-
-
 export default function WhatWeDo({ whatExamples, whatType }: Props) {
 
   return (
@@ -67,7 +58,7 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
                     </li>
                   }
                 </ul>
-                <Markdown className={s.text} components={{ a: LinkRenderer }}>{text}</Markdown>
+                <Markdown className={s.text}>{text}</Markdown>
               </div>
             </Reveal>
 
