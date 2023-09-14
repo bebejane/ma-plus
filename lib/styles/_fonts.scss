@@ -25,6 +25,13 @@ $headline-font: "Jost", Arial, Helvetica, Sans-Serif;
 
 @font-face {
   font-family: "Jost";
+  src: url("../../public/fonts/Jost-SemiItalic.woff2") format("woff2");
+  font-weight: 600;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Jost";
   src: url("../../public/fonts/Jost-BookItalic.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
