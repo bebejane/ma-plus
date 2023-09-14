@@ -6,6 +6,7 @@ import { AllEmployeesDocument, WeDocument } from '/graphql';
 import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
 import { Image } from 'react-datocms';
 import { PageHeader, Reveal } from '/components'
+import React from 'react';
 
 export type Props = {
 	employees: EmployeeRecord[]
@@ -28,13 +29,13 @@ export default function WhoWeAre({ employees, we }: Props) {
 			</section>
 			<ul>
 				{employees.map(({ name, image, text }, idx) =>
-					<>
+					<React.Fragment key={idx}>
 						{idx === 1 &&
-							<li key={`divider-${idx}`} className={s.divider}>
+							<li className={s.divider}>
 								<h1>{we.headlineEmployee}</h1>
 							</li>
 						}
-						<li key={idx}>
+						<li>
 							<figure>
 								{image &&
 									<Image
@@ -51,7 +52,7 @@ export default function WhoWeAre({ employees, we }: Props) {
 								</div>
 							</Reveal>
 						</li>
-					</>
+					</React.Fragment>
 				)}
 			</ul>
 		</div>

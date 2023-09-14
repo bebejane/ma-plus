@@ -135,6 +135,11 @@
     color: var(--black);
     margin-left: var(--outer-margin);
     padding-bottom: 0;
+    line-height: 1;
+
+    span {
+      line-height: 1;
+    }
 
     .c {
       &::before {

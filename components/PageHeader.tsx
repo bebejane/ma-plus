@@ -1,7 +1,6 @@
 import s from './PageHeader.module.scss'
 import cn from 'classnames'
 import useStore from '/lib/store'
-
 type Props = {
   children: string
 }
