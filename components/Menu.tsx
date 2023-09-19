@@ -30,14 +30,14 @@ export default function Menu({ items, contact }: MenuProps) {
   const handleClick = (ev) => {
 
     const item = items.find(item => item.id === ev.currentTarget.id)
+    const sSub = selectedSub?.id === item.id ? undefined : item
+    const r = document.querySelector<HTMLElement>(':root')
+    const sectionId = pathToSectionId(asPath)
+    r.style.setProperty('--section-color', `var(--${sSub ? item.id : sectionId ?? 'home'}-color)`);
 
-    if ((ev.target as HTMLElement).tagName === 'SPAN') {
-      const sSub = selectedSub?.id === item.id ? undefined : item
-      const r = document.querySelector<HTMLElement>(':root')
-      const sectionId = pathToSectionId(asPath)
-      r.style.setProperty('--section-color', `var(--${sSub ? item.id : sectionId ?? 'home'}-color)`);
+    if ((ev.target as HTMLElement).tagName === 'SPAN')
       setSelectedSub(sSub)
-    }
+
   }
 
   useEffect(() => {
@@ -55,6 +55,8 @@ export default function Menu({ items, contact }: MenuProps) {
     setSelected(selected)
     if (whatWeDoSection)
       setSelectedSub(selected?.sub?.find(item => item.slug === asPath))
+
+
   }, [whatWeDoSection, asPath])
 
   useEffect(() => {
