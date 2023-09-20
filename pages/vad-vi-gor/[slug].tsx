@@ -37,6 +37,7 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
                   data={image.responsiveImage}
                   className={s.image}
                   pictureClassName={s.picture}
+                  intersectionMargin="0px 0px 1000px 0px"
                 />
               }
               {pdf && <a href={pdf.url} className={s.download}>PDF</a>}
