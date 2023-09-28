@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 dependencies:
   '@apollo/client':
     specifier: ^3.7.15
@@ -68,8 +72,8 @@ dependencies:
     specifier: ^18.2.0
     version: 18.2.0
   react-datocms:
-    specifier: ^3.1.4
-    version: 3.1.4(graphql@16.6.0)(react@18.2.0)
+    specifier: ^4.1.3
+    version: 4.1.3(graphql@16.6.0)(react@18.2.0)
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
@@ -1632,6 +1636,7 @@ packages:
 
   /@emotion/memoize@0.7.4:
     resolution: {integrity: sha512-Ja/Vfqe3HpuzRsG1oBtWTHk2PGZ7GR+2Vz5iYGelAw8dx32K0y7PjVuxK6z1nMpZOqAFsRUPCkK1YjJ56qJlgw==}
+    requiresBuild: true
     dev: false
     optional: true
 
@@ -6325,8 +6330,9 @@ packages:
       performance-now: 2.1.0
     dev: false
 
-  /react-datocms@3.1.4(graphql@16.6.0)(react@18.2.0):
-    resolution: {integrity: sha512-L+esZt3id1b/shQkjPmIUU+CEjwuz1ZRTMU+LylMC3uPUat3iuads/V625Bnz6blyrRxpPlcd14Uit9LxnHfcg==}
+  /react-datocms@4.1.3(graphql@16.6.0)(react@18.2.0):
+    resolution: {integrity: sha512-60LfzlPbud7M9cDXzTaZy6sgCBHGWM/WEN4pZxlvnRRW74tOAAKjSgcGIJ5WIC/I+iiXvHp//75TQg0Y7+ozZQ==}
+    engines: {node: '>=8.0.0'}
     peerDependencies:
       react: '>= 16.12.0'
     dependencies:
@@ -6334,7 +6340,7 @@ packages:
       datocms-structured-text-generic-html-renderer: 2.0.4
       datocms-structured-text-utils: 2.0.4
       react: 18.2.0
-      react-intersection-observer: 8.34.0(react@18.2.0)
+      react-intersection-observer: 9.4.4(react@18.2.0)
       react-string-replace: 1.1.0
       universal-base64: 2.1.0
       use-deep-compare-effect: 1.8.1(react@18.2.0)
@@ -6350,14 +6356,6 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
-    dev: false
-
-  /react-intersection-observer@8.34.0(react@18.2.0):
-    resolution: {integrity: sha512-TYKh52Zc0Uptp5/b4N91XydfSGKubEhgZRtcg1rhTKABXijc4Sdr1uTp5lJ8TN27jwUsdXxjHXtHa0kPj704sw==}
-    peerDependencies:
-      react: ^15.0.0 || ^16.0.0 || ^17.0.0|| ^18.0.0
-    dependencies:
-      react: 18.2.0
     dev: false
 
   /react-intersection-observer@9.4.4(react@18.2.0):

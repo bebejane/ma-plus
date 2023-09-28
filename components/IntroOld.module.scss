@@ -67,13 +67,25 @@
       &.end {
         animation: end-v 0.3s ease-in-out forwards;
 
-        @keyframes end-v {
-          to {
-            left: var(--endX);
-            transform: translateX(0%);
+        @include mq($from: tablet) {
+
+          @keyframes end-v {
+            to {
+              left: var(--endX);
+              transform: translateX(0%);
+            }
           }
         }
+      }
 
+      @include mq($until: tablet) {
+
+        @keyframes end-v {
+          to {
+            height: 100%;
+            transform: translateY(100%);
+          }
+        }
       }
 
     }
@@ -118,6 +130,8 @@
     top: calc(50% - 0.5em);
     left: 0;
     transform: translateY(-100%);
+    font-size: 1.5rem;
+    font-weight: 700;
     color: var(--black);
     margin-left: var(--outer-margin);
     padding-bottom: 0;
@@ -128,6 +142,9 @@
     }
 
     .c {
+      &::before {
+        //content: " ";
+      }
 
       animation: reveal 1s steps(1, start) forwards;
       opacity: 0;
@@ -139,7 +156,20 @@
       }
     }
 
+    @include mq($until: tablet) {
+      >span {
+        display: block;
+        min-height: 1.3em;
 
+        &:nth-child(1) {
+          margin-bottom: 0.4em;
+        }
+
+        &:nth-child(2) {
+          margin-bottom: -2em;
+        }
+      }
+    }
   }
 }
 

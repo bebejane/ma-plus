@@ -42,6 +42,7 @@ export default function WhoWeAre({ employees, we }: Props) {
 										data={image.responsiveImage}
 										className={s.image}
 										pictureClassName={s.picture}
+										placeholderClassName={s.placeholder}
 										intersectionMargin="0px 0px 1000px 0px"
 									/>
 								}

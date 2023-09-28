@@ -93,6 +93,14 @@
           width: 100%;
         }
 
+        .placeholder {
+          object-fit: cover;
+          width: 100% !important;
+          height: 100% !important;
+          left: 0 !important;
+          top: 0 !important;
+        }
+
         .download {
           z-index: 2;
           position: absolute;
