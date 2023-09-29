@@ -47,7 +47,7 @@ export default function Intro({ }: Props) {
 
       const ma = document.querySelectorAll('#intro-header > span > span:first-child')
       const other = document.querySelectorAll('#intro-header > span > span:not(:first-child)')
-      const speed = 700
+      const speed = 400
 
       header.style.top = header.getBoundingClientRect().top + 'px'
       header.style.transition = `all ${speed}ms ease-in-out`
@@ -61,8 +61,9 @@ export default function Intro({ }: Props) {
       header.style.padding = '0'
       header.style.left = logo.getBoundingClientRect().left + 'px'
       header.style.top = `calc(${logo.getBoundingClientRect().top + 'px'})`
-      await sleep(speed / 2)
       setStep('end')
+      await sleep(speed / 2)
+
     }
 
     if (step === 'text')
