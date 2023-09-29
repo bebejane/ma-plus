@@ -65,12 +65,14 @@
       }
 
       &.end {
-        animation: end-v 0.3s ease-in-out forwards;
+        animation: end-v 0.4s ease-in-out 0s forwards;
 
         @keyframes end-v {
           to {
             left: var(--endX);
             transform: translateX(0%);
+            //            opacity: 0;
+            top: 100%;
           }
         }
 
