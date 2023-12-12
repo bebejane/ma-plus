@@ -52,6 +52,7 @@ p.intro,
 }
 
 .small,
+h4,
 .small p,
 footer,
 footer nav,
@@ -62,6 +63,12 @@ footer nav,
   @include mq($from: wide) {
     font-size: 0.7rem;
   }
+}
+
+h4 {
+  font-family: $body-font !important;
+  font-weight: normal;
+  padding-bottom: 1.5em;
 }
 
 nav,

@@ -1,15 +1,10 @@
 .container {
-
-  @include mq($from: tablet) {
-    margin-top: var(--navbar-height);
-  }
-
-  >ul {
+  > ul {
     list-style: none;
     padding: 0;
     margin: 0;
 
-    >li {
+    > li {
       display: flex;
       flex-direction: column;
 
@@ -94,6 +89,16 @@
           margin-bottom: 0;
         }
 
+        .link {
+          display: inline-block;
+          padding-top: 1em;
+          border-bottom: 1px solid var(--section-color);
+          margin-bottom: 1em;
+          &:hover {
+            color: var(--section-color);
+          }
+        }
+
         p:not(:first-of-type) {
           text-indent: 2rem;
         }
@@ -103,8 +108,6 @@
             padding-bottom: 0.5em;
           }
         }
-
-
       }
     }
   }

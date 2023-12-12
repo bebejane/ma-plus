@@ -13,7 +13,7 @@
 	--what-we-do-color: #0434d9;
 	--who-we-are-color: #13c75b;
 	--contact-color: #ffa500;
-	--news-color: #ff0909;
+	--news-color: #db22bd;
 
 	--line: max(2px, 0.2vw);
 	--line-height: 1.25;
@@ -92,9 +92,11 @@ a {
 	text-decoration: none;
 	color: var(--foreground);
 
-	&:hover {}
+	&:hover {
+	}
 
-	&:visited {}
+	&:visited {
+	}
 }
 
 p a {
@@ -119,25 +121,31 @@ button {
 	color: var(--foreground);
 	border: 0;
 
-	@include mq($from: tablet) {}
-
-	&.back {
-		@include mq($from: tablet) {}
+	@include mq($from: tablet) {
 	}
 
-	&:hover {}
+	&.back {
+		@include mq($from: tablet) {
+		}
+	}
+
+	&:hover {
+	}
 }
 
 figcaption {
-	@include mq($until: tablet) {}
+	@include mq($until: tablet) {
+	}
 }
 
-hr {}
+hr {
+}
 
 input,
 textarea,
 select {
-	&:focus {}
+	&:focus {
+	}
 }
 
 select {

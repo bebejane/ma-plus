@@ -8,6 +8,7 @@ import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
 import { Image } from 'react-datocms';
 import { format } from 'date-fns';
 
+
 export type Props = {
   news: NewsRecord[]
 }
@@ -33,11 +34,11 @@ export default function News({ news }: Props) {
             </figure>
             <Reveal effect="fadeUp" delay={500} duration={300} distance={1}>
               <div className={s.content}>
-                {format(new Date(_createdAt), 'yyyy-MM-dd')}
-                <h2><Markdown>{title}</Markdown></h2>
+                <h4 className="small">{format(new Date(_createdAt), 'yyyy-MM-dd')}</h4>
+                <h1><Markdown>{title}</Markdown></h1>
                 <Markdown className={s.text}>{text}</Markdown>
                 {link &&
-                  <a href={link} className={s.link}>Läs mer</a>
+                  <a href={link} className={cn(s.link, "small")}>Läs mer</a>
                 }
               </div>
             </Reveal>
