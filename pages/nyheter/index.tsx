@@ -6,6 +6,7 @@ import { AllNewsDocument } from "/graphql";
 import { Reveal } from '/components';
 import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
 import { Image } from 'react-datocms';
+import { format } from 'date-fns';
 
 export type Props = {
   news: NewsRecord[]
@@ -16,7 +17,7 @@ export default function News({ news }: Props) {
   return (
     <div className={s.container}>
       <ul>
-        {news.map(({ id, title, image, text, pdf, link }, idx) =>
+        {news.map(({ id, title, image, text, pdf, link, _createdAt }, idx) =>
           <li key={id}>
             <figure>
               {image &&
@@ -32,7 +33,8 @@ export default function News({ news }: Props) {
             </figure>
             <Reveal effect="fadeUp" delay={500} duration={300} distance={1}>
               <div className={s.content}>
-                <h1><Markdown>{title}</Markdown></h1>
+                {format(new Date(_createdAt), 'yyyy-MM-dd')}
+                <h2><Markdown>{title}</Markdown></h2>
                 <Markdown className={s.text}>{text}</Markdown>
                 {link &&
                   <a href={link} className={s.link}>Läs mer</a>

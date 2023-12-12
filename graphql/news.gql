@@ -10,5 +10,6 @@ query AllNews($first: IntType = 100, $skip: IntType = 0) {
 			...FileFragment
 		}
 		link
+		_createdAt
 	}
 }
