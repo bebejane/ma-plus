@@ -34,6 +34,9 @@ export default function News({ news }: Props) {
               <div className={s.content}>
                 <h1><Markdown>{title}</Markdown></h1>
                 <Markdown className={s.text}>{text}</Markdown>
+                {link &&
+                  <a href={link} className={s.link}>Läs mer</a>
+                }
               </div>
             </Reveal>
           </li>
