@@ -28,6 +28,10 @@
       padding-left: calc(var(--side-s) + var(--outer-margin));
     }
 
+    &.news {
+      padding-left: calc(var(--side-l) + var(--outer-margin));
+    }
+
     &.home {
       padding-left: calc(var(--side-default) + var(--outer-margin));
     }

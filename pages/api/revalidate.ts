@@ -32,6 +32,9 @@ export default withRevalidate(async (record, revalidate) => {
     case 'contact':
       paths.push(`/`)
       break;
+    case 'news':
+      paths.push(`/nyheter`)
+      break;
     default:
       break;
   }

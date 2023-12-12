@@ -23,6 +23,10 @@
     left: var(--side-m);
   }
 
+  &.news {
+    left: var(--side-l);
+  }
+
   &.about-us {
     left: var(--side-s);
   }

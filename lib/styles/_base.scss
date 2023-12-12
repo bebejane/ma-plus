@@ -13,6 +13,7 @@
 	--what-we-do-color: #0434d9;
 	--who-we-are-color: #13c75b;
 	--contact-color: #ffa500;
+	--news-color: #ff0909;
 
 	--line: max(2px, 0.2vw);
 	--line-height: 1.25;
@@ -178,5 +179,9 @@ select {
 
 	[data-type="contact"]:hover {
 		color: var(--contact-color);
+	}
+
+	[data-type="news"]:hover {
+		color: var(--contact-news);
 	}
 }

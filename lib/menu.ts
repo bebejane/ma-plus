@@ -5,6 +5,7 @@ const base: Menu = [
   { id: 'about-us', label: 'Om oss', slug: '/om-oss', sub: null },
   { id: 'what-we-do', label: 'Vad vi gör', slug: null, sub: [] },
   { id: 'who-we-are', label: 'Vilka vi är', slug: '/vilka-vi-ar', sub: null },
+  { id: 'news', label: 'Nyheter', slug: '/nyheter', sub: null },
   { id: 'contact', label: 'Kontakt', slug: null, sub: null },
 ]
 
@@ -33,6 +34,8 @@ export const pathToSectionId = (path: string): SectionId => {
       return 'who-we-are'
     case 'vad-vi-gor':
       return 'what-we-do'
+    case 'nyheter':
+      return 'news'
     case 'kontakt':
       return 'contact'
     default:
@@ -41,7 +44,7 @@ export const pathToSectionId = (path: string): SectionId => {
 }
 
 export type Menu = MenuItem[]
-export type SectionId = 'home' | 'about-us' | 'what-we-do' | 'who-we-are' | 'contact'
+export type SectionId = 'home' | 'about-us' | 'what-we-do' | 'who-we-are' | 'contact' | 'news'
 export type MenuItem = {
   id: SectionId
   label: string

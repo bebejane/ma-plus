@@ -1,0 +1,14 @@
+query AllNews($first: IntType = 100, $skip: IntType = 0) {
+	news: allNews(first: $first, skip: $skip) {
+		id
+		title
+		text(markdown: false)
+		image {
+			...ImageFragment
+		}
+		pdf {
+			...FileFragment
+		}
+		link
+	}
+}
