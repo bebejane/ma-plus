@@ -16,6 +16,7 @@
   }
 
   @include mq($from: tablet) {
+
     &.what-we-do {
       padding-left: calc(var(--side-l) + var(--outer-margin));
     }

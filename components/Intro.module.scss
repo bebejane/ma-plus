@@ -31,7 +31,8 @@
     left: 0;
     --endX: 50%;
 
-    &.what-we-do {
+    &.what-we-do,
+    &.news {
       --endX: var(--side-l);
     }
 
