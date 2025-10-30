@@ -1,22 +1,19 @@
-import s from './index.module.scss';
+import s from './page.module.scss';
 import cn from 'classnames';
-import withGlobalProps from '/lib/withGlobalProps';
 import { apiQuery } from 'next-dato-utils/api';
-import { AllNewsDocument } from '/graphql';
-import { Reveal } from '/components';
-import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
+import { AllNewsDocument } from '@/graphql';
+import { Reveal } from '@/components';
+import { Markdown } from 'next-dato-utils/components';
 import { Image } from 'react-datocms';
 import { format } from 'date-fns';
 
-export type Props = {
-	news: NewsRecord[];
-};
+export default async function NewsPage() {
+	const { allNews } = await apiQuery(AllNewsDocument, { all: true });
 
-export default function News({ news }: Props) {
 	return (
 		<div className={s.container}>
 			<ul>
-				{news.map(({ id, title, image, text, pdf, link, _createdAt }, idx) => (
+				{allNews.map(({ id, title, image, text, pdf, link, _createdAt }, idx) => (
 					<li key={id}>
 						<figure>
 							{image && (
@@ -38,9 +35,9 @@ export default function News({ news }: Props) {
 							<div className={s.content}>
 								<h4 className='small'>{format(new Date(_createdAt), 'yyyy-MM-dd')}</h4>
 								<h1>
-									<Markdown>{title}</Markdown>
+									<Markdown content={title} />
 								</h1>
-								<Markdown className={s.text}>{text}</Markdown>
+								<Markdown className={s.text} content={text} />
 								{link && (
 									<a href={link} className={cn(s.link, 'small')}>
 										Läs mer
@@ -54,15 +51,3 @@ export default function News({ news }: Props) {
 		</div>
 	);
 }
-
-export const getStaticProps = withGlobalProps(
-	{ queries: [AllNewsDocument] },
-	async ({ props, revalidate, context }: any) => {
-		return {
-			props: {
-				...props,
-			},
-			revalidate,
-		};
-	}
-);

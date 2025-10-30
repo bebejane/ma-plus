@@ -1,8 +1,8 @@
 import { apiQuery, SEOQuery } from 'next-dato-utils/api';
 import { GetStaticProps, GetServerSideProps, GetStaticPropsContext } from 'next';
-import { GlobalDocument, ContactDocument } from '/graphql';
+import { GlobalDocument, ContactDocument } from '@/graphql';
 import type { TypedDocumentNode } from '@apollo/client/core/types.js';
-import { buildMenu } from '/lib/menu';
+import { buildMenu } from '@/lib/menu';
 
 export default function withGlobalProps(opt: any, callback: Function): GetStaticProps | GetServerSideProps {
 	const revalidate: number = parseInt(process.env.REVALIDATE_TIME);

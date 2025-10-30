@@ -1,17 +1,28 @@
-'use server';
-
 import s from './page.module.scss';
-import cn from 'classnames';
 import { apiQuery } from 'next-dato-utils/api';
-import { DraftMode } from 'next-dato-utils/components';
-import { StartDocument } from '@/graphql';
+import { DraftMode, Markdown } from 'next-dato-utils/components';
+import { AllWhatTypesDocument, StartDocument } from '@/graphql';
+import Link from 'next/link';
+import HomeGallery from '@/components/HomeGallery';
 
-export default async function Home() {
+export default async function HomePage() {
 	const { start, draftUrl } = await apiQuery(StartDocument);
+	const { whats } = await apiQuery(AllWhatTypesDocument);
 
 	return (
 		<>
-			<div className={s.start}>hej</div>
+			<div className={s.container}>
+				<HomeGallery whats={whats} start={start} />
+				<div className={s.about}>
+					<h3>Om oss</h3>
+					<div className='intro'>
+						<Markdown content={start.text} />
+					</div>
+					<Link className='mid' href='/om-oss'>
+						Läs mer
+					</Link>
+				</div>
+			</div>
 			<DraftMode url={draftUrl} tag={start?.id} />
 		</>
 	);

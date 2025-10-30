@@ -1,19 +1,23 @@
-import s from './[slug].module.scss';
+import s from './page.module.scss';
 import cn from 'classnames';
-import withGlobalProps from '/lib/withGlobalProps';
 import { apiQuery } from 'next-dato-utils/api';
-import { AllWhatTypesDocument, WhatExamplesDocument } from '/graphql';
-import { PageHeader, Reveal } from '/components';
-import { DatoMarkdown as Markdown } from 'dato-nextjs-utils/components';
+import { AllWhatTypesDocument, WhatExamplesDocument } from '@/graphql';
+import { PageHeader, Reveal } from '@/components';
+import { Markdown } from 'next-dato-utils/components';
 import { Image } from 'react-datocms';
-import useStore from '/lib/store';
 
 export type Props = {
 	whatExamples: WhatExampleRecord[];
 	whatType: WhatRecord;
 };
 
-export default function WhatWeDo({ whatExamples, whatType }: Props) {
+export default async function WhatWeDo({ params }) {
+	const { slug } = await params;
+
+	const { whats } = await apiQuery(AllWhatTypesDocument);
+	const whatType = whats.find((item) => item.slug === slug);
+	const { whatExamples } = await apiQuery(WhatExamplesDocument, { variables: { typeId: whatType.id } });
+
 	return (
 		<div className={s.container}>
 			<section className={s.header}>
@@ -21,7 +25,7 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
 					<PageHeader>{whatType.title}</PageHeader>
 				</header>
 				<div>
-					<Markdown className={cn('intro', s.intro)}>{whatType.intro}</Markdown>
+					<Markdown className={cn('intro', s.intro)} content={whatType.intro} />
 				</div>
 			</section>
 			<ul>
@@ -34,7 +38,7 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
 									className={s.image}
 									pictureClassName={s.picture}
 									placeholderClassName={s.placeholder}
-									intersectionMargin='0px 0px 1000px 0px'
+									intersectionMargin='0px 0px 200% 0px'
 								/>
 							)}
 							{pdf && (
@@ -46,7 +50,7 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
 						<Reveal effect='fadeUp' delay={500} duration={300} distance={1}>
 							<div className={s.content}>
 								<h1>
-									<Markdown>{title}</Markdown>
+									<Markdown content={title} />
 								</h1>
 								<ul className={cn(s.meta, 'small')}>
 									{client && (
@@ -62,7 +66,7 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
 										</li>
 									)}
 								</ul>
-								<Markdown className={s.text}>{text}</Markdown>
+								<Markdown className={s.text} content={text} />
 							</div>
 						</Reveal>
 					</li>
@@ -71,30 +75,3 @@ export default function WhatWeDo({ whatExamples, whatType }: Props) {
 		</div>
 	);
 }
-
-export async function getStaticPaths() {
-	const { whats } = await apiQuery(AllWhatTypesDocument);
-	const paths = whats.map(({ slug }) => ({ params: { slug: slug } }));
-
-	return {
-		paths,
-		fallback: 'blocking',
-	};
-}
-
-export const getStaticProps = withGlobalProps({ queries: [] }, async ({ props, revalidate, context }: any) => {
-	const { slug } = context.params;
-
-	const { whats } = await apiQuery(AllWhatTypesDocument);
-	const whatType = whats.find((item) => item.slug === slug);
-	const { whatExamples } = await apiQuery(WhatExamplesDocument, { variables: { typeId: whatType.id } });
-
-	return {
-		props: {
-			...props,
-			whatExamples,
-			whatType,
-		},
-		revalidate,
-	};
-});

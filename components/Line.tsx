@@ -1,15 +1,15 @@
-import s from './Line.module.scss'
-import cn from 'classnames'
-import { useRouter } from 'next/router'
-import { pathToSectionId } from '/lib/menu'
+'use client';
 
-type Props = {
+import s from './Line.module.scss';
+import cn from 'classnames';
+import { usePathname } from 'next/navigation';
+import { pathToSectionId } from '@/lib/menu';
 
-}
+type Props = {};
 
-export default function Line({ }: Props) {
-  const router = useRouter()
-  const sectionId = pathToSectionId(router.asPath)
+export default function Line({}: Props) {
+	const pathname = usePathname();
+	const sectionId = pathToSectionId(pathname);
 
-  return <hr className={cn(s.line, s[sectionId])} />
+	return <hr className={cn(s.line, s[sectionId])} />;
 }

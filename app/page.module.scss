@@ -1,0 +1,38 @@
+.container {
+	display: flex;
+	flex-direction: column;
+
+	@include mq($from: tablet) {
+		flex-direction: row;
+	}
+
+	h3 {
+		@include mq($until: tablet) {
+			display: none;
+		}
+	}
+
+	.about {
+		flex: 0 0 50%;
+		padding: var(--outer-margin);
+
+		p:first-of-type {
+			margin-bottom: 0;
+		}
+
+		p:last-of-type {
+			text-indent: 1em;
+		}
+		@include mq($until: tablet) {
+			border-top: var(--line) solid var(--black);
+			padding-top: calc(2 * var(--outer-margin));
+			padding-bottom: calc(2 * var(--outer-margin));
+		}
+
+		@include mq($from: tablet) {
+			flex: 0 0 50%;
+			height: calc(100vh - var(--navbar-height));
+			max-height: calc(100vh - var(--navbar-height));
+		}
+	}
+}

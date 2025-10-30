@@ -1,31 +1,38 @@
 import '@/styles/index.scss';
 import s from './layout.module.scss';
 import { apiQuery } from 'next-dato-utils/api';
-import { GlobalDocument } from '@/graphql';
+import { ContactDocument, GlobalDocument } from '@/graphql';
 import { Metadata } from 'next';
 import { Icon } from 'next/dist/lib/metadata/types/metadata-types';
+import { buildMenu } from '@/lib/menu';
+import { Menu, Content, Line, Intro, Footer } from '@/components';
 
 export type LayoutProps = {
 	children: React.ReactNode;
 };
 
 export default async function RootLayout({ children }: LayoutProps) {
+	const menu = await buildMenu();
+	const { contact } = await apiQuery(ContactDocument);
+
 	return (
-		<>
-			<html lang='en'>
-				<body id='root'>
-					<main className={s.main}>{children}</main>
-				</body>
-			</html>
-		</>
+		<html lang='en'>
+			<body id='root'>
+				<Menu items={menu} contact={contact} />
+				<Content>{children}</Content>
+				<Footer contact={contact} />
+				<Line />
+				<Intro />
+			</body>
+		</html>
 	);
 }
 
 export async function generateMetadata(): Promise<Metadata> {
 	const {
+		//@ts-ignore
 		site: { globalSeo, faviconMetaTags },
 	} = await apiQuery(GlobalDocument, {
-		variables: {},
 		revalidate: 60 * 60,
 	});
 

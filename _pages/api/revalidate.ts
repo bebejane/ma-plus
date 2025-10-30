@@ -1,6 +1,6 @@
-import { withRevalidate } from 'dato-nextjs-utils/hoc';
+import { withRevalidate } from 'next-dato-utils/hoc';
 import { apiQuery } from 'next-dato-utils/api';
-import { WhatTypeDocument } from '/graphql';
+import { WhatTypeDocument } from '@/graphql';
 
 export default withRevalidate(async (record, revalidate) => {
 	const { api_key: apiKey } = record.model;

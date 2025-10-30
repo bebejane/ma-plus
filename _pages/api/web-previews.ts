@@ -1,6 +1,6 @@
-import { withWebPreviewsEdge } from 'dato-nextjs-utils/hoc';
+import { withWebPreviewsEdge } from 'next-dato-utils/hoc';
 import { apiQuery } from 'next-dato-utils/api';
-import { WhatTypeDocument } from '/graphql';
+import { WhatTypeDocument } from '@/graphql';
 
 export const config = {
 	runtime: 'edge',
