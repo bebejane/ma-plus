@@ -27,7 +27,7 @@ export default {
 			description: 'MAA Studio website',
 			start_url: '/',
 			display: 'standalone',
-			background_color: '#ffffff',
+			background_color: '#fcfcfc',
 			theme_color: '##ed5113',
 			icons: [
 				{
