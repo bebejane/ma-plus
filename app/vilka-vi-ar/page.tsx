@@ -38,7 +38,7 @@ export default async function WhoWeAre() {
 									<Image
 										data={image.responsiveImage}
 										className={s.image}
-										pictureClassName={s.picture}
+										imgClassName={s.picture}
 										placeholderClassName={s.placeholder}
 										intersectionMargin='0px 0px 200% 0px'
 									/>

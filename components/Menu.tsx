@@ -2,7 +2,7 @@
 
 import s from './Menu.module.scss';
 import cn from 'classnames';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import { useState, useRef, useEffect } from 'react';
 import type { Menu, MenuItem } from '@/lib/menu';
 import { pathToSectionId } from '@/lib/menu';
@@ -11,10 +11,9 @@ import useStore from '@/lib/store';
 import useDevice from '@/lib/hooks/useDevice';
 import { useScrollInfo } from 'next-dato-utils/hooks';
 
-export type MenuProps = { items: Menu; contact: ContactQuery['contact'] };
+type MenuProps = { items: Menu; contact: ContactQuery['contact'] };
 
 export default function Menu({ items, contact }: MenuProps) {
-	const router = useRouter();
 	const pathname = usePathname();
 	const menuRef = useRef<HTMLUListElement | null>(null);
 
@@ -43,17 +42,9 @@ export default function Menu({ items, contact }: MenuProps) {
 	};
 
 	useEffect(() => {
-		const handleRouteChangeComplete = (path: string) => {
-			if (!whatWeDoSection) setSelectedSub(undefined);
-			setShowMenu(false);
-		};
-		//router.events.on('routeChangeComplete', handleRouteChangeComplete);
-		//return () => router.events.off('routeChangeComplete', handleRouteChangeComplete);
-	}, [whatWeDoSection]);
-
-	useEffect(() => {
-		//setScrollInfo(scrollInfo);
-	}, [scrollInfo]);
+		if (!whatWeDoSection) setSelectedSub(undefined);
+		setShowMenu(false);
+	}, [whatWeDoSection, pathname]);
 
 	useEffect(() => {
 		const r = document.querySelector<HTMLElement>(':root');

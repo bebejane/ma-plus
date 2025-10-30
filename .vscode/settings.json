@@ -1,10 +1,10 @@
 {
   "files.exclude": {
-    ".vscode": false,
-    "@types": false,
-    ".next": false,
-    ".vercel": false,
-    "node_modules": false
+    ".vscode": true,
+    "@types": true,
+    ".next": true,
+    ".vercel": true,
+    "node_modules": true
   },
   "workspace.isHidden": true,
   "dotenv.enableAutocloaking": false

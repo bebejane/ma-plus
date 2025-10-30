@@ -82,23 +82,25 @@ export default function Reveal(props: Props) {
 	const [visRef, { ratio, wasVisible }] = useVisibility('', threshhold, steps);
 	const effectClass = ratio > 0 || wasVisible ? s[props.effect] : undefined;
 
-	const style = {
+	const style: React.CSSProperties = {
 		animationDuration: `${duration / 1000}s`,
 		animationDelay: `${delay / 1000}s`,
-		transform: effect.transform ? `${effect.transform}(${effect.direction}${distance}${effect.unit})` : undefined,
-		opacity: fade,
+		...(effect.transform && { transform: `${effect.transform}(${effect.direction}${distance}${effect.unit})` }),
+		opacity: fade.toString(),
 	};
 
 	return (
 		<>
-			{React.Children.map(props.children, (child: ReactElement, idx) => {
-				const p = {
-					ref: idx === 0 ? visRef : null,
-					...child.props,
-					className: cn(effectClass, child.props.className),
-					style,
+			{React.Children.map(props.children, (child: ReactElement<any>, idx) => {
+				const mergedStyle: React.CSSProperties = {
+					...(child.props.style as React.CSSProperties),
+					...style,
 				};
-				return React.cloneElement(child, p);
+				return React.cloneElement(child, {
+					ref: idx === 0 ? visRef : null,
+					className: cn(effectClass, child.props.className),
+					style: mergedStyle,
+				});
 			})}
 		</>
 	);

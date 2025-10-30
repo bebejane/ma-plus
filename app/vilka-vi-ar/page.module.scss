@@ -1,125 +1,124 @@
 .container {
-  .header {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    border-bottom: var(--line) solid var(--section-color);
-    padding: var(--outer-margin);
+	.header {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		border-bottom: var(--line) solid var(--section-color);
+		padding: var(--outer-margin);
 
-    header {
-      @include mq($until: tablet) {
-        display: none;
-      }
+		header {
+			@include mq($until: tablet) {
+				display: none;
+			}
 
-      display: flex;
-      flex-direction: column;
-      flex: 0 0 var(--side-m);
+			display: flex;
+			flex-direction: column;
+			flex: 0 0 var(--side-m);
 
-      h3:first-child {
-        flex: 1 1 100%;
-      }
-    }
+			h3:first-child {
+				flex: 1 1 100%;
+			}
+		}
 
-    .intro {
-      @include mq($from: tablet) {
-        padding-right: calc(var(--grid-unit) * 2);
-      }
-    }
-  }
+		.intro {
+			@include mq($from: tablet) {
+				padding-right: calc(var(--grid-unit) * 2);
+			}
+		}
+	}
 
-  >ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+	> ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
 
-    >li {
-      display: flex;
-      flex-direction: column;
+		> li {
+			display: flex;
+			flex-direction: column;
 
-      @include mq($from: tablet) {
-        flex-direction: row;
-      }
+			@include mq($from: tablet) {
+				flex-direction: row;
+			}
 
-      border-bottom: var(--line) solid var(--section-color);
-      height: 100%;
+			border-bottom: var(--line) solid var(--section-color);
+			height: 100%;
 
-      &:last-of-type {
-        border-bottom: none;
-      }
+			&:last-of-type {
+				border-bottom: none;
+			}
 
-      figure {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex: 0 0 var(--side-m);
+			figure {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				flex: 0 0 var(--side-m);
 
-        @include mq($until: tablet) {
-          max-height: 70vw;
-        }
+				@include mq($until: tablet) {
+					max-height: 70vw;
+				}
 
-        max-height: calc(1.2 * var(--side-m));
+				max-height: calc(1.2 * var(--side-m));
 
-        @include mq($from: tablet) {
-          position: sticky;
-          top: var(--navbar-height);
-        }
+				@include mq($from: tablet) {
+					position: sticky;
+					top: var(--navbar-height);
+				}
 
-        .image,
-        .picture,
-        .placeholder {
-          object-fit: cover;
-          height: 100%;
-          max-width: 100% !important;
-        }
+				.image,
+				.picture,
+				.placeholder {
+					object-fit: cover;
+					height: 100%;
+					max-width: 100% !important;
+				}
 
-        .placeholder {
-          object-fit: cover;
-          width: 100% !important;
-          height: 100% !important;
-          left: 0 !important;
-          top: 0 !important;
-        }
+				.placeholder {
+					object-fit: cover;
+					width: 100% !important;
+					height: 100% !important;
+					left: 0 !important;
+					top: 0 !important;
+				}
+			}
 
-      }
+			&.divider {
+				padding: var(--outer-margin);
 
-      &.divider {
-        padding: var(--outer-margin);
+				@include mq($from: tablet) {
+					padding-left: var(--side-m);
+				}
 
-        @include mq($from: tablet) {
-          padding-left: var(--side-m);
-        }
+				h1 {
+					@include mq($from: tablet) {
+						margin-left: var(--outer-margin);
+					}
 
-        h1 {
-          @include mq($from: tablet) {
-            margin-left: var(--outer-margin);
-          }
+					padding-bottom: 0;
+				}
+			}
 
-          padding-bottom: 0;
-        }
-      }
+			.content {
+				flex: 1 1 auto;
+				padding: var(--outer-margin);
 
-      .content {
-        flex: 1 1 auto;
-        padding: var(--outer-margin);
+				@include mq($from: tablet) {
+					padding-right: calc(var(--grid-unit) * 3);
+				}
 
-        @include mq($from: tablet) {
-          padding-right: calc(var(--grid-unit) * 3);
-        }
+				p:not(:first-of-type) {
+					text-indent: var(--text-indent);
+				}
 
-        p:not(:first-of-type) {
-          text-indent: var(--text-indent);
-        }
+				p {
+					margin-bottom: 0;
 
-        p {
-          margin-bottom: 0;
-
-          &:last-of-type {
-            @include mq($until: tablet) {
-              padding-bottom: 0.5em;
-            }
-          }
-        }
-      }
-    }
-  }
+					&:last-of-type {
+						@include mq($until: tablet) {
+							padding-bottom: 0.5em;
+						}
+					}
+				}
+			}
+		}
+	}
 }
