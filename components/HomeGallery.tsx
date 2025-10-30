@@ -16,7 +16,7 @@ import useStore from '@/lib/store';
 SwiperCore.use([EffectFade, Autoplay]);
 
 export type Props = {
-	whats: AllWhatTypesQuery['whats'];
+	whats: AllWhatTypesQuery['allWhats'];
 	start: StartQuery['start'];
 };
 

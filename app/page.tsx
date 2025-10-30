@@ -7,12 +7,12 @@ import HomeGallery from '@/components/HomeGallery';
 
 export default async function HomePage() {
 	const { start, draftUrl } = await apiQuery(StartDocument);
-	const { whats } = await apiQuery(AllWhatTypesDocument);
+	const { allWhats } = await apiQuery(AllWhatTypesDocument);
 
 	return (
 		<>
 			<div className={s.container}>
-				<HomeGallery whats={whats} start={start} />
+				<HomeGallery whats={allWhats} start={start} />
 				<div className={s.about}>
 					<h3>Om oss</h3>
 					<div className='intro'>

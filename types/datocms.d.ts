@@ -3461,27 +3461,38 @@ type WeQueryVariables = Exact<{ [key: string]: never; }>;
 
 type WeQuery = { __typename?: 'Query', we?: { __typename?: 'WeRecord', id: any, title?: string | null, intro?: string | null, headlineEmployee?: string | null } | null };
 
-type AllWhatsQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type AllWhatsQuery = { __typename?: 'Query', allWhats: Array<{ __typename?: 'WhatRecord', id: any, title?: string | null, intro?: string | null }> };
-
-type AllWhatExamplesQueryVariables = Exact<{ [key: string]: never; }>;
-
-
-type AllWhatExamplesQuery = { __typename?: 'Query', whatExamples: Array<{ __typename?: 'WhatExampleRecord', id: any, title?: string | null, client?: string | null, collaborators?: string | null, text?: string | null, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null } | null, whatType: { __typename?: 'WhatRecord', id: any, title?: string | null, intro?: string | null, slug: string }, pdf?: { __typename?: 'FileField', alt?: string | null, basename: string, filename: string, format: string, id: any, title?: string | null, url: string } | null }> };
-
-type WhatExamplesQueryVariables = Exact<{
-  typeId: Scalars['ItemId']['input'];
+type AllWhatsQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
 }>;
 
 
-type WhatExamplesQuery = { __typename?: 'Query', whatExamples: Array<{ __typename?: 'WhatExampleRecord', id: any, title?: string | null, client?: string | null, collaborators?: string | null, text?: string | null, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null } | null, whatType: { __typename?: 'WhatRecord', id: any, title?: string | null, intro?: string | null, slug: string }, pdf?: { __typename?: 'FileField', alt?: string | null, basename: string, filename: string, format: string, id: any, title?: string | null, url: string } | null }> };
+type AllWhatsQuery = { __typename?: 'Query', allWhats: Array<{ __typename?: 'WhatRecord', id: any, title?: string | null, intro?: string | null, slug: string }>, _allWhatsMeta: { __typename?: 'CollectionMetadata', count: any } };
 
-type AllWhatTypesQueryVariables = Exact<{ [key: string]: never; }>;
+type AllWhatExamplesQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+}>;
 
 
-type AllWhatTypesQuery = { __typename?: 'Query', whats: Array<{ __typename?: 'WhatRecord', id: any, title?: string | null, intro?: string | null, slug: string }> };
+type AllWhatExamplesQuery = { __typename?: 'Query', allWhatExamples: Array<{ __typename?: 'WhatExampleRecord', id: any, title?: string | null, client?: string | null, collaborators?: string | null, text?: string | null, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null } | null, whatType: { __typename?: 'WhatRecord', id: any, title?: string | null, intro?: string | null, slug: string }, pdf?: { __typename?: 'FileField', alt?: string | null, basename: string, filename: string, format: string, id: any, title?: string | null, url: string } | null }>, _allWhatExamplesMeta: { __typename?: 'CollectionMetadata', count: any } };
+
+type WhatExamplesQueryVariables = Exact<{
+  typeId: Scalars['ItemId']['input'];
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+}>;
+
+
+type WhatExamplesQuery = { __typename?: 'Query', allWhatExamples: Array<{ __typename?: 'WhatExampleRecord', id: any, title?: string | null, client?: string | null, collaborators?: string | null, text?: string | null, image?: { __typename?: 'FileField', alt?: string | null, basename: string, format: string, height?: any | null, id: any, mimeType: string, size: any, title?: string | null, url: string, width?: any | null, responsiveImage?: { __typename?: 'ResponsiveImage', alt?: string | null, aspectRatio: any, base64?: string | null, bgColor?: string | null, height: any, sizes: string, src: string, srcSet: string, webpSrcSet: string, title?: string | null, width: any } | null, video?: { __typename?: 'UploadVideoField', thumbnailUrl: string, streamingUrl: string, framerate?: number | null, duration?: number | null, mp4high?: string | null, mp4med?: string | null, mp4low?: string | null } | null } | null, whatType: { __typename?: 'WhatRecord', id: any, title?: string | null, intro?: string | null, slug: string }, pdf?: { __typename?: 'FileField', alt?: string | null, basename: string, filename: string, format: string, id: any, title?: string | null, url: string } | null }>, _allWhatExamplesMeta: { __typename?: 'CollectionMetadata', count: any } };
+
+type AllWhatTypesQueryVariables = Exact<{
+  first?: InputMaybe<Scalars['IntType']['input']>;
+  skip?: InputMaybe<Scalars['IntType']['input']>;
+}>;
+
+
+type AllWhatTypesQuery = { __typename?: 'Query', allWhats: Array<{ __typename?: 'WhatRecord', id: any, title?: string | null, intro?: string | null, slug: string }>, _allWhatsMeta: { __typename?: 'CollectionMetadata', count: any } };
 
 type WhatTypeQueryVariables = Exact<{
   id: Scalars['ItemId']['input'];

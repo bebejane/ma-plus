@@ -39,8 +39,8 @@ export default {
 		} satisfies MetadataRoute.Manifest;
 	},
 	sitemap: async () => {
-		const { whats } = await apiQuery(AllWhatTypesDocument);
-		const whatsRoutes = whats.map(({ slug }) => ({
+		const { allWhats } = await apiQuery(AllWhatTypesDocument, { all: true });
+		const whatsRoutes = allWhats.map(({ slug }) => ({
 			url: `${process.env.NEXT_PUBLIC_SITE_URL}/vad-vi-gor/${slug}`,
 			lastModified: new Date(),
 			changeFrequency: 'weekly',

@@ -14,9 +14,9 @@ export type Props = {
 export default async function WhatWeDo({ params }) {
 	const { slug } = await params;
 
-	const { whats } = await apiQuery(AllWhatTypesDocument);
-	const whatType = whats.find((item) => item.slug === slug);
-	const { whatExamples } = await apiQuery(WhatExamplesDocument, { variables: { typeId: whatType.id } });
+	const { allWhats } = await apiQuery(AllWhatTypesDocument, { all: true });
+	const whatType = allWhats.find((item) => item.slug === slug);
+	const { allWhatExamples } = await apiQuery(WhatExamplesDocument, { all: true, variables: { typeId: whatType.id } });
 
 	return (
 		<div className={s.container}>
@@ -29,7 +29,7 @@ export default async function WhatWeDo({ params }) {
 				</div>
 			</section>
 			<ul>
-				{whatExamples.map(({ title, image, text, client, collaborators, pdf }, idx) => (
+				{allWhatExamples.map(({ title, image, text, client, collaborators, pdf }, idx) => (
 					<li key={idx}>
 						<figure>
 							{image && (
@@ -74,4 +74,9 @@ export default async function WhatWeDo({ params }) {
 			</ul>
 		</div>
 	);
+}
+
+export async function generateStaticParams() {
+	const { allWhats } = await apiQuery(AllWhatTypesDocument, { all: true });
+	return allWhats.map(({ slug }) => ({ slug }));
 }

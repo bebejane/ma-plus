@@ -1,29 +1,42 @@
-query AllWhats {
-	allWhats {
-		id
-		title
-		intro(markdown: false)
-	}
-}
-
-query AllWhatExamples {
-	whatExamples: allWhatExamples {
-		...WhatExampleFragment
-	}
-}
-
-query WhatExamples($typeId: ItemId!) {
-	whatExamples: allWhatExamples(filter: { whatType: { eq: $typeId } }) {
-		...WhatExampleFragment
-	}
-}
-
-query AllWhatTypes {
-	whats: allWhats {
+query AllWhats($first: IntType = 500, $skip: IntType = 0) {
+	allWhats(first: $first, skip: $skip) {
 		id
 		title
 		intro(markdown: false)
 		slug
+	}
+	_allWhatsMeta {
+		count
+	}
+}
+
+query AllWhatExamples($first: IntType = 500, $skip: IntType = 0) {
+	allWhatExamples(first: $first, skip: $skip) {
+		...WhatExampleFragment
+	}
+	_allWhatExamplesMeta {
+		count
+	}
+}
+
+query WhatExamples($typeId: ItemId!, $first: IntType = 500, $skip: IntType = 0) {
+	allWhatExamples(first: $first, skip: $skip, filter: { whatType: { eq: $typeId } }) {
+		...WhatExampleFragment
+	}
+	_allWhatExamplesMeta(filter: { whatType: { eq: $typeId } }) {
+		count
+	}
+}
+
+query AllWhatTypes($first: IntType = 500, $skip: IntType = 0) {
+	allWhats(first: $first, skip: $skip) {
+		id
+		title
+		intro(markdown: false)
+		slug
+	}
+	_allWhatsMeta {
+		count
 	}
 }
 
