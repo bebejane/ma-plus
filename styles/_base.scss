@@ -1,0 +1,201 @@
+@use 'fonts';
+@use 'mediaqueries' as *;
+
+:root {
+	--black: #161616;
+	--white: #fcfcfc;
+	--red: #bf0000;
+	--gray: gray;
+	--background: var(--white);
+	--foreground: var(--black);
+	--grid-unit: calc(100vw / 26);
+	--outer-margin: var(--grid-unit);
+
+	--body-font: 'Jost', Arial, Helvetica, Sans-Serif;
+	--headline-font: 'Jost', Arial, Helvetica, Sans-Serif;
+
+	--home-color: var(--black);
+	--about-us-color: #ed5113;
+	--what-we-do-color: #0434d9;
+	--who-we-are-color: #13c75b;
+	--contact-color: #ffa500;
+	--news-color: #db22bd;
+
+	--line: max(2px, 0.2vw);
+	--line-height: 1.25;
+	--color-transition: 0.2s ease-out;
+	--line-color-transition: border var(--color-transition);
+	--navbar-height: 3.3rem;
+	--text-indent: 2rem;
+
+	--side-default: 50%;
+	--side-s: calc(var(--grid-unit) * 6);
+	--side-m: calc(var(--grid-unit) * 8);
+	--side-l: calc(var(--grid-unit) * 10);
+
+	--z-line-home: 900;
+	--z-menu: 1000;
+	--z-line: 1100;
+	--z-menu-sub: 1200;
+	--z-footer: 1300;
+	--z-menu-mobile: 1400;
+	--z-menu-burger: 1500;
+	--z-intro: 2000;
+
+	--scrollbar-width: 10px;
+
+	@include mq($until: tablet) {
+		--text-indent: 1rem;
+	}
+}
+
+body {
+	width: 100%;
+	font-size: 100%;
+	line-height: 1em;
+	color: var(--foreground);
+	background-color: var(--background);
+	font-family: var(--body-font);
+	-webkit-font-smoothing: antialiased;
+	font-feature-settings: 'liga', 'kern';
+	overflow-x: hidden;
+	position: relative;
+}
+
+html {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	//height: 100%;
+}
+
+::-webkit-scrollbar {
+	-webkit-appearance: none;
+	background: var(--beige-light);
+}
+
+::-webkit-scrollbar:vertical {
+	width: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar:horizontal {
+	height: var(--scrollbar-width);
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--black);
+}
+
+*,
+*:before,
+*:after {
+	box-sizing: inherit;
+}
+
+a {
+	text-decoration: none;
+	color: var(--foreground);
+
+	&:hover {
+	}
+
+	&:visited {
+	}
+}
+
+p a {
+	text-decoration: underline 1px !important;
+	text-underline-offset: 0.15em;
+	text-decoration-thickness: 1px;
+
+	&:hover {
+		color: var(--beige-dark);
+	}
+}
+
+.intro {
+	margin-bottom: var(--small-space);
+
+	@include mq($from: tablet) {
+		margin-top: -0.2em;
+	}
+}
+
+button {
+	color: var(--foreground);
+	border: 0;
+
+	@include mq($from: tablet) {
+	}
+
+	&.back {
+		@include mq($from: tablet) {
+		}
+	}
+
+	&:hover {
+	}
+}
+
+figcaption {
+	@include mq($until: tablet) {
+	}
+}
+
+hr {
+}
+
+input,
+textarea,
+select {
+	&:focus {
+	}
+}
+
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+	background-repeat: no-repeat;
+	background-position-x: calc(100% - 1em);
+	background-position-y: center;
+	color: var(--black);
+}
+
+.page-error {
+	position: fixed;
+	top: 0;
+	left: 0;
+	min-width: 100vw;
+	min-height: 100vh;
+	z-index: 100000;
+	background-color: var(--white);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+@include mq($from: tablet) {
+	[data-type='what-we-do']:hover {
+		color: var(--what-we-do-color);
+	}
+
+	[data-type='who-we-are']:hover {
+		color: var(--who-we-are-color);
+	}
+
+	[data-type='about-us']:hover {
+		color: var(--about-us-color);
+	}
+
+	[data-type='contact']:hover {
+		color: var(--contact-color);
+	}
+
+	[data-type='news']:hover {
+		color: var(--news-color);
+	}
+}

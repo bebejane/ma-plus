@@ -9,28 +9,35 @@
     "allowJs": true,
     "skipLibCheck": true,
     "strict": false,
-    "forceConsistentCasingInFileNames": true,
     "noEmit": true,
-    "incremental": true,
     "esModuleInterop": true,
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "baseUrl": ".",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
     "paths": {
-      "components/*": ["/components"],
-      "graphql/*": ["/graphql"],
-      "lib/*": ["/lib"],
-      "/*": ["*"]
-    }
+      "@/*": [
+        "./*"
+      ],
+      "datocms.config": [
+        "./datocms.config.ts"
+      ]
+    },
+    "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": false
   },
-  "typeRoots": ["./@types"],
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
+    "**/*.tsx",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"
