@@ -22,7 +22,7 @@
 		"datocms-structured-text-utils": "^5.1.6",
 		"graphql": "^16.11.0",
 		"next": "^15.5.9",
-		"next-dato-utils": "github:bebejane/next-dato-utils#v2.0.85",
+		"next-dato-utils": "github:bebejane/next-dato-utils#v2.0.255",
 		"react": "^19.2.3",
 		"react-datocms": "^8.0.0-1",
 		"react-dom": "^19.2.3",
